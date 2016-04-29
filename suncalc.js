@@ -113,8 +113,11 @@ var createSunCalc = function () {
     if (localStorage['locationKnown'] !== ObjectConstant + 'true') {
       var dt2 = moment(date).toDate();
       dt2.setHours(18, 30, 0, 0);
+      var dt3 = moment(date).toDate();
+      dt3.setHours(6, 30, 0, 0);
       return {
-        sunset: dt2
+        sunset: dt2,
+        sunrise: dt3
       };
     }
 

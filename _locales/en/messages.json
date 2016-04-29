@@ -1,11 +1,4 @@
 {
-  "translation": {
-    "name": "Glen Little",
-    "email": "glen.little@gmail.com",
-    "mostRecentVersion": "1.9.0",
-    "message": "en",
-    "description": "(this is not shown in the tool)"
-  },
   "title": {
     "message": "Badí' Calendar",
     "description": "The title of the extension. Shown in a number of locations."
@@ -127,7 +120,7 @@
     "description": ""
   },
   "webstore": {
-    "message": "Chrome Web Store",
+    "message": "Web Store",
     "description": ""
   },
   "upcomingTitle": {
@@ -162,11 +155,8 @@
     "message": "Version {0}",
     "description": ""
   },
-
-
-  "new_messages_1_1_2": { "message": "" },
   "formatIconToolTip": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": "text when mouse is over the extension icon"
   },
   "formatIconClick": {
@@ -190,11 +180,11 @@
     "description": "ALT for icon at bottom of page"
   },
   "shoghiExample": {
-    "message": "This is the day of {bWeekdayNameAr}, the day of {bDayNameAr}, of the month of {bMonthNameAr}, of the year {bYearInVahidNameAr}, of the {bVahidOrdinalName} Váḥid, of the {bKullishayOrdinalName} Kull-i-<u>Sh</u>ay’.",
+    "message": "This is the weekday of {bWeekdayNamePri}, the day of {bDayNamePri}, of the month of {bMonthNamePri}, of the year {bYearInVahidNamePri}, of the {bVahidOrdinalName} Váḥid, of the {bKullishayOrdinalName} Kull-i-<u>Sh</u>ay’.",
     "description": "Example given by Shoghi Effendi"
   },
   "example2": {
-    "message": "{bMonthNameAr} {bDay} {dayStartedLower} at sunset (about {startingSunsetDesc}) on {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} and {dayEndedLower} at sunset (about {endingSunsetDesc}) on {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.",
+    "message": "{bMonthNamePri} {bDay} {dayStartedLower} at sunset (about {startingSunsetDesc}) on {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} and {dayEndedLower} at sunset (about {endingSunsetDesc}) on {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.",
     "description": ""
   },
   "pressKeyOrClick": {
@@ -205,9 +195,6 @@
     "message": "Copied!",
     "description": "short message that replaces sample format button text when button is clicked"
   },
-
-
-  "new_messages_1_1_3": { "message": "" },
   "use24HourClock": {
     "message": "false",
     "description": "use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
@@ -300,43 +287,36 @@
     "message": "in {0} days",
     "description": ""
   },
-
-
-  "new_messages_1_1_4": { "message": "" },
-  "sampleGroupTranslationHelp": {
-    "message": "",
-    "description": "Samples usually don't need translating. If needed, copy from the 'en' file and modify. When creating samples, can use any of the properties shown when _di is shown when inspecting the popup"
-  },
   "sampleGroup1_1": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "3 Jamál 172"
   },
   "sampleGroup1_2": {
-    "message": "{bMonthNameAr} {bDay}, {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": "Jamal 4, 172"
   },
   "sampleGroup1_3": {
-    "message": "{bMonthNameAr} {bDay}, {bYear} ⇨ {endingSunsetDesc}",
+    "message": "{bMonthNamePri} {bDay}, {bYear} ⇨ {endingSunsetDesc}",
     "description": "Jamal 4, 172 -> 7:55pm"
   },
   "sampleGroup1_6": {
-    "message": "{bDay} {bMonthNameAr} ({bMonthMeaning}) {bYear}",
+    "message": "{bDay} {bMonthNamePri} ({bMonthNameSec}) {bYear}",
     "description": "1 Jamal (Beauty) 172"
   },
   "sampleGroup1_7": {
-    "message": "{bDay00} {bMonthNameAr} / {bMonthMeaning} {bYear} {bEraAbbrev} ({currentWeekdayShort} {currentDay00} {currentMonthLong} {currentYear})",
+    "message": "{bDay00} {bMonthNamePri} / {bMonthNameSec} {bYear} {bEraAbbrev} ({currentWeekdayShort} {currentDay00} {currentMonthLong} {currentYear})",
     "description": "04 Jamal / Glory 172 B.E. (Fri 01 May 2015) -- bahai-readings@bcca.org"
   },
   "sampleGroup1_8": {
-    "message": "{bWeekdayNameAr} / {bDayNameAr}, {bDayOrdinal} {bMonthNameAr} {bYear}",
+    "message": "{bWeekdayNamePri} / {bDayNamePri}, {bDayOrdinal} {bMonthNamePri} {bYear}",
     "description": "Jamál / Bahá, 1st ‘Aẓamat     or [weekday] / [monthday], [day no.] [month] - james@19months.com"
   },
   "sampleGroup1_9": {
-    "message": "{bDay} {bMonthNameAr} {bYear} / {currentDay} {currentMonthLong} {currentYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear} / {currentDay} {currentMonthLong} {currentYear}",
     "description": "3 Jamál 172 / 30 April 2015 -- Calgary LSA"
   },
   "sampleGroup1_10": {
-    "message": "{bDay} {bMonthNameAr} ({bMonthMeaning}) {bYear} - {gCombinedY}",
+    "message": "{bDay} {bMonthNamePri} ({bMonthNameSec}) {bYear} - {gCombinedY}",
     "description": "1 Jamál (Beauty) 172 - April 27/28, 2015"
   },
   "sampleGroup1_14": {
@@ -351,22 +331,20 @@
     "message": "{bYear}.{bMonth00}.{bDay00} {currentMonthShort} {currentDay}",
     "description": "172.03.13 Sep 3 -- OneNote tabs"
   },
-
   "sampleGroup1_23": {
-    "message": "{currentDay} {currentMonthLong} {currentYear} / {bDay} {bMonthMeaning} {bYear}",
+    "message": "{currentDay} {currentMonthLong} {currentYear} / {bDay} {bMonthNameSec} {bYear}",
     "description": "30 April 2015 / 3 Beauty 172 -- NSA Canada"
   },
   "sampleGroup1_24": {
-    "message": "{currentDay} {currentMonthLong} {currentYear} / {bDay} {bMonthNameAr} {bYear}",
+    "message": "{currentDay} {currentMonthLong} {currentYear} / {bDay} {bMonthNamePri} {bYear}",
     "description": "1 May 2015 / 4 Jamál 172  -- Susan Gammage"
   },
-
   "DayOfWeek": {
     "message": "Weekday",
     "description": ""
   },
   "DayOfWeekFormat": {
-    "message": "{bWeekday} - {bWeekdayNameAr} ({bWeekdayMeaning})",
+    "message": "{bWeekday} - {bWeekdayNamePri} ({bWeekdayNameSec})",
     "description": ""
   },
   "DayOfMonth": {
@@ -374,7 +352,7 @@
     "description": ""
   },
   "DayOfMonthFormat": {
-    "message": "{bDay} - {bDayNameAr} ({bDayMeaning})",
+    "message": "{bDay} - {bDayNamePri} ({bDayNameSec})",
     "description": ""
   },
   "Month": {
@@ -382,11 +360,11 @@
     "description": ""
   },
   "MonthFormatNormal": {
-    "message": "{bMonth} - {bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonth} - {bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "MonthFormatAyyam": {
-    "message": "{bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "YearOfEra": {
@@ -402,7 +380,7 @@
     "description": ""
   },
   "YearOfVahidFormat": {
-    "message": "{bYearInVahid} - {bYearInVahidNameAr} ({bYearInVahidMeaning})",
+    "message": "{bYearInVahid} - {bYearInVahidNamePri} ({bYearInVahidNameSec})",
     "description": ""
   },
   "Vahid": {
@@ -421,37 +399,30 @@
     "message": "{bKullishay}",
     "description": ""
   },
-
   "bTopDayDisplay": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "top right corner"
   },
   "gTopDayDisplay": {
-    "message": "{currentRelationToSunset} - {currentWeekdayShort}, {currentDay} {currentMonthLong} {currentYear}",
+    "message": "{currentRelationToSunset} - {currentWeekdayLong} - {currentDay} {currentMonthLong} {currentYear}",
     "description": "top right corner"
   },
   "gregorianDateDisplay": {
-    "message": "{currentWeekdayShort}, {currentDay} {currentMonthLong} {currentYear}",
+    "message": "{currentWeekdayLong}, {currentDay} {currentMonthLong} {currentYear}",
     "description": "in left panel"
   },
   "upcomingDateFormat": {
-    "message": "{bMonthNameAr} {bDay} ({gCombined})",
+    "message": "{bMonthNamePri} {bDay} ({gCombined})",
     "description": "upcoming list"
   },
-
   "nextRefreshAlarm": {
     "message": "Next refresh scheduled after {0}: {1}",
     "description": "only shown in the debug console"
   },
-
-
-  "new_messages_1_1_5": { "message": "" },
-
   "gMonthDayYear": {
-    "message": "{bMonthNameAr} {bDay}, {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": ""
   },
-
   "gCombined_1": {
     "message": "{frag1MonthShort} {frag1Day}/{frag2Day}",
     "description": "day in same gregorian month"
@@ -476,16 +447,10 @@
     "message": "{frag1MonthShort} {frag1Day}, {frag1Year}/{frag2MonthShort} {frag2Day}, {frag2Year}",
     "description": "with year"
   },
-
-
-  "new_messages_1_1_8": { "message": "" },
   "bDatePickerTitle": {
     "message": "Choose <u>B</u>adí' Date",
     "description": "added <u></u> - should have one letter between <u> and </u>"
   },
-
-
-  "new_messages_1_2_0": { "message": "" },
   "weekDayNames": {
     "message": "Weekday Names",
     "description": "on List page - table caption"
@@ -510,8 +475,6 @@
     "message": "Equivalent",
     "description": "on List page - table heading"
   },
-
-  "new_messages_1_3": { "message": "" },
   "pick_pageDay": {
     "message": "Day",
     "description": ""
@@ -537,12 +500,9 @@
     "description": ""
   },
   "shortcutKeyTitle": {
-    "message": "Press this key combination to open the Calendar from anywhere in Chrome.",
+    "message": "Press this key combination to open the Calendar from anywhere in the browser.",
     "description": ""
   },
-
-
-  "new_messages_1_3_3": { "message": "" },
   "prevYear": {
     "message": "Prev Year",
     "description": "hold Shift and press left arrow key"
@@ -559,9 +519,6 @@
     "message": "Press Shift + Right Arrow to view the next Year",
     "description": "hold Shift and press right arrow key"
   },
-
-
-  "new_messages_1_3_6": { "message": "" },
   "jumpTo": {
     "message": "<u>J</u>ump ± days",
     "description": "user can enter a day after/before currently selected day"
@@ -574,15 +531,10 @@
     "message": "Move forward or backward by this number of days",
     "description": "tooltip"
   },
-
-
-  "new_messages_1_4": { "message": "" },
-
   "pick_pageEvents": {
     "message": "Events",
     "description": "showing Feast and Holy Days"
   },
-
   "specialDaysTitle": {
     "message": "Feasts and Holy Days in {bYear}",
     "description": ""
@@ -607,7 +559,6 @@
     "message": "Start of Badí' Day",
     "description": "heading in Events listing"
   },
-
   "includeThese": {
     "message": "Show",
     "description": "choosing what to include in the listing"
@@ -624,7 +575,6 @@
     "message": "Usual meeting time: ",
     "description": "above Events listing"
   },
-
   "specialTime_1500S": {
     "message": "3 pm (Standard Time)",
     "description": "First day of Ridvan"
@@ -645,7 +595,6 @@
     "message": "1 am (Standard Time)",
     "description": "Martyrdom of the Bab"
   },
-
   "eventTime": {
     "message": "{eventTime} {eventWeekdayShort} {eventMonthShort} {eventDay}, {eventYear}",
     "description": "show start time in Events listing"
@@ -654,8 +603,6 @@
     "message": "{startingSunsetDesc} {frag1WeekdayShort} {frag1MonthShort} {frag1Day}, {frag1Year}",
     "description": "show start time in Events listing"
   },
-
-
   "pick_pageFast": {
     "message": "Fast",
     "description": ""
@@ -680,145 +627,98 @@
     "message": "{frag2WeekdayShort} {frag2MonthShort} {frag2Day}, {frag2Year}",
     "description": "show start time in Events listing"
   },
-
   "ayyamIs0": {
-    "message": "(Y M D) 0 = Ayyám-i-Há",
+    "message": "(Y M D) 0={0}",
     "description": "(updated) in Badi date picker area"
   },
-
-
-  "new_messages_1_5_3": { "message": "" },
   "keyToOpenInTab": {
     "message": "T",
     "description": "Press Shift+(this letter) to open into a tab"
   },
-
-  "new_messages_1_6_0": { "message": "" },
   "pick_pageCalWheel": {
     "message": "Wheel",
-    "translation": "required",
     "description": "tab name"
   },
-
   "showPointer": {
     "message": "Show pointer",
-    "translation": "required",
     "description": ""
   },
-
   "currentFocus": {
     "message": "Current Day",
-    "translation": "required",
     "description": "in wheel, points to today, or whatever day is currently selected"
   },
-
-  "new_messages_1_7_0": { "message": "" },
   "pick_pageCalGreg": {
     "message": "Gregorian Year",
-    "translation": "required",
     "description": "tab name"
   },
-
-  "new_messages_1_7_2": { "message": "" },
   "noon": {
     "message": "12:00 noon",
-    "translation": "required",
     "description": "nice way to say noon"
   },
-
   "timeFormat12": {
     "message": "{time} {ampm}",
-    "translation": "required",
     "description": "used when use24HourClock is set to false"
   },
-
   "am": {
     "message": "am",
-    "translation": "required",
     "description": "displayed in 'timeFormat12' if not using 24 hours clock"
   },
-
   "pm": {
     "message": "pm",
-    "translation": "required",
     "description": "displayed in 'timeFormat12' if not using 24 hours clock"
   },
-
-
-
-  "new_messages_1_7_9": { "message": "add menu to open in a tab" },
-
   "browserMenuOpen": {
     "message": "Open in a tab",
-    "translation": "required",
     "description": "shown as menu item when right-clicking on the browser icon "
   },
-
-  "new_messages_1_8_0": { "message": "adding Reminders" },
-
   "pick_pageReminders": {
     "message": "Reminders",
-    "translation": "required",
     "description": "page tab name and page title"
   },
   "remindersDefined": {
     "message": "Your Reminders",
-    "translation": "required",
     "description": "title on right side"
   },
   "noReminders": {
     "message": "Add Sample Reminders",
-    "translation": "required",
     "description": "shown if there are no reminders"
   },
-
   "reminderAddEdit": {
     "message": "Add/Edit Reminder",
-    "translation": "required",
     "description": "title on left side"
   },
   "reminderType": {
     "message": "Event",
-    "translation": "required",
     "description": "in front of the trigger selector"
   },
   "reminderSelectTrigger": {
     "message": "Add a reminder...",
-    "translation": "required",
     "description": "in dropdown, when no trigger is selected"
   },
   "reminderShowAt": {
     "message": "Show at",
-    "translation": "required",
     "description": "in front of time of day input"
   },
   "remindersScheduled": {
     "message": "Scheduled today from {time} until midnight",
-    "translation": "required",
     "description": "title on left side"
   },
   "reminderAlarm": {
     "message": "At {triggerTimeDisplay} --> {messageBody}",
-    "translation": "required",
     "description": "used when showing list of alarms scheduled today"
   },
-
   "reminderTriggerGroup_time": {
     "message": "Time of Day",
-    "translation": "required",
     "description": "a group of triggers - sunset sunrise noon midnight"
   },
   "reminderTriggerGroup_day": {
     "message": "Special Days",
-    "translation": "required",
     "description": "a group of triggers - feast, holy day, Badi day"
   },
   "reminderTriggerGroup_load": {
     "message": "Other Events",
-    "translation": "required",
     "description": "a group of triggers - for other types of events"
   },
-
   "reminderTrigger_sunrise": {
     "message": "Sunrise",
     "description": "what this reminder is triggered on"
@@ -829,344 +729,262 @@
   },
   "reminderTrigger_noon": {
     "message": "Noon",
-    "translation": "required",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_midnight": {
     "message": "Midnight",
-    "translation": "required",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_feast": {
     "message": "Feast day",
-    "translation": "required",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_holyday": {
     "message": "Holy Day",
-    "translation": "required",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_bday": {
     "message": "Badí' Day",
-    "translation": "required",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_load": {
     "message": "On Load",
-    "translation": "required",
     "description": "what this reminder is triggered on"
   },
-
   "btnReminderEdit": {
     "message": "Edit",
-    "translation": "required",
     "description": "shown next to each reminder. Click to edit the reminder."
   },
   "btnReminderSave": {
     "message": "<u>S</u>ave",
-    "translation": "required",
     "description": "Save the changes and close the edit area"
   },
   "btnReminderSaveNew": {
     "message": "Save as New Reminder",
-    "translation": "required",
     "description": "Save the changes as a new reminder and close the edit area. The original reminder is not affected."
   },
   "btnReminderCancel": {
     "message": "Cancel",
-    "translation": "required",
     "description": "cancel changes and close the edit area"
   },
   "btnReminderTest": {
     "message": "Test Now",
-    "translation": "required",
     "description": "show a sample of the reminder now"
   },
   "btnReminderDelete": {
     "message": "Delete",
-    "translation": "required",
     "description": "delete a reminder"
   },
-
   "reminderTagline": {
     "message": "(displayed at {when})",
-    "translation": "required",
     "description": "shown on the bottom of each reminder popoup"
   },
   "reminderTestTagline": {
     "message": "(to be displayed at {when})",
-    "translation": "required",
     "description": "shown on the bottom of popoup when tested"
   },
-
   "reminder_actions": {
     "message": "Additional Action",
-    "translation": "required",
     "description": "prompt for other actions"
   },
   "reminder_nullAction": {
     "message": "none",
-    "translation": "required",
     "description": "in dropdown list, for when no other action is chosen"
   },
   "reminderAction_speak": {
     "message": "read aloud",
-    "translation": "required",
     "description": "in dropdown list, to choose to read the alert"
   },
   "reminderAction_ifttt": {
     "message": "trigger IFTTT recipe",
-    "translation": "required",
     "description": "in dropdown list, to choose to use IFTTT"
   },
   "iftttKey": {
     "message": "IFTTT Maker Channel Key",
-    "translation": "required",
     "description": "Key' for IFTTT Maker channel"
   },
   "iftttEvent": {
     "message": "IFTTT Event Name",
-    "translation": "required",
     "description": "name of 'Event' for IFTTT Maker channel"
   },
   "iftttInfo": {
     "message": "For details or to sign up, see <a href='https://ifttt.com/maker' target=ifttt>IFTTT Maker Channel</a>. The event will contain these fields: title, body, tag",
-    "translation": "required",
     "description": "info and link to ifttt page"
   },
   "reminderAction_zapier": {
     "message": "trigger Zapier Webhook",
-    "translation": "required",
     "description": "in dropdown list, to choose to use Zapier"
   },
   "zapierKey": {
     "message": "Zapier Webhook",
-    "translation": "required",
     "description": "url for Zapier"
   },
   "zapierInfo": {
     "message": "For details or to sign up, see <a href='https://zapier.com/zapbook/webhook/' target=zapier>Zapier Webhook</a>. The Zap will contain these fields: title, body, tag, time",
-    "translation": "required",
     "description": "info and link to Zapier"
   },
-
   "actionSpeakDesc": {
-    "message": "The reminder will be read aloud using this Chrome voice: ",
-    "translation": "required",
+    "message": "The reminder will be read aloud using this voice: ",
     "description": "in edit area when asking for a relative time"
   },
   "reminderTimeInputStructure": {
     "message": "Show {num} {units} {delta}",
-    "translation": "required",
     "description": "in edit area when asking for a relative time"
   },
-
   "reminderCalcType": {
     "message": "Show reminder {calcTypeInput}",
-    "translation": "required",
     "description": "in edit area when asking when to show the reminder"
   },
   "reminderCalcTypeRelative": {
     "message": "relative to <span class=modelTriggerEcho></span>",
-    "translation": "required",
     "description": "in dropdown"
   },
   "reminderCalcTypeAbsolute": {
     "message": "at specific time",
-    "translation": "required",
     "description": "in dropdown"
   },
-
   "reminderNum_days": {
     "message": "day(s)",
-    "translation": "required",
     "description": "unknown number of days"
   },
   "reminderNum_days_1_more": {
     "message": "day;days",
-    "translation": "required",
     "description": "single;plural"
   },
   "reminderNum_hours": {
     "message": "hour(s)",
-    "translation": "required",
     "description": ""
   },
   "reminderNum_hours_1_more": {
     "message": "hour;hours",
-    "translation": "required",
     "description": ""
   },
   "reminderNum_minutes": {
     "message": "minute(s)",
-    "translation": "required",
     "description": ""
   },
   "reminderNum_minutes_1_more": {
     "message": "minute;minutes",
-    "translation": "required",
     "description": ""
   },
   "reminderNum_seconds": {
     "message": "second(s)",
-    "translation": "required",
     "description": ""
   },
   "reminderNum_seconds_1_more": {
     "message": "second;seconds",
-    "translation": "required",
     "description": ""
   },
   "midnight": {
     "message": "12:00 midnight",
-    "translation": "required",
     "description": "nice way to say midnight"
   },
-
-
   "reminderDayOfMonth": {
     "message": "On day {num} of the Badí' month",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
   "reminderDayWhen": {
     "message": "When {num} day(s) {beforeAfter} each {event}",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
   "reminderList_dayEvent": {
     "message": "{num} day(s) {deltaText}, at {triggerTimeRawDisplay}",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
   "reminderList_bday": {
     "message": "day {num} at {triggerTimeRawDisplay}",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
   "reminderList_onload": {
     "message": "{num} {units} after",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
   "reminderList_timeRelative": {
     "message": "{num} {units} {deltaText}",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
   "reminderList_timeAbsolute": {
     "message": "announce at {triggerTimeRawDisplay}",
-    "translation": "required",
     "description": "in list of defined reminders"
   },
-
   "reminderTitle": {
     "message": "{0} Reminder",
-    "translation": "required",
     "description": "displayed as the title of each reminder shown"
   },
   "reminderBefore": {
     "message": "before",
-    "translation": "required",
     "description": ""
   },
   "reminderAfter": {
     "message": "after",
-    "translation": "required",
     "description": ""
   },
-
-
   "future_DeltaTime": {
     "message": "will be in {numUnits} at {time}",
-    "translation": "required",
     "description": ""
   },
   "past_DeltaTime": {
     "message": "was {numUnits} ago at {time}",
-    "translation": "required",
     "description": ""
   },
   "future_StartDeltaTime": {
     "message": "will start in {numUnits} at {time}",
-    "translation": "required",
     "description": ""
   },
   "past_StartDeltaTime": {
     "message": "started {numUnits} ago at {time}",
-    "translation": "required",
     "description": ""
   },
-
   "future_Delta": {
     "message": "will be in {numUnits}",
-    "translation": "required",
     "description": ""
   },
   "past_Delta": {
     "message": "was {numUnits} ago",
-    "translation": "required",
     "description": ""
   },
-
   "future_Time": {
     "message": "will be at {time}",
-    "translation": "required",
     "description": ""
   },
   "past_Time": {
     "message": "was at {time}",
-    "translation": "required",
     "description": ""
   },
   "future_StartTime": {
     "message": "will start at {time}",
-    "translation": "required",
     "description": ""
   },
   "past_StartTime": {
     "message": "started at {time}",
-    "translation": "required",
     "description": ""
   },
   "future_Day": {
     "message": "starts at {time}",
-    "translation": "required",
     "description": "shown in the eve of the day"
   },
   "past_Day": {
     "message": "started at {time}",
-    "translation": "required",
     "description": "shown after midnight of the day"
   },
-
   "numUnits": {
     "message": "{num} {units}",
-    "translation": "required",
     "description": "eg. 5 days, 1 minute, 3 hours"
   },
-
   "messageBody": {
     "message": "{triggerDisplayName} {desc}",
-    "translation": "required",
     "description": ""
   },
-
   "reminderBDay": {
     "message": "Day {num} of the Badí' month",
-    "translation": "required",
     "description": "what this reminder is triggered on (left out the the apostrophe after Badí since it breaks when displayed)"
   },
-
   "reminderHolyDay": {
     "message": "The Holy Day, \"{0}\",",
-    "translation": "required",
     "description": ""
   },
   "reminderFeast": {
-    "message": "The Feast of {ar}, {meaning},",
-    "translation": "required",
+    "message": "The Feast of {pri}, {sec},",
     "description": ""
   },
   "reminderDayDetails": {
@@ -1177,12 +995,8 @@
     "message": "{eventTime} on {eventMonthShort} {eventDay}",
     "description": ""
   },
-
-  "new_messages_1_9": { "message": "adding Exporter" },
-
   "pick_pageExporter": {
     "message": "Export",
-    "translation": "required",
     "description": "page tab name and page title"
   },
   "exporterTitle": {
@@ -1409,85 +1223,107 @@
     "message": "Reset options",
     "description": ""
   },
-
-  "new_messages_1_10": { "message": "adding Custom Builder" },
-
   "pick_pageCustom": {
     "message": "Custom",
-    "translation": "required",
     "description": "page tab name and page title"
   },
-
   "customTitle": {
     "message": "Date Format Builder",
-    "translation": "required",
     "description": ""
   },
-
   "customPartsList": {
     "message": "Available Date Parts",
-    "translation": "required",
     "description": ""
   },
   "customBuilderIntro": {
-    "message": "Type the format into this box. Click any 'Add' in the Available Date Parts to add that date part in the current location. Hints: 'frag1' = sunset to midnight; 'frag2' = midnight to sunset.",
-    "translation": "required",
+    "message": "Type the format into this box. <span class=customHint title='...NamePri = in Primary language\n...NameSec = in Secondary language\nfrag1... = sunset to midnight\nfrag2... = midnight to sunset'>(View Hints)</span><br>Click an 'Add' button in the Available Date Parts to insert at the current location.",
     "description": ""
   },
   "customBuilder": {
     "message": "Build a Custom Date Format",
-    "translation": "required",
     "description": ""
   },
   "customBuilderEcho": {
     "message": "Results (for currently selected day - see Tips & Keys to change day)",
-    "translation": "required",
     "description": ""
   },
   "customDefined": {
     "message": "Custom Date Formats",
-    "translation": "required",
     "description": ""
   },
   "customUseAsSample": {
     "message": "Use as Sample?",
-    "translation": "required",
     "description": ""
   },
   "customSelectForFrontPage": {
     "message": "Tick box to show on {0} page.",
-    "translation": "required",
     "description": ""
   },
   "customBtnCopy": {
     "message": "Copy",
-    "translation": "required",
     "description": ""
   },
   "btnCustomBuilderCancel": {
     "message": "Cancel / New",
-    "translation": "required",
     "description": ""
   },
   "customIntroClick": {
     "message": "Click Copy to copy formatted date to the clipboard.",
-    "translation": "required",
     "description": ""
   },
   "customLoadLetters": {
     "message": "Click to start from a standard format: ",
-    "translation": "required",
     "description": ""
   },
-
-
-
-
-
-
+  "pick_pageSetup": {
+    "message": "Settings",
+    "description": "tab name"
+  },
+  "setupSetup": {
+    "message": "General Settings",
+    "description": "title"
+  },
+  "setupAbout": {
+    "message": "About this tool",
+    "description": "title"
+  },
+  "setupAbout1": {
+    "message": "This Web Extension ",
+    "description": ""
+  },
+  "setupAbout2": {
+    "message": "Please note that dates after 221 B.E. may need to be updated closer to the time as astronomical observations improve. Please don't use this to finalize your plans 100 years in the future!"
+  },
+  "setupAbout3": {
+    "message": "Please see <a href='https://sites.google.com/site/badicalendartools/home/chrome-extension' target=_blank>Badí' Web Extension</a> help pages for more details.",
+    "description": ""
+  },
+  "btnRetry2": {
+    "message": "Reload Now",
+    "description": ""
+  },
+  "Chrome_WebStore": {
+    "message": "https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/",
+    "description": "link to Webstore when running in Chrome"
+  },
+  "Chrome_WebStoreSupport": {
+    "message": "https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/support",
+    "description": "link to Webstore support link when running in Chrome"
+  },
+  "rbDefLangText": {
+    "message": "Primary language for dates:",
+    "description": ""
+  },
+  "rbDefLang_Ar": {
+    "message": "Arabic names",
+    "description": ""
+  },
+  "rbDefLang_Local": {
+    "message": "English names/meanings",
+    "description": "write in your language!"
+  },
   "___lastMessageInFile___": {
     "message": "do not translate",
-    "translation": "required",
     "description": "do not translate"
   }
 }

@@ -1,197 +1,197 @@
 
 #pageCalWheel {
 
-    #templateSlice {
-        display: none;
+  #templateSlice {
+    display: none;
+  }
+
+  #wheelHolder {
+    position: relative;
+    transform: scale(0.75);
+    width: 685px;
+    margin: -48px auto 0 auto;
+  }
+
+
+  #wheel {
+    transform-origin: 344px 334px;
+    transform: rotate(0deg);
+
+    &.rotating {
+      -webkit-animation-name: spinner;
+      -webkit-animation-timing-function: ease;
+      -webkit-animation-iteration-count: 1;
+      -webkit-animation-duration: .25s;
+      -webkit-animation-fill-mode: forwards;
     }
+  }
 
-    #wheelHolder {
-        position: relative;
-        zoom: 0.75;
-        width: 685px;
-        margin: 0 auto;
-    }
+  #wheelYearHolder {
+    z-index: 22;
+  }
 
+  #wheelYear {
+    font-size: 24pt;
+    font-weight: 500;
+    fill: #999;
+  }
 
-    #wheel {
-        transform-origin: 344px 334px;
-        transform: rotate(0deg);
+  #pointerToday {
+    position: absolute;
+    left: 300px;
+    top: 0;
+    font-size: 15pt;
+    z-index: 21;
+  }
 
-        &.rotating {
-            -webkit-animation-name: spinner;
-            -webkit-animation-timing-function: ease;
-            -webkit-animation-iteration-count: 1;
-            -webkit-animation-duration: .25s;
-            -webkit-animation-fill-mode: forwards;
-        }
-    }
+  #pointerToday text {
+    stroke: #999;
+    fill: #999;
+  }
 
-    #wheelYearHolder {
-        z-index: 22;
-    }
+  #pointerToday line {
+    stroke: #333;
+  }
 
-    #wheelYear {
-        font-size: 24pt;
-        font-weight: 500;
-        fill: #999;
-    }
+  .slice {
+    position: absolute;
+    left: 300px;
+    top: 0;
+  }
 
-    #pointerToday {
-        position: absolute;
-        left: 300px;
-        top: 0;
-        font-size: 15pt;
-        z-index: 21;
-    }
+  svg .monthNum {
+    text-anchor: middle;
+    font-size: 20pt;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
 
-    #pointerToday text {
-        stroke: #999;
-        fill: #999;
-    }
+  svg .firstDayG {
+    text-anchor: middle;
+    font-size: 15pt;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
 
-    #pointerToday line {
-        stroke: #333;
-    }
+  svg .firstDayWk {
+    text-anchor: middle;
+    font-size: 11pt;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
 
-    .slice {
-        position: absolute;
-        left: 300px;
-        top: 0;
-    }
+  svg .firstDayYr {
+    text-anchor: middle;
+    font-size: 13pt;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
 
-    svg .monthNum {
-        text-anchor: middle;
-        font-size: 20pt;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: .5px;
-    }
+  svg .monthNameAr {
+    text-anchor: start;
+    font-size: 24pt;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
 
-    svg .firstDayG {
-        text-anchor: middle;
-        font-size: 15pt;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: .5px;
-    }
+  svg .monthName {
+    text-anchor: start;
+    font-size: 16pt;
+    fill: #fff;
+    stroke: #fff;
+    stroke-width: .5px;
+  }
 
-    svg .firstDayWk {
-        text-anchor: middle;
-        font-size: 11pt;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: .5px;
-    }
+  #slice1 {
+    fill: #ED312F;
+  }
 
-    svg .firstDayYr {
-        text-anchor: middle;
-        font-size: 13pt;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: .5px;
-    }
+  #slice2 {
+    fill: #ee732f;
+  }
 
-    svg .monthNameAr {
-        text-anchor: start;
-        font-size: 24pt;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: .5px;
-    }
+  #slice3 {
+    fill: #f7ae23;
+  }
 
-    svg .monthName {
-        text-anchor: start;
-        font-size: 16pt;
-        fill: #fff;
-        stroke: #fff;
-        stroke-width: .5px;
-    }
+  #slice4 {
+    fill: #fce32b;
+  }
 
-    #slice1 {
-        fill: #ED312F;
-    }
+  #slice5 {
+    fill: #dade27;
+  }
 
-    #slice2 {
-        fill: #ee732f;
-    }
+  #slice6 {
+    fill: #98c546;
+  }
 
-    #slice3 {
-        fill: #f7ae23;
-    }
+  #slice7 {
+    fill: #42b04d;
+  }
 
-    #slice4 {
-        fill: #fce32b;
-    }
+  #slice8 {
+    fill: #01a256;
+  }
 
-    #slice5 {
-        fill: #dade27;
-    }
+  #slice9 {
+    fill: #00a16f;
+  }
 
-    #slice6 {
-        fill: #98c546;
-    }
+  #slice10 {
+    fill: #01a29a;
+  }
 
-    #slice7 {
-        fill: #42b04d;
-    }
+  #slice11 {
+    fill: #00a4b8;
+  }
 
-    #slice8 {
-        fill: #01a256;
-    }
+  #slice12 {
+    fill: #02a7df;
+  }
 
-    #slice9 {
-        fill: #00a16f;
-    }
+  #slice13 {
+    fill: #0097d0;
+  }
 
-    #slice10 {
-        fill: #01a29a;
-    }
+  #slice14 {
+    fill: #1165ab;
+  }
 
-    #slice11 {
-        fill: #00a4b8;
-    }
+  #slice15 {
+    fill: #2f4197;
+  }
 
-    #slice12 {
-        fill: #02a7df;
-    }
+  #slice16 {
+    fill: #45328e;
+  }
 
-    #slice13 {
-        fill: #0097d0;
-    }
+  #slice17 {
+    fill: #74338d;
+  }
 
-    #slice14 {
-        fill: #1165ab;
-    }
+  #slice18 {
+    fill: #a12b8b;
+  }
 
-    #slice15 {
-        fill: #2f4197;
-    }
+  #slice19 {
+    fill: #ce2688;
+  }
 
-    #slice16 {
-        fill: #45328e;
-    }
-
-    #slice17 {
-        fill: #74338d;
-    }
-
-    #slice18 {
-        fill: #a12b8b;
-    }
-
-    #slice19 {
-        fill: #ce2688;
-    }
-
-    #askShowPointer {
-        float: right;
-        margin: 2px 5px 0 0;
-    }
+  #askShowPointer {
+    float: right;
+    margin: 2px 5px 0 0;
+  }
 }
 
 @media print {
-    #wheelHolder {
-        zoom: 1;
-        margin: 0 auto;
-    }
+  #wheelHolder {
+    transform: scale(1);
+    margin: 0 auto;
+  }
 }

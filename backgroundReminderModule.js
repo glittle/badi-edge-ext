@@ -279,7 +279,7 @@ var BackgroundReminderEngine = function () {
       case 'feast':
         messageType = alarmInfo.num === 0 ? 'StartTime' : 'StartDeltaTime';
         var monthNum = holyDayInfo.MonthNum;
-        triggerDisplayName = getMessage('reminderFeast', { ar: bMonthNameAr[monthNum], meaning: bMonthMeaning[monthNum] });
+        triggerDisplayName = getMessage('reminderFeast', { pri: bMonthNamePri[monthNum], sec: bMonthNameSec[monthNum] });
         break;
 
       case 'bday':

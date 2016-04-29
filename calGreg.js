@@ -9,7 +9,7 @@ var CalGreg = function (di, host) {
   var _scrollToMonth = -1;
   var _calendarDiv = $('#pageCalGreg .calendar');
 
-  const hourFactor = 3.2;
+  var hourFactor = 3.2;
 
   function preparePage() {
     attachHandlers();
@@ -163,13 +163,14 @@ var CalGreg = function (di, host) {
       var sunset = thisDayInfo.frag2SunTimes.sunset;
       var sunsetHr = (sunset.getHours() + sunset.getMinutes() / 60);
       var outside = gMonth != focusMonth;
+      var bMonthToShow;
 
       var fnRecordMonth = function (di) {
         // don't list ayyam-i-ha
         if (di.bMonth === 0) {
           return;
         }
-        bMonthToShow = di.bMonthNameAr;
+        bMonthToShow = di.bMonthNamePri;
         bYear = di.bYear;
         if (activeBadiYear && activeBadiYear != bYear) {
           bMonthsInMonth[bMonthsInMonth.length - 1] += ' ' + activeBadiYear;
@@ -179,7 +180,6 @@ var CalGreg = function (di, host) {
       }
 
       if (!outside) {
-        var bMonthToShow;
         // record badi month
         if (tomorrowDayInfo.bDay == 1) {
           fnRecordMonth(tomorrowDayInfo);
@@ -188,7 +188,7 @@ var CalGreg = function (di, host) {
         }
       }
 
-      const total = hourFactor * 24;
+      var total = hourFactor * 24;
 
       var mornSize = +(sunriseHr * hourFactor).toFixed(3);
       var eveSize = Math.max(0, +((24 - sunsetHr) * hourFactor).toFixed(3));
@@ -206,7 +206,7 @@ var CalGreg = function (di, host) {
         eveSize: eveSize,
         tomorrowMonth: tomorrowDayInfo.bMonth,
         tomorrowDay: tomorrowDayInfo.bDay,
-        monthName: tomorrowDayInfo.bDay == 1 ? tomorrowDayInfo.bMonthNameAr : (gDay == 1 ? thisDayInfo.bMonthNameAr : ''),
+        monthName: tomorrowDayInfo.bDay == 1 ? tomorrowDayInfo.bMonthNamePri : (gDay == 1 ? thisDayInfo.bMonthNamePri : ''),
         isFirst: tomorrowDayInfo.bDay == 1 ? 'first' : ''
       });
 
@@ -282,8 +282,8 @@ var CalGreg = function (di, host) {
     for (var d = 0; d < 7; d++) {
       dayHeaders.push({
         gDayName: gWeekdayShort[d == 0 ? 6 : d - 1],
-        mDayName: bWeekdayMeaning[d + 1],//<div>{mDayName}</div>
-        arDayName: bWeekdayNameAr[d + 1],
+        mDayName: bWeekdayNameSec[d + 1],//<div>{mDayName}</div>
+        arDayName: bWeekdayNamePri[d + 1],
       });
     }
 
@@ -311,6 +311,9 @@ var CalGreg = function (di, host) {
 
   return {
     showCalendar: showCalendar,
+    resetPageForLanguageChange: function () {
+      _yearShown = -1;
+    },
     di: _di,
     scrollToMonth: scrollToMonth
   };

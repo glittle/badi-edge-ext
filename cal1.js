@@ -116,7 +116,7 @@ var Cal1 = function (di, host) {
       }
 
       bMonthHtml.push('<div class="bm bm{0}">'.filledWith(bm));
-      bMonthHtml.push('<div class=bmName><i>{^1}</i>{0}</div>'.filledWith(host.bMonthNameAr[bm], bm === 0 ? "" : bm));
+      bMonthHtml.push('<div class=bmName><i>{^1}</i>{0}</div>'.filledWith(host.bMonthNamePri[bm], bm === 0 ? "" : bm));
 
 
       gMonthHtml.push('<div class=gm>');
@@ -219,6 +219,9 @@ var Cal1 = function (di, host) {
 
   return {
     showCalendar: showCalendar,
+    resetPageForLanguageChange: function () {
+      _yearShown = -1;
+    },
     di: di
   };
 }

@@ -1,7 +1,8 @@
 ﻿[
   {
     "outputFile": "cal1.css",
-    "inputFile": "cal1.less"
+    "inputFile": "cal1.less",
+    "options": { "sourceMap": true }
   },
   {
     "outputFile": "calWheel.css",

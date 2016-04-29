@@ -65,7 +65,7 @@
         <div class="normal place"></div>
         <!--<div id=gDayWithSunset></div>-->
         <div id=locationErrorHolder>
-          <button id=btnRetry></button>
+          <button class=btnRetry><span class="btnRetryImg"></span></button>
           <span id=locationError data-msg="_id_"></span>
         </div>
       </div>
@@ -89,7 +89,7 @@
             <input class=bYearPicker id="bYearPicker" type=number max=1000 min=1>
             <input id=bMonthPicker type=number max=19 min=0>
             <input id=bDayPicker type=number max=19 min=1>
-            <div class=comment id=ayyamIs0 data-msg="_id_"></div>
+            <div class=comment id=ayyamIs0></div>
           </div>
         </div>
         <div id=dayDetails></div>
@@ -524,6 +524,35 @@
         </div>
 
       </div>
+      <div id="pageSetup" class="fullPage page">
+        <div>
+          <h2 data-msg="setupAbout"></h2>
+          <p data-msg="setupAbout1"></p>
+          <p data-msg="setupAbout2"></p>
+          <p data-msg="setupAbout3"></p>
+          <p data-msg="setupAbout4"></p>
+        </div>
+        <div>
+          <h2 data-msg="setupSetup"></h2>
+          <div class="setupItems">
+            <div>
+              <h3>Badí' Names</h3>
+              <div data-msg="rbDefLangText"></div>
+              <div class="setupLangOption">
+                <input type="radio" name="language" value="Ar" id="rbDefLang_Ar" /> <label for="rbDefLang_Ar" data-msg="rbDefLang_Ar"></label>
+              </div>
+              <div class="setupLangOption">
+                <input type="radio" name="language" value="Local" id="rbDefLang_Local" /> <label for="rbDefLang_Local" data-msg="rbDefLang_Local"></label>
+              </div>
+            </div>
+            <div>
+              <h3>Location</h3>
+              <div class="place"></div>
+              <button class="btnRetry button"><span class="btnRetryImg"></span><span class="text" data-msg="btnRetry2"></span></button>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div class=selectPages>
         <div class=buttons>
@@ -537,6 +566,7 @@
           <button data-page="pageReminders" data-msg=pick_pageReminders id="btnPageReminders"></button>
           <button data-page="pageExporter" data-msg=pick_pageExporter></button>
           <button data-page="pageCustom" data-msg=pick_pageCustom></button>
+          <button data-page="pageSetup" data-msg=pick_pageSetup></button>
         </div>
       </div>
     </div>
@@ -556,8 +586,7 @@
         </a>
 
 
-        <a href="https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/"
-           target="_top"><img id=logo data-msg="alt:webstore,title:webstore" src="badi19a-22.png"></a>
+        <a id="linkWebStore" href="#" target="_top"><img id=logo data-msg="alt:webstore,title:webstore" src="badi19a-22.png"></a>
 
         <a id=googlePlus href="http://plus.google.com/u/0/111984989420723537597?prsrc=3"
            rel="publisher" target="_top" style="text-decoration: none;">
@@ -565,8 +594,7 @@
         </a>
 
 
-        <a class="textLink" href="https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/support"
-           target="_top" data-msg="suggestions,title:suggestionsTitle"></a>
+        <a id="linkWebStoreSupport" class="textLink" target="_top" data-msg="suggestions,title:suggestionsTitle"></a>
 
 
         <img id="btnOpen" src="popout.png" />

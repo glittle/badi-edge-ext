@@ -106,7 +106,11 @@ var PageExporter = function () {
     addLine('');
   };
   var addEntries = function () {
-    var range = $('#exporterDateRange').val();
+    var ddl = $('#exporterDateRange');
+    if (!ddl.val()) {
+      ddl[0].selectedIndex = 0;
+    }
+    var range = ddl.val();
     var rangeType = range.substr(0, 4);
     var year = +range.substr(4);
     var date = null;
@@ -201,7 +205,7 @@ END:VEVENT
   var addEntryDate = function (type, di, variation) {
     addLine('BEGIN:VEVENT');
 
-    var dayInfo = '{bDay} {bMonthNameAr} {bYear}'.filledWith(di);
+    var dayInfo = '{bDay} {bMonthNamePri} {bYear}'.filledWith(di);
 
     switch (variation) {
       case 'AllDay':
@@ -587,7 +591,11 @@ END:VEVENT
       cb.prop('checked', getStorage('exporter_' + cb.val(), false));
     });
     $('#exporterName').val(getStorage('exporter_exporterName', getMessage('title')));
-    $('#exporterDateRange').val(getStorage('exporter_exporterDateRange'));
+    var ddlRange = $('#exporterDateRange');
+    ddlRange.val(getStorage('exporter_exporterDateRange'));
+    if (!ddlRange.val()) {
+      ddlRange[0].selectedIndex = 0;
+    }
     $('#exporterIncludeAlertMin').val(getStorage('exporter_alertMin', 'B0'));
   };
   var refreshAlert = function () {

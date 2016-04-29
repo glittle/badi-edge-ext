@@ -57,8 +57,9 @@ var CalWheel = function () {
         inner.attr('id', 'slice' + bm);
 
         slice.find('.monthNum').text(bm);
-        slice.find('.monthNameAr').text(bMonthNameAr[bm]);
-        slice.find('.monthName').text(bMonthMeaning[bm]);
+        slice.find('.monthNameAr').text(bMonthNamePri[bm]);
+        //log(bMonthNamePri[bm] + ' - ' + settings.useArNames + ' - ' + bMonthNameSec[bm]);
+        slice.find('.monthName').text(bMonthNameSec[bm]);
 
         var gd = holyDays.getGDate(di.bYear, bm, 1, false);
 
@@ -72,7 +73,7 @@ var CalWheel = function () {
 
     var offsetAngle = 0;
     if (showPointer) {
-      $('#wheelDay').html('{bDay} {^bMonthNameAr}'.filledWith(di));
+      $('#wheelDay').html('{bDay} {^bMonthNamePri}'.filledWith(di));
 
       var dayOfYear = (di.bMonth - 1) * 19 + di.bDay - 1;
       if (di.bMonth === 0) {
@@ -103,7 +104,7 @@ var CalWheel = function () {
       var keyframes = '@-webkit-keyframes spinner {from {-webkit-transform:rotateZ(' + _lastAngle + 'deg)} '
         + ' to {-webkit-transform:rotateZ(' + offsetAngle + 'deg)}}';
 
-      wheel.css({ transform: 'rotate({0}deg)'.filledWith(_lastAngle) })
+      wheel.css({ transform: 'rotate({0}deg)'.filledWith(_lastAngle) });
       wheel.removeClass('rotating');
 
       s.html(keyframes);
@@ -162,6 +163,9 @@ var CalWheel = function () {
     showCalendar: showCalendar,
     gotoYear: gotoYear,
     rotateYear: rotateYear,
+    resetPageForLanguageChange: function() {
+      _yearShown = -1;
+    },
     stopRotation: function () {
       clearTimeout(_rotating);
     }
