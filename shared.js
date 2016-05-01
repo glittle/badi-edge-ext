@@ -2,7 +2,13 @@
 /* global HolyDays */
 /* global moment */
 
-var browserVendorName = 'Chrome'; // Chrome,Firefox,Edge
+var browser = {
+  Chrome: 'Chrome',
+  Firefox: 'Firefox',
+  Edge: 'Edge'
+};
+var browserHostType = browser.Chrome; // Chrome,Firefox,Edge
+
 var tracker = null;
 var settings = {
   useArNames: true,
@@ -166,6 +172,12 @@ function getDateInfo(currentTime, onlyStamp) {
   di.bDayNameSec = !settings.useArNames ? di.bDayNameAr : di.bDayMeaning;
   di.bMonthNamePri = settings.useArNames ? di.bMonthNameAr : di.bMonthMeaning;
   di.bMonthNameSec = !settings.useArNames ? di.bMonthNameAr : di.bMonthMeaning;
+
+  di.VahidLabelPri = settings.useArNames ? getMessage('vahid') : getMessage('vahidLocal');
+  di.VahidLabelSec = !settings.useArNames ? getMessage('vahid') : getMessage('vahidLocal');
+
+  di.KullishayLabelPri = settings.useArNames ? getMessage('kullishay') : getMessage('kullishayLocal');
+  di.KullishayLabelSec = !settings.useArNames ? getMessage('kullishay') : getMessage('kullishayLocal');
 
   di.bKullishay = Math.floor(1 + (di.bVahid - 1) / 19);
   di.bVahid = di.bVahid - (di.bKullishay - 1) * 19;

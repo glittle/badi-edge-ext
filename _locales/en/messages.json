@@ -1,4 +1,8 @@
 {
+  "translation": {
+    "message": "en",
+    "desciption": "short code for this language (in English)"
+  },
   "title": {
     "message": "Badí' Calendar",
     "description": "The title of the extension. Shown in a number of locations."
@@ -71,6 +75,10 @@
     "message": "BE",
     "description": ""
   },
+  "yearWithEra": {
+    "message": "{bYear} {bEraAbbrev}",
+    "description":  ""
+  },
   "ordinal": {
     "message": "th,st,nd,rd",
     "description": "x,1,2,3"
@@ -132,7 +140,7 @@
     "description": ""
   },
   "gDatePickerTitle2": {
-    "message": "Choose <u>G</u>regorian Date",
+    "message": "Go to <u>G</u>regorian Date",
     "description": "changed in 1.1.2"
   },
   "prev": {
@@ -180,7 +188,7 @@
     "description": "ALT for icon at bottom of page"
   },
   "shoghiExample": {
-    "message": "This is the weekday of {bWeekdayNamePri}, the day of {bDayNamePri}, of the month of {bMonthNamePri}, of the year {bYearInVahidNamePri}, of the {bVahidOrdinalName} Váḥid, of the {bKullishayOrdinalName} Kull-i-<u>Sh</u>ay’.",
+    "message": "This is the weekday of {bWeekdayNamePri}, the day of {bDayNamePri}, of the month of {bMonthNamePri}, of the year {bYearInVahidNamePri}, of the {bVahidOrdinalName} {VahidLabelPri}, of the {bKullishayOrdinalName} {KullishayLabelPri}.",
     "description": "Example given by Shoghi Effendi"
   },
   "example2": {
@@ -320,8 +328,8 @@
     "description": "1 Jamál (Beauty) 172 - April 27/28, 2015"
   },
   "sampleGroup1_14": {
-    "message": "{bVahid00}.{bYearInVahid00}.{bMonth00}.{bDay00}",
-    "description": "10.01.03.13"
+    "message": "{bKullishay}.{bVahid}.{bYearInVahid}.{bMonth}.{bDay}",
+    "description": "1.10.1.3.13"
   },
   "sampleGroup1_15": {
     "message": "{bYear}.{bMonth00}.{bDay00}",
@@ -376,7 +384,7 @@
     "description": ""
   },
   "YearOfVahid": {
-    "message": "Year of Váḥid",
+    "message": "Year of {VahidLabelPri}",
     "description": ""
   },
   "YearOfVahidFormat": {
@@ -387,12 +395,20 @@
     "message": "Váḥid",
     "description": ""
   },
+  "VahidLocal": {
+    "message": "Unity",
+    "description": ""
+  },
   "VahidFormat": {
     "message": "{bVahid}",
     "description": ""
   },
   "Kullishay": {
     "message": "Kull-i-<u>Sh</u>ay’",
+    "description": ""
+  },
+  "KullishayLocal": {
+    "message": "All-Things",
     "description": ""
   },
   "KullishayFormat": {
@@ -448,7 +464,7 @@
     "description": "with year"
   },
   "bDatePickerTitle": {
-    "message": "Choose <u>B</u>adí' Date",
+    "message": "Go to <u>B</u>adí' Date",
     "description": "added <u></u> - should have one letter between <u> and </u>"
   },
   "weekDayNames": {
@@ -496,7 +512,7 @@
     "description": "hints of how to use the tool"
   },
   "tipsText": {
-    "message": "Press PgUp/PgDn keys to select panels.\nPress Right/Left arrow keys to change days.\nPress / to switch before/after sunset.\nPress Home to return to today!",
+    "message": "Press PgUp/PgDn keys to select panels.\nPress Right/Left arrow keys to change days.\nPress / to switch before/after sunset.\nPress Home to return to today!\nPress Ctrl+Shift+A to change language.",
     "description": ""
   },
   "shortcutKeyTitle": {
@@ -1275,32 +1291,28 @@
     "message": "Click to start from a standard format: ",
     "description": ""
   },
-  "pick_pageSetup": {
-    "message": "Settings",
-    "description": "tab name"
+
+  "tipsAbout": {
+    "message": "Accuracy?"
   },
-  "setupSetup": {
-    "message": "General Settings",
-    "description": "title"
-  },
-  "setupAbout": {
-    "message": "About this tool",
-    "description": "title"
-  },
-  "setupAbout1": {
-    "message": "This Web Extension ",
-    "description": ""
-  },
-  "setupAbout2": {
-    "message": "Please note that dates after 221 B.E. may need to be updated closer to the time as astronomical observations improve. Please don't use this to finalize your plans 100 years in the future!"
-  },
-  "setupAbout3": {
-    "message": "Please see <a href='https://sites.google.com/site/badicalendartools/home/chrome-extension' target=_blank>Badí' Web Extension</a> help pages for more details.",
-    "description": ""
+  "tipsAboutText": {
+    "message": "Dates until 221 B.E. (2064 A.D.) are known. After that, updates may be neeed as astronomical observations improve. Please don't use this to finalize your plans more than 50 years in the future! See the website for more details."
   },
   "btnRetry2": {
     "message": "Reload Now",
     "description": ""
+  },
+  "rbDefLangText": {
+    "message": "Language for months, etc.",
+    "description": ""
+  },
+  "rbDefLang_Ar": {
+    "message": "Arabic",
+    "description": ""
+  },
+  "rbDefLang_Local": {
+    "message": "local (English)",
+    "description": "put your language here, in your script"
   },
   "Chrome_WebStore": {
     "message": "https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/",
@@ -1310,17 +1322,9 @@
     "message": "https://chrome.google.com/webstore/detail/bad%C3%AD-calendar/egekinjjpolponbbfjimifpgfdmphomp/support",
     "description": "link to Webstore support link when running in Chrome"
   },
-  "rbDefLangText": {
-    "message": "Primary language for dates:",
-    "description": ""
-  },
-  "rbDefLang_Ar": {
-    "message": "Arabic names",
-    "description": ""
-  },
-  "rbDefLang_Local": {
-    "message": "English names/meanings",
-    "description": "write in your language!"
+  "Chrome_History": {
+    "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
+    "description": "about page"
   },
   "___lastMessageInFile___": {
     "message": "do not translate",

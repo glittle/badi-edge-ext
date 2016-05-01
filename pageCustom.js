@@ -229,45 +229,55 @@ var PageCustom = () => {
                 log(chrome.runtime.lastError);
             }
         });
-        chrome.storage.sync.set({
-            customFormats: formats
-        }, function () {
-            log('stored stored with sync');
-            if (chrome.runtime.lastError) {
-                log(chrome.runtime.lastError);
-            }
-        });
+        if (browserHostType === browser.Chrome) {
+            chrome.storage.sync.set({
+                customFormats: formats
+            }, function () {
+                log('stored stored with sync');
+                if (chrome.runtime.lastError) {
+                    log(chrome.runtime.lastError);
+                }
+            });
+        }
         updateFirstPageSamples(true);
     }
     function loadFormatsFromSync() {
-        chrome.storage.sync.get({
-            customFormats: []
-        }, function (info) {
-            if (chrome.runtime.lastError) {
-                log(chrome.runtime.lastError);
-            }
-            if (info.customFormats.length) {
-                log('formats loaded from sync: ' + info.customFormats.length);
-                recallSettings(info.customFormats);
-            }
-            else {
-                chrome.storage.local.get({
-                    customFormats: []
-                }, function (info) {
-                    if (chrome.runtime.lastError) {
-                        log(chrome.runtime.lastError);
-                    }
-                    if (info.customFormats.length) {
-                        log('formats loaded from local: ' + info.customFormats.length);
-                        recallSettings(info.customFormats);
-                    }
-                    else {
-                        log('loading from local.storage');
-                        recallSettings();
-                    }
-                });
-            }
-        });
+        var localLoad = function () {
+            chrome.storage.local.get({
+                customFormats: []
+            }, function (info) {
+                if (chrome.runtime.lastError) {
+                    log(chrome.runtime.lastError);
+                }
+                if (info.customFormats.length) {
+                    log('formats loaded from local: ' + info.customFormats.length);
+                    recallSettings(info.customFormats);
+                }
+                else {
+                    log('loading from local.storage');
+                    recallSettings();
+                }
+            });
+        };
+        if (browserHostType === browser.Chrome) {
+            chrome.storage.sync.get({
+                customFormats: []
+            }, function (info) {
+                if (chrome.runtime.lastError) {
+                    log(chrome.runtime.lastError);
+                }
+                if (info.customFormats.length) {
+                    log('formats loaded from sync: ' + info.customFormats.length);
+                    recallSettings(info.customFormats);
+                }
+                else {
+                    localLoad();
+                }
+            });
+        }
+        else {
+            localLoad();
+        }
     }
     function getCustomSample() {
         return $('#customSampleTemplate').html().replace('data-x=""', '{checked}');

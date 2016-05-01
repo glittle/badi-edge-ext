@@ -36,7 +36,7 @@ var CalWheel = function () {
     var wheel = $('#wheel');
 
     if (!sameYear) {
-      $('#wheelYear').html('{bYear} {bEraAbbrev}'.filledWith(di));
+      $('#wheelYear').html(getMessage('yearWithEra', di));
 
       wheel.find('.slice').remove();
 
@@ -46,13 +46,18 @@ var CalWheel = function () {
         var slice = $(template);
         var bm = i + 1;
         var angle = i * angle1;
+        var css = browserHostType === browser.Chrome ?
+        {
+          transform: 'rotate(' + angle + 'deg)',
+          transformOrigin: '39px 335px' //x + ' ' + y
+      } : {
+          transform: 'rotate(' + angle + 'deg)',
+          transformOrigin: '39px 335px' //x + ' ' + y
+        };
 
         var inner = slice.find('.innerSlice');
         slice.removeAttr('id');
-        slice.css({
-          transform: 'rotate(' + angle + 'deg)'
-          //transformOrigin: x + ' ' + y
-        });
+        slice.css(css);
 
         inner.attr('id', 'slice' + bm);
 

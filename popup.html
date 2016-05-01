@@ -84,12 +84,20 @@
             <button type=button class="button btnChangeDay" data-delta="1" data-msg="next"></button>
             <button type=button id="btnEveOrDay" class="button" data-msg="_id_"></button>
           </div>
-          <div id=bDatePickerTitle data-msg="_id_,extractAccessKeyFor:bYearPicker"></div>
+          <div class=DatePickerTitle data-msg="bDatePickerTitle,extractAccessKeyFor:bYearPicker"></div>
           <div class=bDatePickerInputs>
             <input class=bYearPicker id="bYearPicker" type=number max=1000 min=1>
             <input id=bMonthPicker type=number max=19 min=0>
             <input id=bDayPicker type=number max=19 min=1>
             <div class=comment id=ayyamIs0></div>
+          </div>
+
+          <div class=DatePickerTitle data-msg="rbDefLangText"></div>
+          <div class="setupLangOption">
+            <input type="radio" name="language" value="Local" id="rbDefLang_Local" /> <label for="rbDefLang_Local" data-msg="rbDefLang_Local"></label>
+          </div>
+          <div class="setupLangOption">
+            <input type="radio" name="language" value="Ar" id="rbDefLang_Ar" /> <label for="rbDefLang_Ar" data-msg="rbDefLang_Ar"></label>
           </div>
         </div>
         <div id=dayDetails></div>
@@ -219,7 +227,7 @@
         </div>
         <svg id="templateSlice" class="slice" version="1.0" xmlns="http://www.w3.org/2000/svg"
              width="65pt" height="300pt" overflow="visible" viewBox="0 0 130 550"
-             preserveAspectRatio="xMidYMid meet" transform-origin="43.5px 335px">
+             preserveAspectRatio="xMidYMid meet">
           <g class="innerSlice" transform="translate(0.000000,350.000000) scale(0.100000,-0.100000)"
              fill="#000000"
              stroke="#FFC107" stroke-width="65px">
@@ -342,13 +350,6 @@
                 </div>
               </div>
               <div class="reminderShared">
-                <!--<div>
-                  <span data-msg="reminderApiTitle"></span>
-                  <select class="reminder_api" data-default="html" name="x12">
-                    <option value="html" data-msg="reminderApiPersistent"></option>
-                    <option value="chrome" data-msg="reminderApiBrief"></option>
-                  </select>
-                </div>-->
                 <div>
                   <span data-msg="reminder_actions"></span>
                   <select id="reminder_action" data-default="" name="x13">
@@ -524,7 +525,7 @@
         </div>
 
       </div>
-      <div id="pageSetup" class="fullPage page">
+      <!--<div id="pageSetup" class="fullPage page">
         <div>
           <h2 data-msg="setupAbout"></h2>
           <p data-msg="setupAbout1"></p>
@@ -536,23 +537,13 @@
           <h2 data-msg="setupSetup"></h2>
           <div class="setupItems">
             <div>
-              <h3>Badí' Names</h3>
-              <div data-msg="rbDefLangText"></div>
-              <div class="setupLangOption">
-                <input type="radio" name="language" value="Ar" id="rbDefLang_Ar" /> <label for="rbDefLang_Ar" data-msg="rbDefLang_Ar"></label>
-              </div>
-              <div class="setupLangOption">
-                <input type="radio" name="language" value="Local" id="rbDefLang_Local" /> <label for="rbDefLang_Local" data-msg="rbDefLang_Local"></label>
-              </div>
-            </div>
-            <div>
               <h3>Location</h3>
               <div class="place"></div>
               <button class="btnRetry button"><span class="btnRetryImg"></span><span class="text" data-msg="btnRetry2"></span></button>
             </div>
           </div>
         </div>
-      </div>
+      </div>-->
 
       <div class=selectPages>
         <div class=buttons>
@@ -566,7 +557,6 @@
           <button data-page="pageReminders" data-msg=pick_pageReminders id="btnPageReminders"></button>
           <button data-page="pageExporter" data-msg=pick_pageExporter></button>
           <button data-page="pageCustom" data-msg=pick_pageCustom></button>
-          <button data-page="pageSetup" data-msg=pick_pageSetup></button>
         </div>
       </div>
     </div>
@@ -575,26 +565,27 @@
       <div id=explain2 class="explains"></div>
       <textarea id=sampleCopy></textarea>
       <div class="iconArea">
-        <span id=tips data-msg="tips,title:tipsText"></span>
+        <div id=tips>
+          <span data-msg="tips,title:tipsText"></span>
+          <span data-msg="tipsAbout,title:tipsAboutText"></span>
+        </div>
 
+        <a id=version class=textLink href="" target="version"></a>
 
-        <span id=version class=textLink></span>
-
-        <a id=facebook href="https://www.facebook.com/BadiCalendarTools"
-           rel="publisher" target="_top" style="text-decoration: none;">
+        <a id=facebook target="fb" href="https://www.facebook.com/BadiCalendarTools"
+           rel="publisher" style="text-decoration: none;">
           <img src="fb-16.png" data-msg="alt:facebook" style="border: 0; width: 16px; height: 16px;" />
         </a>
 
+        <a id="linkWebStore" href="" target="webstore"><img id=logo data-msg="alt:webstore,title:webstore" src="badi19a-22.png"></a>
 
-        <a id="linkWebStore" href="#" target="_top"><img id=logo data-msg="alt:webstore,title:webstore" src="badi19a-22.png"></a>
-
-        <a id=googlePlus href="http://plus.google.com/u/0/111984989420723537597?prsrc=3"
-           rel="publisher" target="_top" style="text-decoration: none;">
+        <a id=googlePlus target="gp" href="http://plus.google.com/u/0/111984989420723537597?prsrc=3"
+           rel="publisher" style="text-decoration: none;">
           <img src="gplus-16.png" data-msg="alt:googlePlus" style="border: 0; width: 16px; height: 16px;" />
         </a>
 
 
-        <a id="linkWebStoreSupport" class="textLink" target="_top" data-msg="suggestions,title:suggestionsTitle"></a>
+        <a id="linkWebStoreSupport" class="textLink" href="" target="webstore" data-msg="suggestions,title:suggestionsTitle"></a>
 
 
         <img id="btnOpen" src="popout.png" />

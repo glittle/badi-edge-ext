@@ -611,6 +611,10 @@ var PageReminders = function () {
   }
 
   function loadVoices() {
+    if (browserHostType !== browser.Chrome) {
+      return;
+    }
+
     chrome.tts.getVoices(
           function (voices) {
             var options = [];

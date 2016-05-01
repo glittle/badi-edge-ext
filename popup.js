@@ -15,7 +15,6 @@ var _calWheel = null;
 var _calGreg = null;
 var _pageReminders = null;
 var _pageExporter = null;
-var _pageSetup = null;
 var _pageCustom = null;
 var _enableSampleKeys = true;
 var _enableDayKeysLR = true;
@@ -29,7 +28,7 @@ var _inTab = false;
 var _pageIdList = [];
 var _inPopupPage = true;
 
-var _remindersEnabled = true; // local copy of background var
+var _remindersEnabled = browserHostType === browser.Chrome;
 
 function attachHandlers() {
   $('#samples').on('click', 'button', copySample);
@@ -64,9 +63,9 @@ function attachHandlers() {
   });
   $('.selectPages').on('click', 'button', changePage);
   $(document).on('keydown', keyPressed);
-  $('.iconArea a').click(function () {
-    chrome.tabs.create({ active: true, url: this.href });
-  });
+  //$('#btnOpen').click(function () {
+  //  chrome.tabs.create({ active: true, url: this.href });
+  //});
 
   $('#cbShowPointer').on('change', function () {
     setStorage('showPointer', $(this).prop('checked'));
@@ -226,9 +225,8 @@ function showPage(id) {
   var pageReminders = '.iconArea, #otherPageTitle';
   var pageExporter = '#yearSelector, .iconArea, #otherPageTitle';
   var pageCustom = '#yearSelector, .JumpDays, #show, #gDay, .iconArea, #otherPageTitle';
-  var pageSetup = '#show, #gDay, .iconArea';
 
-  $([other, pageDay, pageEvents, pageCal1, pageCalWheel, pageCalGreg, pageLists, pageFast, pageReminders, pageExporter, pageSetup].join(',')).hide();
+  $([other, pageDay, pageEvents, pageCal1, pageCalWheel, pageCalGreg, pageLists, pageFast, pageReminders, pageExporter].join(',')).hide();
 
   _currentPageId = id;
   btns.each(function (i, el) {
@@ -317,12 +315,6 @@ function showPage(id) {
       _enableDayKeysUD = true;
       break;
 
-    case 'pageSetup':
-      $(pageSetup).show();
-      _enableSampleKeys = false;
-      _enableDayKeysLR = true;
-      _enableDayKeysUD = false;
-      break;
 
   }
 
@@ -350,6 +342,10 @@ function showPage(id) {
 
 function updatePageContentWhenVisible(id, di) {
   switch (id) {
+    case 'pageCal1':
+      $('#otherPageTitle').html(getMessage('yearWithEra', di));
+      break;
+
     case 'pageDay':
       adjustHeight();
       break;
@@ -373,10 +369,6 @@ function updatePageContentWhenVisible(id, di) {
 
     case 'pageCustom':
       $('#otherPageTitle').html(getMessage('customTitle'));
-      break;
-
-    case 'pageSetup':
-      $('#otherPageTitle').html(getMessage('setupTitle'));
       break;
 
   }
@@ -407,16 +399,16 @@ function resetPageForLanguageChange(id) {
 function updatePageContent(id, di) {
   switch (id) {
     case 'pageDay':
-      var makeObj = function (key) {
-        return { name: getMessage(key), value: getMessage(key + 'Format', di) };
+      var makeObj = function (key, name) {
+        return { name: name || getMessage(key, di), value: getMessage(key + 'Format', di) };
       };
       var dayDetails = [
          makeObj('DayOfWeek')
        , makeObj('DayOfMonth')
        , { name: getMessage('Month'), value: getMessage(di.bMonth ? 'MonthFormatNormal' : "MonthFormatAyyam", di) }
        , makeObj('YearOfVahid')
-       , makeObj('Vahid')
-       , makeObj('Kullishay')
+       , makeObj('Vahid', di.VahidLabelPri)
+       , makeObj('Kullishay', di.KullishayLabelPri)
        , makeObj('YearOfEra')
       ];
       var explain1 = getMessage('shoghiExample', di);
@@ -1046,7 +1038,6 @@ function SetFiltersForSpecialDaysTable(ev) {
 
   }
 
-
   setStorage('includeFeasts', includeFeasts);
   setStorage('includeHolyDays', includeHolyDays);
   $('#specialListsTable')
@@ -1271,7 +1262,6 @@ function adjustHeight() {
 function prepareDefaults() {
   var feasts = getStorage('includeFeasts');
   var holyDays = getStorage('includeHolyDays');
-
   if (typeof (feasts) === 'undefined' && typeof (holyDays) === 'undefined') {
     feasts = false;
     holyDays = true;
@@ -1286,7 +1276,6 @@ function prepareDefaults() {
   }
   $('#cbShowPointer').prop('checked', showPointer);
 
-  UpdateLanguageBtn();
 }
 
 function UpdateLanguageBtn() {
@@ -1299,18 +1288,23 @@ function openInTab() {
   }
   var url = chrome.extension.getURL('popup.html');
 
-  chrome.tabs.query({ url: url }, function (foundTabs) {
-    if (foundTabs[0]) {
-      chrome.tabs.update(foundTabs[0].id, {
-        active: true
-      });
-    } else {
-      chrome.tabs.create({ url: url });
-    }
+  if (browserHostType === browser.Chrome) {
+    chrome.tabs.query({ url: url }, function (foundTabs) {
+      if (foundTabs[0]) {
+        chrome.tabs.update(foundTabs[0].id, {
+          active: true
+        });
+      } else {
+        chrome.tabs.create({ url: url });
+      }
+      window.close();
+      tracker.sendEvent('openInTab');
+    });
+  } else {
+    chrome.tabs.create({ url: url });
     window.close();
     tracker.sendEvent('openInTab');
-  });
-
+  }
 }
 
 
@@ -1330,6 +1324,8 @@ function prepare1() {
 
   updateLoadProgress();
 
+  UpdateLanguageBtn();
+
   refreshDateInfo();
 
   var isEve = getStorage('focusTimeIsEve', 'x');
@@ -1343,6 +1339,9 @@ function prepare1() {
   updateLoadProgress();
 
   _pageCustom = PageCustom();
+  updateLoadProgress();
+
+  prepareDefaults();
   updateLoadProgress();
 
   showInfo(_di);
@@ -1415,9 +1414,6 @@ function prepare2() {
     setTimeout(finishFirstPopup, 4000);
   }
 
-  prepareDefaults();
-  updateLoadProgress();
-
   fillEventStart();
   updateLoadProgress();
 
@@ -1439,15 +1435,18 @@ function prepare2() {
   _calGreg.showCalendar(_di);
   updateLoadProgress();
 
-  _pageReminders = PageReminders();
+  if (_remindersEnabled) {
+    _pageReminders = PageReminders();
+    updateLoadProgress();
+  }
   $('#btnPageReminders').toggle(_remindersEnabled);
-  updateLoadProgress();
 
   _pageExporter = PageExporter();
   updateLoadProgress();
 
-  $('#linkWebStore').attr('href', getMessage(browserVendorName + "_WebStore"));
-  $('#linkWebStoreSupport').attr('href', getMessage(browserVendorName + "_WebStoreSupport"));
+  $('#version').attr('href', getMessage(browserHostType + "_History"));
+  $('#linkWebStore').attr('href', getMessage(browserHostType + "_WebStore"));
+  $('#linkWebStoreSupport').attr('href', getMessage(browserHostType + "_WebStoreSupport"));
 
   if (_currentPageId != 'pageDay') {
     adjustHeight();

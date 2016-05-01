@@ -55,7 +55,7 @@ body {
   flex-direction: column;
 }
 
-#pageDay, #pageEvents, #pageFast, #pageLists, #pageCal1, #pageReminders, #pageExporter, #pageCustom, #pageSetup {
+#pageDay, #pageEvents, #pageFast, #pageLists, #pageCal1, #pageReminders, #pageExporter, #pageCustom {
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -347,7 +347,7 @@ body {
     padding: 2px 6px;
   }
 
-  .customHint{
+  .customHint {
     margin-left: 10px;
     color: #999;
     font-size: 90%;
@@ -550,22 +550,16 @@ body {
     justify-content: flex-end;
     flex: 0 1 100%;
     padding: 5px 10px 10px 10px;
-    /*&:first-of-type {
-      border-color: rgba(0, 3, 255, 0.67);
-    }*/
   }
 
   .setupItems {
     > div {
       margin: 0 0 10px 20px;
     }
-    h3{
+
+    h3 {
       margin-left: -20px;
     }
-  }
-
-  .setupLangOption{
-    margin-left: 10px;
   }
 }
 
@@ -755,6 +749,10 @@ div.selectPages {
   bottom: 7px;
   font-size: 8.25pt;
   color: #999;
+
+  span {
+    margin-right: 30px;
+  }
 }
 
 #locationErrorHolder {
@@ -1286,10 +1284,18 @@ button.today.notToday {
   margin: 6px 0 0 0;
 }
 
-#bDatePickerTitle {
+.DatePickerTitle {
   color: green;
   opacity: 0.7;
   margin: 6px 0 0 0;
+}
+
+.setupLangOption {
+  margin-left: 10px;
+
+  input {
+    vertical-align: bottom;
+  }
 }
 
 #bDatePickerTitleTip {
@@ -1437,9 +1443,9 @@ input.bYearPicker {
     display: none !important;
   }
 
-  #pageEvents, #pageFast, #pageLists, #pageCal1, #pageCalWheel, #pageReminders, #pageExporter, #pageCustom, #pageSetup {
+  #pageEvents, #pageFast, #pageLists, #pageCal1, #pageCalWheel, #pageReminders, #pageExporter, #pageCustom {
     border: none;
-    padding: 20px 0 0 0;
+    padding: 10px 0 0 0;
   }
 
   #includeWhat, #askShowPointer {
@@ -1452,6 +1458,10 @@ input.bYearPicker {
     border: none;
     padding: 0;
     margin: 0;
+  }
+
+  #specialLists {
+    max-height: none;
   }
 
   #specialDaysTitle {
@@ -1501,4 +1511,8 @@ input.bYearPicker {
     margin-left: -2px;
     padding-left: 5px;
   }
+}
+
+* {
+  -webkit-print-color-adjust: exact;
 }
