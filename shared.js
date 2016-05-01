@@ -2,12 +2,7 @@
 /* global HolyDays */
 /* global moment */
 
-var browser = {
-  Chrome: 'Chrome',
-  Firefox: 'Firefox',
-  Edge: 'Edge'
-};
-var browserHostType = browser.Chrome; // Chrome,Firefox,Edge
+var _notificationsEnabled = browserHostType === browser.Chrome; // set to false to disable
 
 var tracker = null;
 var settings = {
@@ -311,7 +306,7 @@ function showIcon() {
   chrome.browserAction.setIcon({
     imageData: draw(dateInfo.bMonthNamePri, dateInfo.bDay, 'center')
   });
-  //  chrome.browserAction.setBadgeBackgroundColor({color: bNow.eve ? '#ddd' : '#aaa'});
+
 }
 
 function draw(line1, line2, line2Alignment) {
@@ -321,7 +316,10 @@ function draw(line1, line2, line2Alignment) {
 
   var context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
-  //context.strokeRect(0, 0, canvas.width, canvas.height);
+
+  if (browserHostType === browser.Firefox) {
+    context.fillStyle = 'white';
+  }
 
   context.font = "9px Tahoma";
   context.fillText(line1, 0, 7);
@@ -575,7 +573,9 @@ function refreshDateInfoAndShow(resetToNow) {
     showInfo(di);
   }
 
-  setAlarmForNextUpdate(di.currentTime, di.frag2SunTimes.sunset, di.bNow.eve);
+  if (browserHostType === browser.Chrome) {
+    setAlarmForNextUpdate(di.currentTime, di.frag2SunTimes.sunset, di.bNow.eve);
+  }
 }
 
 var refreshAlarms = {};
@@ -914,7 +914,7 @@ function localizeHtml(host, fnOnEach) {
 
 function getVersionInfo() {
   var info = '{0}:{1} ({2})'.filledWith(
-            chrome.runtime.getManifest().version_name,
+            chrome.runtime.getManifest().version,
             _languageCode,
             navigator.languages ? navigator.languages.slice(0, 2).join(',') : '');
   return info;
@@ -958,8 +958,9 @@ function prepareAnalytics() {
       tracker.sendEvent('opened', getVersionInfo());
     });
     tracker = service.getTracker('UA-1312528-10');
-    tracker.set('appVersion', chrome.runtime.getManifest().version_name);
+    tracker.set('appVersion', chrome.runtime.getManifest().version);
     tracker.set('language', navigator.language);
   }
 }
+
 

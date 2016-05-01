@@ -13,6 +13,7 @@
     "scripts": [
       "jquery-2.1.3.min.js",
       "google-analytics-bundle.js",
+      "sharedBrowser.js",
       "suncalc.js",
       "holydays.js",
       "moment.js",

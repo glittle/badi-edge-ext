@@ -409,11 +409,6 @@ body {
     margin: 3px 30px 6px 10px;
   }
 
-  .customBuilderButtons {
-    width: 40%;
-    margin: 5px 0 0 10px;
-  }
-
   #customBuilderInput {
     width: 100%;
 
@@ -530,6 +525,9 @@ body {
   }
 
   .customBuilderButtons {
+    width: 40%;
+    margin: 5px 0 0 10px;
+
     button:disabled {
       cursor: default;
       background: #ddd;
@@ -739,7 +737,7 @@ div.selectPages {
   position: absolute;
   width: 26px;
   height: 22px;
-  right: 60px;
+  right: 120px;
   display: none;
 }
 
@@ -878,11 +876,6 @@ tr.OtherRange {
 
 #samplesList div {
   margin: 2px auto;
-}
-
-#sampleList2.hasSamples {
-  border-top: 1px solid #eee;
-  margin-top: 1px;
 }
 
 #sampleTitle {
@@ -1513,6 +1506,23 @@ input.bYearPicker {
   }
 }
 
-* {
-  -webkit-print-color-adjust: exact;
+body.Chrome {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+}
+
+body.Firefox {
+  #samples button {
+    width: 16px;
+    padding: 0;
+  }
+
+  #sampleList1 > div {
+    margin: 1px 0 0 0;
+  }
+
+  .setupLangOption input {
+    vertical-align: bottom;
+  }
 }

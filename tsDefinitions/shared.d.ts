@@ -1,9 +1,6 @@
 ﻿// popup
 declare function addSamples(di:any): void;
 
-declare var browser: any;// = "Chrome" | "Firefox" | "Edge";
-declare var browserHostType: string;
-
 // shared
 declare var _di: any;
 declare var tracker: any;

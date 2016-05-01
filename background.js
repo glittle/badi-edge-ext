@@ -19,14 +19,14 @@ var BackgroundModule = function () {
   function installed(info) {
     if (info.reason == 'update') {
       setTimeout(function () {
-        var newVersion = chrome.runtime.getManifest().version_name;
+        var newVersion = chrome.runtime.getManifest().version;
         var oldVersion = localStorage.updateVersion;
         if (newVersion != oldVersion) {
           log(oldVersion + ' --> ' + newVersion);
           localStorage.updateVersion = newVersion;
           chrome.tabs.create({
             url: getMessage(browserHostType + '_History') + '?{0}:{1}'.filledWith(
-              chrome.runtime.getManifest().version_name,
+              chrome.runtime.getManifest().version,
               _languageCode)
           });
 
@@ -65,9 +65,9 @@ var BackgroundModule = function () {
       _backgroundReminderEngine = new BackgroundReminderEngine();
     }
 
-    chrome.alarms.clearAll();
-    chrome.alarms.onAlarm.addListener(alarmHandler);
     if (browserHostType === browser.Chrome) {
+      chrome.alarms.clearAll();
+      chrome.alarms.onAlarm.addListener(alarmHandler);
       chrome.runtime.onInstalled.addListener(installed);
     }
 

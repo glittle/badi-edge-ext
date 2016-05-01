@@ -156,7 +156,7 @@ function updateSharedContent(di) {
   }
 
   var manifest = chrome.runtime.getManifest();
-  $('#version').text(getMessage('version', manifest.version_name));
+  $('#version').text(getMessage('version', manifest.version));
 
   //if (_initialStartupDone) {
   //  BuildSpecialDaysTable(di);
@@ -638,7 +638,7 @@ function addSamples(di) {
   }
 
   var sampleGroupNum = 1;
-  for (var sampleNum = 1; sampleNum < 99; sampleNum++) {
+  for (var sampleNum = 1; sampleNum < 30; sampleNum++) {
     var key = 'sampleGroup{0}_{1}'.filledWith(sampleGroupNum, sampleNum);
     msg = getMessage(key, di, notInMessagesJson);
     if (msg === notInMessagesJson) {
@@ -1096,7 +1096,7 @@ function BuildSpecialDaysTable(di) {
     dayInfo.di = targetDi;
     dayInfo.D = targetDi.bMonthNamePri + ' ' + targetDi.bDay;
     dayInfo.G = getMessage('evePartOfDay', targetDi);
-    dayInfo.Sunset = getMessage('startingSunsetDesc', targetDi);
+    dayInfo.Sunset = targetDi.startingSunsetDesc;
     dayInfo.StartTime = null;
     dayInfo.EventTime = null;
     dayInfo.ST = null;
@@ -1212,7 +1212,7 @@ function BuildSpecialDaysTable(di) {
 }
 
 function showShortcutKeys() {
-  if (chrome.commands) {
+  if (chrome.commands && browserHostType === browser.Chrome) {
     chrome.commands.getAll(function (cmd) {
       for (var i = 0; i < cmd.length; i++) {
         var a = cmd[i];
@@ -1315,6 +1315,7 @@ function prepare1() {
   $('body')
   .addClass(_languageCode)
   .addClass(langCode)
+  .addClass(browserHostType)
   .attr('lang', _languageCode)
   .attr('dir', _languageDir);
 

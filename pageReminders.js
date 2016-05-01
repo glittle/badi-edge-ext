@@ -360,6 +360,9 @@ var PageReminders = function () {
   }
 
   function showActiveAlarms() {
+    if (browserHostType !== browser.Chrome) {
+      return;
+    }
 
     //update heading
     _page.find('#remindersScheduled').html(getMessage('remindersScheduled', { time: new Date().showTime() }));
