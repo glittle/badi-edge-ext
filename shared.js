@@ -4,6 +4,8 @@
 
 var _notificationsEnabled = browserHostType === browser.Chrome; // set to false to disable
 
+var _iconPrepared = false;
+
 var tracker = null;
 var settings = {
   useArNames: true,
@@ -303,9 +305,17 @@ function showIcon() {
   tipLines.push(getMessage('formatIconClick'));
 
   chrome.browserAction.setTitle({ title: tipLines.join('\n') });
+
+  try {
   chrome.browserAction.setIcon({
     imageData: draw(dateInfo.bMonthNamePri, dateInfo.bDay, 'center')
   });
+    _iconPrepared = true;
+  } catch (e) {
+    // fails in Firefox
+    log('icon failed');
+    _iconPrepared = false;
+  }
 
 }
 
@@ -317,14 +327,17 @@ function draw(line1, line2, line2Alignment) {
   var context = canvas.getContext('2d');
   context.clearRect(0, 0, canvas.width, canvas.height);
 
+  var fontName = 'Tahoma';
+
   if (browserHostType === browser.Firefox) {
     context.fillStyle = 'white';
+    //fontName = 'sans-serif';
   }
 
-  context.font = "9px Tahoma";
+  context.font = "9px " + fontName;
   context.fillText(line1, 0, 7);
 
-  context.font = "11px Tahoma";
+  context.font = "11px " + fontName;
   context.textAlign = line2Alignment;
   var x = 0;
   switch (line2Alignment) {
@@ -962,5 +975,3 @@ function prepareAnalytics() {
     tracker.set('language', navigator.language);
   }
 }
-
-

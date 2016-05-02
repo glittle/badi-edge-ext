@@ -1327,7 +1327,11 @@ function prepare1() {
 
   UpdateLanguageBtn();
 
+  if (_iconPrepared) {
   refreshDateInfo();
+  } else {
+    refreshDateInfoAndShow();
+  }
 
   var isEve = getStorage('focusTimeIsEve', 'x');
   if (isEve !== 'x' && isEve !== _di.bNow.eve) {
@@ -1468,6 +1472,10 @@ function updateLoadProgress() {
 $('#windowTitle').text(getMessage('title'));
 
 $(function () {
+  if (browserHostType === browser.Firefox) {
+//    openInTab();
   prepare1();
+  } else {
+    prepare1();
+  }
 });
-

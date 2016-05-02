@@ -1326,6 +1326,18 @@
     "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
     "description": "about page"
   },
+  "Firefox_WebStore": {
+    "message": "https://addons.mozilla.org/en-US/firefox/addon/bad%C3%AD-calendar/",
+    "description": "link to Webstore when running in Firefox"
+  },
+  "Firefox_WebStoreSupport": {
+    "message": "https://addons.mozilla.org/en-US/firefox/addon/bad%C3%AD-calendar/",
+    "description": "link to Webstore support link when running in Firefox"
+  },
+  "Firefox_History": {
+    "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
+    "description": "about page"
+  },
   "___lastMessageInFile___": {
     "message": "do not translate",
     "description": "do not translate"
