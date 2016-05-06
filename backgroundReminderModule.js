@@ -315,45 +315,17 @@ var BackgroundReminderEngine = function () {
     };
 
 
-    //var eventDate = new Date(alarmInfo.eventTime);
-    //alarmInfo.eventTimeDisplay = eventDate.showTime();
-
     alarmInfo.messageBody = getMessage('messageBody', info);
   }
 
   var createAlarm = function (alarmInfo, isTest) {
-    //var triggerDate = new Date(alarmInfo.triggerTime);
-    //alarmInfo.triggerTimeDisplay = triggerDate.showTime();
-
-    //var eventDate = new Date(alarmInfo.eventTime);
-    //alarmInfo.eventTimeDisplay = eventDate.showTime();
-
-    //if (triggerDate.toDateString() != eventDate.toDateString()) {
-    //  //TODO add day info, since it is not same day
-    //  alarmInfo.eventTimeDisplay += ' on ' + eventDate.toDateString();
-    //}
-
-    //var info = {
-    //  scheduledTime: new Date(alarmInfo.triggerTime).showTime(),
-    //  event: getMessage('reminderTrigger_' + alarmInfo.trigger, alarmInfo),
-    //  pastFuture: alarmInfo.eventTime > alarmInfo.triggerTime ? getMessage('alarmShowing{0}Future'.filledWith(alarmInfo.eventType)) : getMessage('alarmShowing{0}Past'.filledWith(alarmInfo.eventType)),
-    //  eventTime: alarmInfo.eventTimeDisplay,
-    //  num: alarmInfo.num,
-    //  units: alarmInfo.units,
-    //  deltaText: alarmInfo.deltaText
-    //  // todo add delta, num, units and date
-    //};
-    //log(info);
-
-    //log('CREATE ALARM for ' + alarmInfo.trigger + ' at ' + alarmInfo.triggerTimeDisplay);
-
     chrome.alarms.create(storeAlarmReminder(alarmInfo, isTest), { when: alarmInfo.triggerTime });
   }
 
   var getFullTime = function (eventDateTime, triggerDate, onlyDateIfOther) {
     // determine time to show
     var eventDate = new Date(eventDateTime);
-    var eventTime = eventDate.showTime();
+    var eventTime = showTime(eventDate);
     var today = _now.toDateString() === triggerDate.toDateString();
     if (today) {
       return eventTime;
@@ -426,12 +398,12 @@ var BackgroundReminderEngine = function () {
     return date;
   }
 
-  var storeAlarmReminder = function (reminder, isTest) {
+  function storeAlarmReminder(reminder, isTest) {
     // store, and give back key to get it later
     for (var nextKey = 0; ; nextKey++) {
-      var publicKey = nextKey + (isTest ? 'TEST' : '')
+      var publicKey = nextKey + (isTest ? 'TEST' : '');
       var fullKey = _reminderPrefix + publicKey;
-      if (getStorage(fullKey, '') == '') {
+      if (getStorage(fullKey, '') === '') {
         // empty slot
         setStorage(fullKey, reminder);
         return fullKey;
@@ -472,7 +444,7 @@ var BackgroundReminderEngine = function () {
 
     localStorage.removeItem(alarmName);
 
-    if(!isTest){
+    if (!isTest) {
       setAlarmsForRestOfToday();
     }
   }
@@ -492,11 +464,10 @@ var BackgroundReminderEngine = function () {
       });
     } else {
       tagLine = getMessage('reminderTagline').filledWith({
-        when: new Date().showTime()
+        when: showTime(new Date())
       });
     }
 
-    var api = alarmInfo.api || 'html';
 
     alarmInfo.tagLine = tagLine;
     alarmInfo.alarmName = alarmName;
@@ -504,7 +475,8 @@ var BackgroundReminderEngine = function () {
     log('DISPLAYED {alarmName}: {messageBody} '.filledWith(alarmInfo));
     //log(alarmInfo);
 
-    api = 'chrome'; // for now, ONLY use Chrome
+    //    var api = alarmInfo.api || 'html';
+    var api = 'chrome'; // for now, ONLY use Chrome
 
     switch (api) {
       case 'chrome':
@@ -588,7 +560,7 @@ var BackgroundReminderEngine = function () {
             error: function (request, error) {
               log(JSON.stringify(request));
               log(JSON.stringify(error));
-              
+
               alert(request.statusText);
             }
           });
@@ -711,7 +683,7 @@ var BackgroundReminderEngine = function () {
   function storeReminders() {
     chrome.storage.local.set({
       reminders: _remindersDefined
-    }, function() {
+    }, function () {
       log('stored reminders with local');
       if (chrome.runtime.lastError) {
         log(chrome.runtime.lastError);
@@ -720,7 +692,7 @@ var BackgroundReminderEngine = function () {
     if (browserHostType === browser.Chrome) {
       chrome.storage.sync.set({
         reminders: _remindersDefined
-      }, function() {
+      }, function () {
         log('stored reminders with sync');
         if (chrome.runtime.lastError) {
           log(chrome.runtime.lastError);
@@ -730,7 +702,7 @@ var BackgroundReminderEngine = function () {
   }
 
   function loadReminders() {
-    var loadLocal = function() {
+    var loadLocal = function () {
       chrome.storage.local.get({
         reminders: []
       }, function (items) {
@@ -750,7 +722,7 @@ var BackgroundReminderEngine = function () {
     if (browserHostType === browser.Chrome) {
       chrome.storage.sync.get({
         reminders: []
-      }, function(items) {
+      }, function (items) {
         if (chrome.runtime.lastError) {
           log(chrome.runtime.lastError);
         }

@@ -4,7 +4,7 @@
     "description": "Lorena Reyes, lreyes09@msn.com"
   },
   "title": {
-    "message": "calendario Badí'",
+    "message": "calendario Badí",
     "description": "The title of the extension. Shown in a number of locations.",
     "comment": "test"
   },
@@ -150,7 +150,7 @@
     "description": ""
   },
   "formatIconToolTip": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "text when mouse is over the extension icon"
   },
   "formatIconClick": {
@@ -174,11 +174,11 @@
     "description": "ALT for icon at bottom of page"
   },
   "shoghiExample": {
-    "message": "este es el dia de {bWeekdayNameAr}, El dia de {bDayNameAr}, del mes de {bMonthNameAr}, del año {bYearInVahidNameAr},del {bVahidOrdinalName} Váḥid, of the {bKullishayOrdinalName} Kull-i-<u>Sh</u>ay’.",
+    "message": "este es el dia de {bWeekdayNamePri}, El dia de {bDayNamePri}, del mes de {bMonthNamePri}, del año {bYearInVahidNamePri}, del {bVahidOrdinalName} {VahidLabelPri}, of the {bKullishayOrdinalName} {KullishayLabelPri}.",
     "description": "Example given by Shoghi Effendi"
   },
   "example2": {
-    "message": "{bMonthNameAr} {bDay} {dayStartedLower} al caer el sol (mas o menos {startingSunsetDesc}) el {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} y {dayEndedLower} al atardecer (mas o menos {endingSunsetDesc}) el  {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.",
+    "message": "{bMonthNamePri} {bDay} {dayStartedLower} al caer el sol (mas o menos {startingSunsetDesc}) el {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} y {dayEndedLower} al atardecer (mas o menos {endingSunsetDesc}) el  {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.",
     "description": ""
   },
   "pressKeyOrClick": {
@@ -282,7 +282,7 @@
     "description": ""
   },
   "DayOfWeekFormat": {
-    "message": "{bWeekday} - {bWeekdayNameAr} ({bWeekdayMeaning})",
+    "message": "{bWeekday} - {bWeekdayNamePri} ({bWeekdayNameSec})",
     "description": ""
   },
   "DayOfMonth": {
@@ -290,7 +290,7 @@
     "description": ""
   },
   "DayOfMonthFormat": {
-    "message": "{bDay} - {bDayNameAr} ({bDayMeaning})",
+    "message": "{bDay} - {bDayNamePri} ({bDayNameSec})",
     "description": ""
   },
   "Month": {
@@ -298,11 +298,11 @@
     "description": ""
   },
   "MonthFormatNormal": {
-    "message": "{bMonth} - {bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonth} - {bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "MonthFormatAyyam": {
-    "message": "{bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "YearOfEra": {
@@ -314,11 +314,11 @@
     "description": ""
   },
   "YearOfVahid": {
-    "message": "año Váḥid",
+    "message": "año {VahidLabelPri}",
     "description": ""
   },
   "YearOfVahidFormat": {
-    "message": "{bYearInVahid} - {bYearInVahidNameAr} ({bYearInVahidMeaning})",
+    "message": "{bYearInVahid} - {bYearInVahidNamePri} ({bYearInVahidNameSec})",
     "description": ""
   },
   "Vahid": {
@@ -338,7 +338,7 @@
     "description": ""
   },
   "bTopDayDisplay": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "top right corner"
   },
   "gTopDayDisplay": {
@@ -350,7 +350,7 @@
     "description": "in left panel"
   },
   "upcomingDateFormat": {
-    "message": "{bMonthNameAr} {bDay} ({gCombined})",
+    "message": "{bMonthNamePri} {bDay} ({gCombined})",
     "description": "upcoming list"
   },
   "nextRefreshAlarm": {
@@ -358,7 +358,7 @@
     "description": "only shown in the debug console"
   },
   "gMonthDayYear": {
-    "message": "{bMonthNameAr} {bDay}, {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": ""
   },
   "gCombined_1": {
@@ -386,7 +386,7 @@
     "description": "with year"
   },
   "bDatePickerTitle": {
-    "message": "Elegir la fecha <u>B</u>adí'",
+    "message": "Elegir la fecha <u>B</u>adí",
     "description": "added <u></u> - should have one letter between <u> and </u>"
   },
   "weekDayNames": {
@@ -615,5 +615,9 @@
     "message": "Calendario Cristiano",
     "translation": "done by email",
     "description": "tab name"
+  },
+  "rbDefLang_Local": {
+    "message": "local (Español)",
+    "description": "put your language here, in your script"
   }
 }

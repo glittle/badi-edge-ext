@@ -1,10 +1,7 @@
 ﻿{
   "translation": {
-    "name": "Marco Oliveira",
-    "email": "marco_oliv@yahoo.com",
-    "mostRecentVersion": "1.8.1",
     "message": "pt_PT",
-    "nameInEnglish": "Portuguese"
+    "description": "Marco Oliveira, marco_oliv@yahoo.com"
   },
   "title": {
     "message": "Calendário Badí",
@@ -152,7 +149,7 @@
     "description": ""
   },
   "formatIconToolTip": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "text when mouse is over the extension icon"
   },
   "formatIconClick": {
@@ -176,11 +173,11 @@
     "description": "ALT for icon at bottom of page"
   },
   "shoghiExample": {
-    "message": "Este é o dia {bDayNameAr}, da semana {bWeekdayNameAr}, do mês {bMonthNameAr}, do ano {bYearInVahidNameAr}, do {bVahidOrdinalName} Váhid, do {bKullishayOrdinalName} Kull-i-<u>Sh</u>ay’.",
+    "message": "Este é o dia {bDayNamePri}, da semana {bWeekdayNamePri}, do mês {bMonthNamePri}, do ano {bYearInVahidNamePri}, do {bVahidOrdinalName} {VahidLabelPri}, do {bKullishayOrdinalName} {KullishayLabelPri}.",
     "description": "Example given by Shoghi Effendi"
   },
   "example2": {
-    "message": "{bMonthNameAr} {bDay} {dayStartedLower} ao pôr-do-sol (about {startingSunsetDesc}) em {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} and {dayEndedLower} ao pôr-do-sol (about {endingSunsetDesc}) <span class=nobreak>em {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.</span>",
+    "message": "{bMonthNamePri} {bDay} {dayStartedLower} ao pôr-do-sol (about {startingSunsetDesc}) em {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} and {dayEndedLower} ao pôr-do-sol (about {endingSunsetDesc}) <span class=nobreak>em {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.</span>",
     "description": ""
   },
   "pressKeyOrClick": {
@@ -284,7 +281,7 @@
     "description": ""
   },
   "DayOfWeekFormat": {
-    "message": "{bWeekday} - {bWeekdayNameAr} ({bWeekdayMeaning})",
+    "message": "{bWeekday} - {bWeekdayNamePri} ({bWeekdayNameSec})",
     "description": ""
   },
   "DayOfMonth": {
@@ -292,7 +289,7 @@
     "description": ""
   },
   "DayOfMonthFormat": {
-    "message": "{bDay} - {bDayNameAr} ({bDayMeaning})",
+    "message": "{bDay} - {bDayNamePri} ({bDayNameSec})",
     "description": ""
   },
   "Month": {
@@ -300,11 +297,11 @@
     "description": ""
   },
   "MonthFormatNormal": {
-    "message": "{bMonth} - {bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonth} - {bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "MonthFormatAyyam": {
-    "message": "{bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "YearOfEra": {
@@ -316,11 +313,11 @@
     "description": ""
   },
   "YearOfVahid": {
-    "message": "Ano do Vahid",
+    "message": "Ano do {VahidLabelPri}",
     "description": ""
   },
   "YearOfVahidFormat": {
-    "message": "{bYearInVahid} - {bYearInVahidNameAr} ({bYearInVahidMeaning})",
+    "message": "{bYearInVahid} - {bYearInVahidNamePri} ({bYearInVahidNameSec})",
     "description": ""
   },
   "Vahid": {
@@ -340,7 +337,7 @@
     "description": ""
   },
   "bTopDayDisplay": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "top right corner"
   },
   "gTopDayDisplay": {
@@ -352,7 +349,7 @@
     "description": "in left panel"
   },
   "upcomingDateFormat": {
-    "message": "{bMonthNameAr} {bDay} ({gCombined})",
+    "message": "{bMonthNamePri} {bDay} ({gCombined})",
     "description": "upcoming list"
   },
   "nextRefreshAlarm": {
@@ -360,7 +357,7 @@
     "description": "only shown in the debug console"
   },
   "gMonthDayYear": {
-    "message": "{bMonthNameAr} {bDay}, {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": ""
   },
   "gCombined_1": {
@@ -388,7 +385,7 @@
     "description": "with year"
   },
   "bDatePickerTitle": {
-    "message": "Escolher Data <u>B</u>adí'",
+    "message": "Escolher Data <u>B</u>adí",
     "description": "added <u></u> - should have one letter between <u> and </u>"
   },
   "weekDayNames": {
@@ -497,7 +494,7 @@
     "description": "heading in Events listing (if showing Holy Days)"
   },
   "sunsetHeading": {
-    "message": "Início do Dia Badí'",
+    "message": "Início do Dia Badí",
     "description": "heading in Events listing"
   },
   "includeThese": {
@@ -606,17 +603,9 @@
     "message": "pm",
     "description": "displayed in 'timeFormat12' if not using 24 hours clock"
   },
-  "new_messages_1_7_9": {
-    "message": "Adicionar menu para abrir num novo tabulador",
-    "description": ""
-  },
   "browserMenuOpen": {
     "message": "Abrir num tabulador",
     "description": "shown as menu item when right-clicking on the browser icon "
-  },
-  "new_messages_1_8_0": {
-    "message": "Adicionar Lembretes",
-    "description": ""
   },
   "pick_pageReminders": {
     "message": "Lembretes",
@@ -691,7 +680,7 @@
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_bday": {
-    "message": "Dia Badi'",
+    "message": "Dia Badi",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_load": {
@@ -795,7 +784,7 @@
     "description": "nice way to say midnight"
   },
   "reminderDayOfMonth": {
-    "message": "No dia {num} do mês Badí'",
+    "message": "No dia {num} do mês Badí",
     "description": "in list of defined reminders"
   },
   "reminderDayWhen": {
@@ -879,7 +868,7 @@
     "description": "shown after midnight of the day"
   },
   "reminderBDay": {
-    "message": "Dia {num} do mês Badí'",
+    "message": "Dia {num} do mês Badí",
     "description": "what this reminder is triggered on (left out the the apostrophe after Badí since it breaks when displayed)"
   },
   "reminderHolyDay": {
@@ -897,5 +886,9 @@
   "reminderDayDetailsTest": {
     "message": "{eventTime} no {eventMonthShort} {eventDay}",
     "description": ""
+  },
+  "rbDefLang_Local": {
+    "message": "local (português)",
+    "description": "put your language here, in your script"
   }
 }

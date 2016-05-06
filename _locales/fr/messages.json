@@ -1,13 +1,10 @@
 {
   "translation": {
-    "name": "Shamime Garenne",
-    "email": "shamime@me.com",
-    "mostRecentVersion": "1.3.3",
     "message": "fr-FR",
-    "description": "(this is not shown in the tool)"
+    "description": "Shamime Garenne, shamime@me.com"
   },
   "title": {
-    "message": "Calendrier Badí'",
+    "message": "Calendrier Badí",
     "description": "The title of the extension. Shown in a number of locations."
   },
   "titleDesc": {
@@ -153,9 +150,8 @@
   },
 
 
-  "new_messages_1_1_2": { "message": "" },
   "formatIconToolTip": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "text when mouse is over the extension icon"
   },
   "formatIconClick": {
@@ -179,11 +175,11 @@
     "description": "ALT for icon at bottom of page"
   },
   "shoghiExample": {
-    "message": "Aujourd'hui est le jour de {bWeekdayNameAr}, jour de {bDayNameAr}, du mois de {bMonthNameAr}, de l'année {bYearInVahidNameAr}, du {bVahidOrdinalName} Váḥid, du {bKullishayOrdinalName} Kull-i-<u>Sh</u>ay’.",
+    "message": "Aujourd'hui est le jour de {bWeekdayNamePri}, jour de {bDayNamePri}, du mois de {bMonthNamePri}, de l'année {bYearInVahidNamePri}, du {bVahidOrdinalName} {VahidLabelPri}, du {bKullishayOrdinalName} {KullishayLabelPri}.",
     "description": "Exemple donné par Shoghi Effendi"
   },
   "example2": {
-    "message": "{bDay} {bMonthNameAr} {dayStartedLower} au coucher du soleil (à {startingSunsetDesc}) {frag1WeekdayLong} {frag1Day} {frag1MonthShort}  et {dayEndedLower} au coucher du soleil (à {endingSunsetDesc}) {frag2WeekdayLong} {frag2Day} {frag2MonthShort}.",
+    "message": "{bDay} {bMonthNamePri} {dayStartedLower} au coucher du soleil (à {startingSunsetDesc}) {frag1WeekdayLong} {frag1Day} {frag1MonthShort}  et {dayEndedLower} au coucher du soleil (à {endingSunsetDesc}) {frag2WeekdayLong} {frag2Day} {frag2MonthShort}.",
     "description": ""
   },
   "pressKeyOrClick": {
@@ -196,7 +192,6 @@
   },
 
 
-  "new_messages_1_1_3": { "message": "" },
   "use24HourClock": {
     "message": "true",
     "description": "use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
@@ -291,7 +286,6 @@
   },
 
 
-  "new_messages_1_1_4": { "message": "" },
   "sampleGroupTranslationHelp": {
     "message": "",
     "description": "Samples usually don't need translating. If needed, copy from the 'en' file and modify. When creating samples, can use any of the properties shown when _di is shown when inspecting the popup"
@@ -302,7 +296,7 @@
     "description": ""
   },
   "DayOfWeekFormat": {
-    "message": "{bWeekday} - {bWeekdayNameAr} ({bWeekdayMeaning})",
+    "message": "{bWeekday} - {bWeekdayNamePri} ({bWeekdayNameSec})",
     "description": ""
   },
   "DayOfMonth": {
@@ -310,7 +304,7 @@
     "description": ""
   },
   "DayOfMonthFormat": {
-    "message": "{bDay} - {bDayNameAr} ({bDayMeaning})",
+    "message": "{bDay} - {bDayNamePri} ({bDayNameSec})",
     "description": ""
   },
   "Month": {
@@ -318,11 +312,11 @@
     "description": ""
   },
   "MonthFormatNormal": {
-    "message": "{bMonth} - {bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonth} - {bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "MonthFormatAyyam": {
-    "message": "{bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "YearOfEra": {
@@ -334,11 +328,11 @@
     "description": ""
   },
   "YearOfVahid": {
-    "message": "Année de Váḥid",
+    "message": "Année de {VahidLabelPri}",
     "description": ""
   },
   "YearOfVahidFormat": {
-    "message": "{bYearInVahid} - {bYearInVahidNameAr} ({bYearInVahidMeaning})",
+    "message": "{bYearInVahid} - {bYearInVahidNamePri} ({bYearInVahidNameSec})",
     "description": ""
   },
   "Vahid": {
@@ -359,7 +353,7 @@
   },
 
   "bTopDayDisplay": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "top right corner"
   },
   "gTopDayDisplay": {
@@ -371,7 +365,7 @@
     "description": "in left panel"
   },
   "upcomingDateFormat": {
-    "message": "{bDay} {bMonthNameAr} ({gCombined})",
+    "message": "{bDay} {bMonthNamePri} ({gCombined})",
     "description": "upcoming list"
   },
 
@@ -381,10 +375,9 @@
   },
 
 
-  "new_messages_1_1_5": { "message": "" },
 
   "gMonthDayYear": {
-    "message": "{bMonthNameAr} {bDay}, {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": ""
   },
 
@@ -414,14 +407,12 @@
   },
 
 
-  "new_messages_1_1_8": { "message": "" },
   "bDatePickerTitle": {
-    "message": "Choisissez une date <u>B</u>adí'",
+    "message": "Choisissez une date <u>B</u>adí",
     "description": "added <u></u> - should have one letter between <u> and </u>"
   },
 
 
-  "new_messages_1_2_0": { "message": "" },
   "weekDayNames": {
     "message": "Weekday Names",
     "translation": "required",
@@ -453,7 +444,6 @@
     "description": "on List page - table heading"
   },
 
-  "new_messages_1_3": { "message": "" },
   "pick_pageDay": {
     "message": "Jour",
     "description": ""
@@ -487,7 +477,6 @@
   },
 
 
-  "new_messages_1_3_3": { "message": "" },
   "prevYear": {
     "message": "Prev Year",
     "translation": "required",
@@ -510,7 +499,6 @@
   },
 
 
-  "new_messages_1_3_6": { "message": "" },
   "jumpTo": {
     "message": "<u>J</u>ump ± days",
     "translation": "required",
@@ -528,7 +516,6 @@
   },
 
 
-  "new_messages_1_4": { "message": "" },
 
   "pick_pageEvents": {
     "message": "Events",
@@ -660,14 +647,12 @@
   },
 
 
-  "new_messages_1_5_3": { "message": "" },
   "keyToOpenInTab": {
     "message": "T",
     "translation": "required",
     "description": "Press Shift+(this letter) to open into a tab"
   },
 
-  "new_messages_1_6_0": { "message": "" },
   "pick_pageCalWheel": {
     "message": "Wheel",
     "translation": "required",
@@ -686,15 +671,14 @@
     "description": "in wheel, points to today, or whatever day is currently selected"
   },
 
-  "new_messages_1_7_0": { "message": "" },
   "pick_pageCalGreg": {
     "message": "Gregorian Year",
     "translation": "required",
     "description": "tab name"
   },
 
-  "x": {
-    "message": "",
-    "description": ""
+  "rbDefLang_Local": {
+    "message": "local (français)",
+    "description": "put your language here, in your script"
   }
 }

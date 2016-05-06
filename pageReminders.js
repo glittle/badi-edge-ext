@@ -67,7 +67,7 @@ var PageReminders = function () {
     var r = buildReminder(_currentEditId);
 
     if (r.triggerTimeRaw) {
-      r.triggerTimeRawDisplay = determineTriggerTimeToday(r).showTime();
+      r.triggerTimeRawDisplay = showTime(determineTriggerTimeToday(r));
     }
 
     if (r.iftttKey) {
@@ -268,32 +268,6 @@ var PageReminders = function () {
     _page.find('#a_' + id).addClass('inEdit');
   }
 
-  //  function showEventTime(details) {
-  //    switch (details.trigger) {
-  //      case 'sunset':
-  //      case 'sunrise':
-  //      case 'midnight':
-  //      case 'noon':
-  //      case 'load':
-  //        return new Date(details.eventTime).showTime();
-  //
-  //      case 'feast':
-  //      case 'holyday':
-  //      case 'bday':
-  //        var testInfo = {
-  //          time: new Date(details.eventTime)
-  //        };
-  //        addEventTime(testInfo);
-  //        return getMessage('eventTime', testInfo);
-  //
-  //      default:
-  //        log('time for?', details);
-  //    }
-  //
-  //    return '';
-  //  }
-
-
   function showReminders() {
     var listing = _page.find('.reminders');
     var html = [];
@@ -365,7 +339,7 @@ var PageReminders = function () {
     }
 
     //update heading
-    _page.find('#remindersScheduled').html(getMessage('remindersScheduled', { time: new Date().showTime() }));
+    _page.find('#remindersScheduled').html(getMessage('remindersScheduled', { time: showTime(new Date()) }));
 
     // blank out the list
     var alarmList = _page.find('.alarms');

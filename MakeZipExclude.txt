@@ -6,6 +6,7 @@
 *.ts
 *.map
 *.pdn
+*.less
 .git
 .settings
 .vs
@@ -14,3 +15,4 @@ MakeZip*
 Readme.md
 .vscode
 tsconfig*
+compilerconfig*

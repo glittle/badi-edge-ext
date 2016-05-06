@@ -350,6 +350,10 @@ function updatePageContentWhenVisible(id, di) {
       adjustHeight();
       break;
 
+    case 'pageEvents':
+      BuildSpecialDaysTable(_di);
+      break;
+
     case 'pageCalGreg':
       if (_calGreg) {
         _calGreg.scrollToMonth(di.currentMonth);
@@ -1009,7 +1013,7 @@ function fillEventStart() {
   for (var h = 1800; h <= 2000; h += 100) {
     for (var m = 0; m <= 30; m += 30) {
       startTime.setHours(h / 100, m);
-      startTimes.push({ v: h + m, t: startTime.showTime() });
+      startTimes.push({ v: h + m, t: showTime(startTime) });
       if (h === 2000) {
         break; // to end at 8pm
       }
@@ -1051,6 +1055,7 @@ function BuildSpecialDaysTable(di) {
   if (_lastSpecialDaysYear === year) {
     return;
   }
+
   _lastSpecialDaysYear = year;
   var dayInfos = holyDays.prepareDateInfos(year);
 
@@ -1064,35 +1069,11 @@ function BuildSpecialDaysTable(di) {
     }
   });
 
-  //var todayShown = false;
-  //todayShown = true; // decided not to include 'today' in the listing
-  //dayInfos.forEach(function (dayInfo, i) {
-  //  if (!todayShown) {
-  //    var targetDi = getDateInfo(dayInfo.GDate);
-  //    if (targetDi.currentTime > di.currentTime) {
-  //      dayInfos.splice(i, 0, {
-  //        GDate: di.currentTime,
-  //        di: di,
-  //        Time: digitPad2(di.currentTime.getHours()) + digitPad2(di.currentTime.getMinutes()),
-  //        A: getMessage('currentDay'),
-  //        Type: 'Today',
-  //        BMonthDay: {
-  //          d: di.bNow.d,
-  //          m: di.bNow.m,
-  //        }
-  //      });
-  //      i++;
-  //      todayShown = true;
-  //    }
-  //  }
-
-  //});
-
   var defaultEventStart = $('#eventStart').val();
+
   dayInfos.forEach(function (dayInfo, i) {
     var targetDi = getDateInfo(dayInfo.GDate);
     var tempDate = null;
-
     dayInfo.di = targetDi;
     dayInfo.D = targetDi.bMonthNamePri + ' ' + targetDi.bDay;
     dayInfo.G = getMessage('evePartOfDay', targetDi);
@@ -1123,8 +1104,8 @@ function BuildSpecialDaysTable(di) {
 
     if (dayInfo.Type === 'Fast') {
       var sunrise = targetDi.frag2SunTimes.sunrise;
-      dayInfo.FastSunrise = sunrise ? sunrise.showTime() : '?';
-      dayInfo.FastSunset = sunrise ? targetDi.frag2SunTimes.sunset.showTime() : '?';
+      dayInfo.FastSunrise = sunrise ? showTime(sunrise) : '?';
+      dayInfo.FastSunset = sunrise ? showTime(targetDi.frag2SunTimes.sunset) : '?';
       dayInfo.FastDay = getMessage('mainPartOfDay', targetDi);
       if (targetDi.frag2Weekday == 6) {
         dayInfo.RowClass = 'FastSat';
@@ -1144,7 +1125,7 @@ function BuildSpecialDaysTable(di) {
       var adjustDTtoST = 0;
       if (targetTime.slice(-1) == 'S') {
         targetTime = targetTime.slice(0, 4);
-        adjustDTtoST = targetDi.frag1.inStandardTime() ? 0 : 1;
+        adjustDTtoST = inStandardTime(targetDi.frag1) ? 0 : 1;
       }
       tempDate = new Date(dayInfo.di.frag1.getTime());
       var timeHour = +targetTime.slice(0, 2);
@@ -1161,7 +1142,7 @@ function BuildSpecialDaysTable(di) {
 
       dayInfo.Event = { time: tempDate };
 
-      dayInfo.StartTime = dayInfo.Event.time.showTime();
+      dayInfo.StartTime = showTime(dayInfo.Event.time);
       addEventTime(dayInfo.Event);
       dayInfo.EventTime = getMessage('eventTime', dayInfo.Event);
     }
@@ -1190,8 +1171,8 @@ function BuildSpecialDaysTable(di) {
   rowTemplate.push('<td class=eventTime><div class="forHD time">{ST}</div>{EventTime}</td>'); // {isEve}
   rowTemplate.push('<td>{G}</td>');
   rowTemplate.push('</tr>');
-
-  $('#specialListBody').html(rowTemplate.join('').filledWithEach(dayInfos.filter(function (el) { return el.Type != 'Fast' })));
+  //log('test');
+  $('#specialListBody').html(rowTemplate.join('').filledWithEach(dayInfos.filter(function (el) { return el.Type !== 'Fast' })));
 
   $('#specialDaysTitle').html(getMessage('specialDaysTitle', di));
 

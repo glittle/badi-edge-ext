@@ -212,7 +212,7 @@ var CalGreg = function (di, host) {
 
       if (thisDayInfo.bMonth == 19) {
         $.extend(thisDayInfo, {
-          sunriseDesc: '<span class=sunrise>{0}</span>'.filledWith(sunrise.showTime())
+          sunriseDesc: '<span class=sunrise>{0}</span>'.filledWith(showTime(sunrise))
         });
       }
 

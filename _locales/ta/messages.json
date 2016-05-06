@@ -1,10 +1,7 @@
 ﻿{
   "translation": {
-    "name": "Ramasamy Palaniappan",
-    "email": "prsamy@gmail.com",
-    "mostRecentVersion": "1.5.2",
     "message": "ta",
-    "description": "(this is not shown in the tool)"
+    "description": "Ramasamy Palaniappan, prsamy@gmail.com"
   },
   "title": {
     "message": "படீ' நாள்காட்டி",
@@ -152,10 +149,8 @@
     "description": ""
   },
 
-
-  "new_messages_1_1_2": { "message": "" },
   "formatIconToolTip": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "text when mouse is over the extension icon"
   },
   "formatIconClick": {
@@ -179,11 +174,11 @@
     "description": "ALT for icon at bottom of page"
   },
   "shoghiExample": {
-    "message": "இது {bWeekdayNameAr} வாரநாள், {bDayNameAr} மாதநாள், {bMonthNameAr} மாதம், {bYearInVahidNameAr} வருடம், {bVahidOrdinalName} வஹீட், {bKullishayOrdinalName} குல்-இ-ஷே.",
+    "message": "இது {bWeekdayNamePri} வாரநாள், {bDayNamePri} மாதநாள், {bMonthNamePri} மாதம், {bYearInVahidNamePri} வருடம், {bVahidOrdinalName} வஹீட், {bKullishayOrdinalName} குல்-இ-ஷே.",
     "description": "Example given by Shoghi Effendi"
   },
   "example2": {
-    "message": "{bMonthNameAr} {bDay} {dayStartedLower} அஸ்தமனத்தில் (சுமார் {startingSunsetDesc}) அன்று {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} மற்றும் {dayEndedLower} அஸ்தமனத்தில் (சுமார் {endingSunsetDesc}) அன்று {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.",
+    "message": "{bMonthNamePri} {bDay} {dayStartedLower} அஸ்தமனத்தில் (சுமார் {startingSunsetDesc}) அன்று {frag1WeekdayLong}, {frag1MonthShort} {frag1Day} மற்றும் {dayEndedLower} அஸ்தமனத்தில் (சுமார் {endingSunsetDesc}) அன்று {frag2WeekdayLong}, {frag2MonthShort} {frag2Day}.",
     "description": ""
   },
   "pressKeyOrClick": {
@@ -196,7 +191,6 @@
   },
 
 
-  "new_messages_1_1_3": { "message": "" },
   "use24HourClock": {
     "message": "false",
     "description": "use 'true' or 'false' to use 24 hour or 12 hour (காலை/மாலை) clock"
@@ -291,7 +285,6 @@
   },
 
 
-  "new_messages_1_1_4": { "message": "" },
   "sampleGroupTranslationHelp": {
     "message": "",
     "description": "Samples usually don't need translating. If needed, copy from the 'en' file and modify. When creating samples, can use any of the properties shown when _di is shown when inspecting the popup"
@@ -302,7 +295,7 @@
     "description": ""
   },
   "DayOfWeekFormat": {
-    "message": "{bWeekday} - {bWeekdayNameAr} ({bWeekdayMeaning})",
+    "message": "{bWeekday} - {bWeekdayNamePri} ({bWeekdayNameSec})",
     "description": ""
   },
   "DayOfMonth": {
@@ -310,7 +303,7 @@
     "description": ""
   },
   "DayOfMonthFormat": {
-    "message": "{bDay} - {bDayNameAr} ({bDayMeaning})",
+    "message": "{bDay} - {bDayNamePri} ({bDayNameSec})",
     "description": ""
   },
   "Month": {
@@ -318,11 +311,11 @@
     "description": ""
   },
   "MonthFormatNormal": {
-    "message": "{bMonth} - {bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonth} - {bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "MonthFormatAyyam": {
-    "message": "{bMonthNameAr} ({bMonthMeaning})",
+    "message": "{bMonthNamePri} ({bMonthNameSec})",
     "description": ""
   },
   "YearOfEra": {
@@ -338,7 +331,7 @@
     "description": ""
   },
   "YearOfVahidFormat": {
-    "message": "{bYearInVahid} - {bYearInVahidNameAr} ({bYearInVahidMeaning})",
+    "message": "{bYearInVahid} - {bYearInVahidNamePri} ({bYearInVahidNameSec})",
     "description": ""
   },
   "Vahid": {
@@ -359,7 +352,7 @@
   },
 
   "bTopDayDisplay": {
-    "message": "{bDay} {bMonthNameAr} {bYear}",
+    "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "top right corner"
   },
   "gTopDayDisplay": {
@@ -371,7 +364,7 @@
     "description": "in left panel"
   },
   "upcomingDateFormat": {
-    "message": "{bMonthNameAr} {bDay} ({gCombined})",
+    "message": "{bMonthNamePri} {bDay} ({gCombined})",
     "description": "upcoming list"
   },
 
@@ -381,10 +374,9 @@
   },
 
 
-  "new_messages_1_1_5": { "message": "" },
 
   "gMonthDayYear": {
-    "message": "{bMonthNameAr} {bDay}, {bYear}",
+    "message": "{bMonthNamePri} {bDay}, {bYear}",
     "description": ""
   },
 
@@ -414,14 +406,12 @@
   },
 
 
-  "new_messages_1_1_8": { "message": "" },
   "bDatePickerTitle": {
     "message": "படீ திகதியைத் தேர்வு செய்க",
     "description": "added <u></u> - should have one letter between <u> and </u>"
   },
 
 
-  "new_messages_1_2_0": { "message": "" },
   "weekDayNames": {
     "message": "வாரநாள்களின் பெயர்",
     "description": "on page 2 - table caption"
@@ -447,7 +437,6 @@
     "description": "on page 2 - table heading"
   },
 
-  "new_messages_1_3": { "message": "" },
   "pick_pageDay": {
     "message": "நாள்",
     "description": ""
@@ -479,7 +468,6 @@
   },
 
 
-  "new_messages_1_3_3": { "message": "" },
   "prevYear": {
     "message": "முந்திய",
     "description": "hold Shift and press left arrow key"
@@ -498,7 +486,6 @@
   },
 
 
-  "new_messages_1_3_6": { "message": "" },
   "jumpTo": {
     "message": "நாள்கள் முன்/பின் செல்",
     "description": "user can enter a day after/before currently selected day"
@@ -513,7 +500,6 @@
   },
 
 
-  "new_messages_1_4": { "message": "" },
 
   "pick_pageEvents": {
     "message": "நிகழ்ச்சிகள்",
@@ -624,7 +610,6 @@
   },
 
 
-  "new_messages_1_5_3": { "message": "" },
   "keyToOpenInTab": {
     "message": "T",
     "translation": "required",
@@ -632,7 +617,6 @@
   },
 
 
-  "new_messages_1_6_0": { "message": "" },
   "pick_pageCalWheel": {
     "message": "Wheel",
     "translation": "required",
@@ -651,21 +635,19 @@
     "description": "in wheel, points to today, or whatever day is currently selected"
   },
 
-  "new_messages_1_7_0": { "message": "" },
   "pick_pageCalGreg": {
     "message": "Gregorian Year",
     "translation": "required",
     "description": "tab name"
   },
 
-  
-  "new_messages_1_7_2": { "message": "" },
+
   "noon": {
     "message": "12:00",
     "translation": "required",
     "description": "nice way to say noon"
   },
-  
+
   "timeFormat12": {
     "message": "{ampm} {time}",
     "translation": "required",
@@ -684,7 +666,11 @@
     "description": "displayed in 'timeFormat12' if not using 24 hours clock"
   },
 
-  
+  "rbDefLang_Local": {
+    "message": "local (தமிழ்)",
+    "description": "put your language here, in your script"
+  },
+
   "x": {
     "message": "",
     "description": ""

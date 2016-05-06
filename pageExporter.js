@@ -266,7 +266,7 @@ END:VEVENT
       var adjustDTtoST = 0;
       if (targetTime.slice(-1) == 'S') {
         targetTime = targetTime.slice(0, 4);
-        adjustDTtoST = di.frag1.inStandardTime() ? 0 : 1;
+        adjustDTtoST = inStandardTime(di.frag1) ? 0 : 1;
       }
       startTime = new Date(di.frag1.getTime());
       var timeHour = +targetTime.slice(0, 2);
@@ -391,7 +391,7 @@ END:VEVENT
 
     addDescription(getMessage('exporterItemDescFast'));
 
-    di.sunriseDesc = di.frag2SunTimes.sunrise.showTime();
+    di.sunriseDesc = showTime(di.frag2SunTimes.sunrise);
     switch (variation) {
       case 'SunriseToSunset':
         addLine('BEGIN:VEVENT');

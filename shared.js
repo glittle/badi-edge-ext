@@ -138,10 +138,10 @@ function getDateInfo(currentTime, onlyStamp) {
     currentWeekday: currentTime.getDay(),
     currentTime: currentTime,
 
-    startingSunsetDesc12: frag1SunTimes.sunset.showTime(),
-    startingSunsetDesc24: frag1SunTimes.sunset.showTime(24),
-    endingSunsetDesc12: frag2SunTimes.sunset.showTime(),
-    endingSunsetDesc24: frag2SunTimes.sunset.showTime(24),
+    startingSunsetDesc12: showTime(frag1SunTimes.sunset),
+    startingSunsetDesc24: showTime(frag1SunTimes.sunset, 24),
+    endingSunsetDesc12: showTime(frag2SunTimes.sunset),
+    endingSunsetDesc24: showTime(frag2SunTimes.sunset, 24),
     frag1SunTimes: frag1SunTimes,
     frag2SunTimes: frag2SunTimes,
 
@@ -297,7 +297,7 @@ function showIcon() {
   }
 
   if (dateInfo.bMonth === 19) {
-    tipLines.push(getMessage('sunriseFastHeading') + ' - ' + dateInfo.frag2SunTimes.sunrise.showTime());
+    tipLines.push(getMessage('sunriseFastHeading') + ' - ' + showTime(dateInfo.frag2SunTimes.sunrise));
   }
 
   tipLines.push(dateInfo.nearestSunset);
@@ -419,21 +419,21 @@ function determineDaysAway(di, moment1, moment2, sameDay) {
 }
 
 
-Date.prototype.showTime = function () {
-  var hoursType = use24HourClock ? 24 : 0;
-  var show24Hour = hoursType == 24;
-  var hours24 = this.getHours();
+function showTime(d, use24) {
+  var hoursType = use24HourClock || (use24 === 24) ? 24 : 0;
+  var show24Hour = hoursType === 24;
+  var hours24 = d.getHours();
   var pm = hours24 >= 12;
   var hours = show24Hour ? hours24
     : hours24 > 12 ? hours24 - 12
-        : hours24 == 0 ? 12
+        : hours24 === 0 ? 12
         : hours24;
-  var minutes = this.getMinutes();
+  var minutes = d.getMinutes();
   var time = hours + ':' + ('0' + minutes).slice(-2);
   if (!show24Hour) {
-    if (hours24 == 12 && minutes == 0) {
+    if (hours24 === 12 && minutes === 0) {
       time = getMessage('noon');
-    } else if (hours24 == 0 && minutes == 0) {
+    } else if (hours24 === 0 && minutes === 0) {
       time = getMessage('midnight');
     } else {
       time = getMessage('timeFormat12').filledWith({
@@ -839,7 +839,7 @@ function addEventTime(obj) {
   obj.eventWeekdayLong = gWeekdayLong[obj.eventWeekday];
   obj.eventWeekdayShort = gWeekdayShort[obj.eventWeekday];
 
-  obj.eventTime = eventTime.showTime();
+  obj.eventTime = showTime(eventTime);
 }
 
 
