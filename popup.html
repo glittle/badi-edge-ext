@@ -525,25 +525,109 @@
         </div>
 
       </div>
-      <!--<div id="pageSetup" class="fullPage page">
-        <div>
-          <h2 data-msg="setupAbout"></h2>
-          <p data-msg="setupAbout1"></p>
-          <p data-msg="setupAbout2"></p>
-          <p data-msg="setupAbout3"></p>
-          <p data-msg="setupAbout4"></p>
+      <div id="pagePlanner" class="fullPage page">
+        <div class="plannerInputs">
+          <h2 data-msg="plannerTitle2"></h2>
+          <ol>
+            <li>
+              <div>
+                <span>Show what?</span>
+                <select id="planWhat">
+                  <option value="event1">one Holy Day or Feast</option>
+                  <option value="event2">multiple Holy Days and Feasts</option>
+                </select>
+              </div>
+              <div id="plannerWhatEventDiv">
+                <span>Which?</span>
+                <div class="plannerWhatHelpers">
+                  <button type="button" class="button" id="btnPlannerHelperHD1">Holy Days (no work)</button>
+                  <button type="button" class="button" id="btnPlannerHelperHD2">All Holy Days</button>
+                  <button type="button" class="button" id="btnPlannerHelperRid">Ridvan</button>
+                  <button type="button" class="button" id="btnPlannerHelperTHB">Twin Birthdays</button>
+                  <button type="button" class="button" id="btnPlannerHelperFeasts">Feasts</button>
+                  <button type="button" class="button" id="btnPlannerHelperNone">None</button>
+                </div>
+                <select id="plannerWhatEvents">
+                  <optgroup label="Holy Days" id="planWhatHdGroup">
+                  </optgroup>
+                  <optgroup label="Feasts" id="planWhatFeastGroup">
+                  </optgroup>
+                </select>
+              </div>
+            </li>
+            <li>
+              <span>Staring from when?</span>
+              <select id="planFromWhen">
+                <option value="today">Today</option>
+                <option value="by0">Start of this Badi year</option>
+                <option value="by1">Start of next Badi year</option>
+              </select>
+            </li>
+
+            <!--<li>
+              <div>
+                <span>Repeat every </span>
+
+                <select id="planRepeatNum">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+                <select id="planRepeatUnits">
+                  <option value="y">years</option>
+                </select>
+              </div>
+            </li>-->
+            <li>
+              <div>
+                <span>For how long?</span>
+                <select id="planUntilNum">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                </select>
+                <select id="planUntilUnits">
+                  <option value="y">years</option>
+                </select>
+              </div>
+            </li>
+            <li>
+              <span>Show what?</span>
+              <select id="plannerShowWhat">
+                <option value="frag2">Day</option>
+                <option value="both">Both</option>
+                <option value="frag1">Eve</option>
+              </select>
+            </li>
+          </ol>
+          <button class="button" type="button" id="btnPlanGenerate">Generate</button>
+
         </div>
         <div>
-          <h2 data-msg="setupSetup"></h2>
-          <div class="setupItems">
-            <div>
-              <h3>Location</h3>
-              <div class="place"></div>
-              <button class="btnRetry button"><span class="btnRetryImg"></span><span class="text" data-msg="btnRetry2"></span></button>
-            </div>
+          <div class="plannerResultButtons">
+            <button class="button" type="button">Export CSV</button>
+            <button class="button" type="button">Export ICAL</button>
           </div>
+          <h2 data-msg="plannerResults"></h2>
+          <table class="plannerResults">
+            <thead id="plannerResultsHead"></thead>
+            <tbody id="plannerResultsBody"></tbody>
+          </table>
+
         </div>
-      </div>-->
+      </div>
 
       <div class=selectPages>
         <div class=buttons>
@@ -555,6 +639,7 @@
           <button data-page="pageFast" data-msg=pick_pageFast></button>
           <button data-page="pageLists" data-msg=pick_pageLists></button>
           <button data-page="pageReminders" data-msg=pick_pageReminders id="btnPageReminders"></button>
+          <button data-page="pagePlanner" data-msg=pick_pagePlanner></button>
           <button data-page="pageExporter" data-msg=pick_pageExporter></button>
           <button data-page="pageCustom" data-msg=pick_pageCustom></button>
         </div>
@@ -608,7 +693,7 @@
   <script src="calWheel.js"></script>
   <script src="calGreg.js"></script>
   <script src="pageReminders.js"></script>
-  <script src="pageExporter.js"></script>
+  <script src="pagePlanner.js"></script>
   <script src="pageExporter.js"></script>
   <script src="pageCustom.js"></script>
   <script src="misc/moment-timezone-with-data.min.js"></script>

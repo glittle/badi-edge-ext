@@ -15,6 +15,7 @@ var _calWheel = null;
 var _calGreg = null;
 var _pageReminders = null;
 var _pageExporter = null;
+var _pagePlanner = null;
 var _pageCustom = null;
 var _enableSampleKeys = true;
 var _enableDayKeysLR = true;
@@ -224,9 +225,10 @@ function showPage(id) {
   var pageFast = '#yearSelector, .iconArea';
   var pageReminders = '.iconArea, #otherPageTitle';
   var pageExporter = '#yearSelector, .iconArea, #otherPageTitle';
+  var pagePlanner = '.iconArea, #otherPageTitle';
   var pageCustom = '#yearSelector, .JumpDays, #show, #gDay, .iconArea, #otherPageTitle';
 
-  $([other, pageDay, pageEvents, pageCal1, pageCalWheel, pageCalGreg, pageLists, pageFast, pageReminders, pageExporter].join(',')).hide();
+  $([other, pageDay, pageEvents, pageCal1, pageCalWheel, pageCalGreg, pageLists, pageFast, pageReminders, pageExporter, pagePlanner].join(',')).hide();
 
   _currentPageId = id;
   btns.each(function (i, el) {
@@ -308,6 +310,13 @@ function showPage(id) {
       _enableDayKeysUD = false;
       break;
 
+    case 'pagePlanner':
+      $(pagePlanner).show();
+      _enableSampleKeys = false;
+      _enableDayKeysLR = false;
+      _enableDayKeysUD = false;
+      break;
+
     case 'pageCustom':
       $(pageCustom).show();
       _enableSampleKeys = false;
@@ -371,6 +380,10 @@ function updatePageContentWhenVisible(id, di) {
       $('#otherPageTitle').html(getMessage('exporterTitle'));
       break;
 
+    case 'pagePlanner':
+      $('#otherPageTitle').html(getMessage('plannerTitle'));
+      break;
+
     case 'pageCustom':
       $('#otherPageTitle').html(getMessage('customTitle'));
       break;
@@ -394,6 +407,11 @@ function resetPageForLanguageChange(id) {
     case 'pageCalGreg':
       if (_calGreg) {
         _calGreg.resetPageForLanguageChange();
+      }
+      break;
+    case 'pagePlanner':
+      if (_pagePlanner) {
+        _pagePlanner.resetPageForLanguageChange();
       }
       break;
 
@@ -484,6 +502,12 @@ function updatePageContent(id, di) {
     case 'pageExporter':
       if (_pageExporter) {
         _pageExporter.updateYear(true);
+      }
+      break;
+
+    case 'pagePlanner':
+      if (_pagePlanner) {
+        //_pagePlanner.updateYear(true);
       }
       break;
 
@@ -1309,7 +1333,7 @@ function prepare1() {
   UpdateLanguageBtn();
 
   if (_iconPrepared) {
-  refreshDateInfo();
+    refreshDateInfo();
   } else {
     refreshDateInfoAndShow();
   }
@@ -1428,6 +1452,7 @@ function prepare2() {
   $('#btnPageReminders').toggle(_remindersEnabled);
 
   _pageExporter = PageExporter();
+  _pagePlanner = PagePlanner();
   updateLoadProgress();
 
   $('#version').attr('href', getMessage(browserHostType + "_History"));
@@ -1454,8 +1479,8 @@ $('#windowTitle').text(getMessage('title'));
 
 $(function () {
   if (browserHostType === browser.Firefox) {
-//    openInTab();
-  prepare1();
+    //    openInTab();
+    prepare1();
   } else {
     prepare1();
   }

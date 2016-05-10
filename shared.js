@@ -203,6 +203,8 @@ function getDateInfo(currentTime, onlyStamp) {
   di.frag1Day00 = digitPad2(di.frag1Day);
   di.currentMonth01 = digitPad2(di.currentMonth1);
   di.frag2Day00 = digitPad2(di.frag2Day);
+  di.frag1Month00 = digitPad2(1 + di.frag1Month); // change from 0 based
+  di.frag2Month00 = digitPad2(1 + di.frag2Month); // change from 0 based
   di.bMonth00 = digitPad2(di.bMonth);
   di.bYearInVahid00 = digitPad2(di.bYearInVahid);
   di.bVahid00 = digitPad2(di.bVahid);
@@ -974,4 +976,36 @@ function prepareAnalytics() {
     tracker.set('appVersion', chrome.runtime.getManifest().version);
     tracker.set('language', navigator.language);
   }
+}
+
+
+
+// polyfill
+if (!Array.prototype.includes) {
+  Array.prototype.includes = function (searchElement /*, fromIndex*/) {
+    'use strict';
+    var O = Object(this);
+    var len = parseInt(O.length) || 0;
+    if (len === 0) {
+      return false;
+    }
+    var n = parseInt(arguments[1]) || 0;
+    var k;
+    if (n >= 0) {
+      k = n;
+    } else {
+      k = len + n;
+      if (k < 0) { k = 0; }
+    }
+    var currentElement;
+    while (k < len) {
+      currentElement = O[k];
+      if (searchElement === currentElement ||
+         (searchElement !== searchElement && currentElement !== currentElement)) { // NaN !== NaN
+        return true;
+      }
+      k++;
+    }
+    return false;
+  };
 }

@@ -1338,6 +1338,10 @@
     "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
     "description": "about page"
   },
+  "pick_pagePlanner": {
+    "message": "Planner",
+    "description": "tab"
+  },
   "___lastMessageInFile___": {
     "message": "do not translate",
     "description": "do not translate"
