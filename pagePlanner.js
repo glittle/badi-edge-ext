@@ -67,17 +67,24 @@ var PagePlanner = function() {
 
     $('.plannerInputs select').each(function(i, el) {
       var value = getStorage(el.id);
+      log(el.id);
+      log(value);
       if (typeof(value) !== "undefined") {
-        $(el).val(value);
+        var ddl = $(el);
+        ddl.val(value);
+      }
+      if (el.selectedIndex === -1) {
+        el.selectedIndex = 0;
       }
     });
   }
 
   function addColSet(cells, frag, targetDi) {
-    cells.push(
-      ('<td>{' + frag + 'Year}/{' + frag + 'Month00}/{' + frag + 'Day00}</td>').filledWith(targetDi)
-      + ('<td>{' + frag + 'WeekdayShort}</td>').filledWith(targetDi)
-    );
+    var displayDate = ('{' + frag + 'Year}-{' + frag + 'Month00}-{' + frag + 'Day00}').filledWith(targetDi);
+    var excelDate = '';//('{' + frag + 'Month00}/{' + frag + 'Day00}/{' + frag + 'Year}').filledWith(targetDi);
+
+    cells.push('<td class=plannerDate data-csv="{1}">{0}</td>'.filledWith(displayDate, excelDate));
+    cells.push(('<td>{' + frag + 'WeekdayShort}</td>').filledWith(targetDi));
   }
 
 
@@ -142,32 +149,38 @@ var PagePlanner = function() {
     var th1 = [
       '<th colspan=2></th>'
     ];
-    switch (_plannerShowWhat) {
-    case 'both':
-      th1.push('<th class=plannerThTitle colspan=2>{0}</th>'.filledWith($('#plannerShowWhat option[value="{0}"]'.filledWith('frag1')).text()));
-      th1.push('<th class=plannerThTitle colspan=2>{0}</th>'.filledWith($('#plannerShowWhat option[value="{0}"]'.filledWith('frag2')).text()));
-      break;
-    default:
-      th1.push('<th class=plannerThTitle colspan=2>{0}</th>'.filledWith($('#plannerShowWhat option[value="{0}"]'.filledWith(_plannerShowWhat)).text()));
-      break;
-    }
-    th1.push('<th></th>');
-
     var th2 = [
       '<th>{0}</th>'.filledWith('Event'),
       '<th>{0}</th>'.filledWith('Year')
     ];
-    th2.push('<th>{0}</th>'.filledWith('Date') + '<th>{0}</th>'.filledWith('Weekday'));
-    if (_plannerShowWhat === 'both') {
-      th2.push('<th>{0}</th>'.filledWith('Date') + '<th>{0}</th>'.filledWith('Weekday'));
+
+    switch (_plannerShowWhat) {
+    case 'both':
+      var frag1 = $('#plannerShowWhat option[value="{0}"]'.filledWith('frag1')).text();
+      var frag2 = $('#plannerShowWhat option[value="{0}"]'.filledWith('frag2')).text();
+
+      th1.push('<th class=plannerThTitle colspan=2>{0}</th>'.filledWith(frag1));
+      th2.push('<th title="{1}">{0}</th>'.filledWith('Date', frag1));
+      th2.push('<th title="{1}">{0}</th>'.filledWith('Weekday', frag1));
+
+      th1.push('<th class=plannerThTitle colspan=2>{0}</th>'.filledWith(frag2));
+      th2.push('<th title="{1}">{0}</th>'.filledWith('Date', frag2));
+      th2.push('<th title="{1}">{0}</th>'.filledWith('Weekday', frag2));
+      break;
+    default:
+      var fragSingle = $('#plannerShowWhat option[value="{0}"]'.filledWith(_plannerShowWhat)).text();
+      th1.push('<th class=plannerThTitle colspan=2>{0}</th>'.filledWith(fragSingle));
+      th2.push('<th title="{1}">{0}</th>'.filledWith('Date', fragSingle));
+      th2.push('<th title="{1}">{0}</th>'.filledWith('Weekday', fragSingle));
+      break;
     }
-
-    th2.push('<th>{0}</th>'.filledWith('Starting Sunset'));
-
+    var locationHeader = 'Starting Sunset ' + localStorage.locationName;
+    th1.push('<th rowspan=2>{0}</th>'.filledWith(locationHeader));
+    th2.push('<th style="display:none" title="{0}"></th>'.filledWith(locationHeader));
 
     $('#plannerResultsHead').html([
       '<tr>' + th1.join('') + '</tr>',
-      '<tr>' + th2.join('') + '</tr>'
+      '<tr class=plannerHeaders>' + th2.join('') + '</tr>'
     ].join(''));
     $('#plannerResultsBody').html(results.join(''));
   }
@@ -194,9 +207,12 @@ var PagePlanner = function() {
 
   function startup() {
     fillInputs();
-    $('#planUntilNum').val(10);
+    // some defaults
+    $('#planUntilNum').val(5);
+
     attachHandlers();
     recallInputs();
+
     $('#planWhat').trigger('adjust');
     generate();
   }
@@ -208,8 +224,66 @@ var PagePlanner = function() {
     generate();
   }
 
+  function exportCsv() {
+    var lines = [];
+    var line = [];
+
+    var addLine = function() {
+      lines.push(line.join());
+      line = [];
+    }
+
+    $('#plannerResultsHead .plannerHeaders th').each(function(i, el) {
+      var th = $(el);
+      var title = th.attr('title') || null;
+      var text = th.text();
+      line.push(quotedForCsv([title, text].join(' ')));
+    });
+    addLine();
+
+    $('#plannerResultsBody tr').each(function (i, tr) {
+      $(tr).find('td').each(function(j, td) {
+        var td$ = $(td);
+        var text = td$.data('csv') || td$.text();
+        line.push(quotedForCsv(text));
+      });
+      addLine();
+    });
+
+    // done... now download
+    // https://tools.ietf.org/html/rfc4180
+    downloadAsFile(lines, 'test.csv', 'text/csv');
+  }
+
+  function downloadAsFile(lines, filename, mimeType) {
+    var element = document.createElement('a');
+
+    var rawText = encodeURIComponent(lines.join('\r\n'));
+    //var rawText = lines.join('\r\n');
+
+    //;charset=utf-8
+    element.setAttribute('href', 'data:{0};charset=utf-8,'.filledWith(mimeType) + '\ufeff' + rawText);
+    element.setAttribute('download', filename);
+
+    element.style.display = 'none';
+    document.body.appendChild(element);
+
+    element.click();
+
+    document.body.removeChild(element);
+  }
+
+  function quotedForCsv(s) {
+    s = $.trim(s);
+    if (s.search('"') !== -1 || s.search(',') !== -1) {
+      return '"' + s.replace(/"/g, '""') + '"';
+    }
+    return s;
+  }
+
   function attachHandlers() {
     $('#btnPlanGenerate').click(generate);
+    $('#btnPlannerExportCsv').click(exportCsv);
     $('#planWhat').on('change adjust', function (ev) {
       _inPlanWhatChangeHandler = ev.type === 'adjust';
       var ddl = $('#plannerWhatEvents');

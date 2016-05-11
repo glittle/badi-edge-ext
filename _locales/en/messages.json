@@ -1342,8 +1342,16 @@
     "message": "Planner",
     "description": "tab"
   },
-  "___lastMessageInFile___": {
-    "message": "do not translate",
-    "description": "do not translate"
+  "plannerTitle": {
+    "message": "Long-range Planner",
+    "description": "page title"
+  },
+  "plannerTitle2": {
+    "message": "Planning Selection",
+    "description": "title over inputs"
+  },
+  "plannerResults": {
+    "message": "Results",
+    "description": "title over results"
   }
 }

@@ -555,7 +555,20 @@ body {
 
     select {
       margin: 0 0 1px 0;
+      font-size: 9pt;
     }
+
+    > ol {
+      -webkit-padding-start: 13px;
+      li{
+        margin: 0 0 5px 0;
+      }
+    }
+  }
+
+  #plannerResultsDiv{
+    max-height: 450px;
+    overflow: auto;
   }
 
   .plannerResultButtons {
@@ -578,10 +591,14 @@ body {
 
       &:first-child {
         text-align: left;
+        white-space: nowrap;
       }
 
       &.plannerNewYear {
         font-weight: bold;
+      }
+      &.plannerDate{
+        white-space: nowrap;
       }
     }
 
@@ -607,7 +624,7 @@ body {
   .plannerWhatHelpers {
     .button {
       font-size: 90%;
-      margin: 0 1px;
+      margin: 0 -2px 1px 0;
       background: transparent;
       color: green;
     }
@@ -1485,11 +1502,11 @@ input.bYearPicker {
 }
 
 @media print {
-  #yearSelector, .selectPages, .iconArea {
+  #yearSelector, .selectPages, .iconArea, .NoPrint {
     display: none !important;
   }
 
-  #pageEvents, #pageFast, #pageLists, #pageCal1, #pageCalWheel, #pageReminders, #pageExporter, #pageCustom {
+  #pageEvents, #pageFast, #pageLists, #pageCal1, #pageCalWheel, #pageReminders, #pageExporter, #pageCustom, #pagePlanner {
     border: none;
     padding: 10px 0 0 0;
   }
@@ -1516,6 +1533,27 @@ input.bYearPicker {
 
   #fastListTable caption {
     margin-bottom: 20px;
+  }
+
+  #pagePlanner {
+    > div {
+      border: none;
+      margin: 0 auto;
+    }
+
+    .plannerInputs {
+      display: none;
+    }
+
+    .plannerResultButtons {
+      display: none;
+    }
+  }
+
+  body.Chrome {
+    * {
+      -webkit-print-color-adjust: exact;
+    }
   }
 }
 
@@ -1559,11 +1597,6 @@ input.bYearPicker {
   }
 }
 
-body.Chrome {
-  * {
-    -webkit-print-color-adjust: exact;
-  }
-}
 
 body.Firefox {
   #btnPageReminders {
