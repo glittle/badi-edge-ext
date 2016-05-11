@@ -1072,6 +1072,7 @@ function SetFiltersForSpecialDaysTable(ev) {
     .toggleClass('Feasts', includeFeasts)
     .toggleClass('HolyDays', includeHolyDays);
 }
+
 var _lastSpecialDaysYear = 0;
 
 function BuildSpecialDaysTable(di) {
@@ -1093,7 +1094,7 @@ function BuildSpecialDaysTable(di) {
     }
   });
 
-  var defaultEventStart = $('#eventStart').val();
+  var defaultEventStart = $('#eventStart').val() || getStorage('eventStart');
 
   dayInfos.forEach(function (dayInfo, i) {
     var targetDi = getDateInfo(dayInfo.GDate);
@@ -1110,7 +1111,6 @@ function BuildSpecialDaysTable(di) {
     dayInfo.TypeShort = null;
     dayInfo.DefaultTimeClass = null;
     dayInfo.RowClass = null;
-
     var targetTime = dayInfo.Time || defaultEventStart;
 
     if (dayInfo.Type === 'M') {
@@ -1165,7 +1165,6 @@ function BuildSpecialDaysTable(di) {
       }
 
       dayInfo.Event = { time: tempDate };
-
       dayInfo.StartTime = showTime(dayInfo.Event.time);
       addEventTime(dayInfo.Event);
       dayInfo.EventTime = getMessage('eventTime', dayInfo.Event);
@@ -1192,10 +1191,9 @@ function BuildSpecialDaysTable(di) {
   rowTemplate.push('<td>{D}</td>');
   rowTemplate.push('<td class=name>{A}</td>'); //{STColSpan}
   rowTemplate.push('<td class=forHD>{NoWork}</td>');
-  rowTemplate.push('<td class=eventTime><div class="forHD time">{ST}</div>{EventTime}</td>'); // {isEve}
+  rowTemplate.push('<td class=eventTime>{EventTime}<div class="forHD time">{ST}</div></td>'); // {isEve}
   rowTemplate.push('<td>{G}</td>');
   rowTemplate.push('</tr>');
-  //log('test');
   $('#specialListBody').html(rowTemplate.join('').filledWithEach(dayInfos.filter(function (el) { return el.Type !== 'Fast' })));
 
   $('#specialDaysTitle').html(getMessage('specialDaysTitle', di));

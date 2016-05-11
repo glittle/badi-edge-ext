@@ -67,8 +67,6 @@ var PagePlanner = function() {
 
     $('.plannerInputs select').each(function(i, el) {
       var value = getStorage(el.id);
-      log(el.id);
-      log(value);
       if (typeof(value) !== "undefined") {
         var ddl = $(el);
         ddl.val(value);
