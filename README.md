@@ -1,4 +1,4 @@
-# Badí' Calendar Chrome Extension #
+# Badí' Calendar Edge Web Extension #
 
 
 ### To be done ###
