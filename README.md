@@ -8,7 +8,7 @@
 
 ### Current Features ###
 
-* See http://bit.ly/BadiChrome
+* See http://bit.ly/BadiWebExtension
 
 ### Who do I talk to? ###
 
