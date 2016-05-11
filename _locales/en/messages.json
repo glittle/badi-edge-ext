@@ -77,7 +77,7 @@
   },
   "yearWithEra": {
     "message": "{bYear} {bEraAbbrev}",
-    "description":  ""
+    "description": ""
   },
   "ordinal": {
     "message": "th,st,nd,rd",
@@ -1353,5 +1353,98 @@
   "plannerResults": {
     "message": "Results",
     "description": "title over results"
+  },
+  "plannerShowWhat": {
+    "message": "Show what?",
+    "description": "First question in inputs"
+  },
+  "plannerWhatOneEvent": {
+    "message": "one Holy Day or Feast",
+    "description": "answer to first question"
+  },
+  "plannerWhatManyEvents": {
+    "message": "multiple Holy Days and Feasts",
+    "description": "answer to first question"
+  },
+  "plannerWhatEvent": {
+    "message": "Which?",
+    "description": "which event or events?"
+  },
+  "btnPlannerHelperHD1": {
+    "message": "Holy Days (no work)",
+    "description": "helper button"
+  },
+  "btnPlannerHelperHD2": {
+    "message": "All Holy Days",
+    "description": "helper button"
+  },
+  "btnPlannerHelperRid": {
+    "message": "Ridvan",
+    "description": "helper button"
+  },
+  "btnPlannerHelperTHB": {
+    "message": "Twin Birthdays",
+    "description": "helper button"
+  },
+  "btnPlannerHelperFeasts": {
+    "message": "Feasts",
+    "description": "helper button"
+  },
+  "btnPlannerHelperNone": {
+    "message": "None",
+    "description": "helper button"
+  },
+  "planFromWhen": {
+    "message": "Starting from when?",
+    "description": "another input"
+  },
+  "planFromWhenToday": {
+    "message": "Today",
+    "description": "answer for planFromWhen"
+  },
+  "planFromWhenThisYear": {
+    "message": "Start of this Badí' year",
+    "description": "answer for planFromWhen"
+  },
+  "planFromWhenNextYear": {
+    "message": "Start of next Badí' year",
+    "description": "answer for planFromWhen"
+  },
+  "planUntilWhen": {
+    "message": "For how long?",
+    "description": "another question"
+  },
+  "planUntilUnitsYears": {
+    "message": "years",
+    "description": "answer to planUntilWhen"
+  },
+  "planIncludeWhat": {
+    "message": "Include Day or Eve?",
+    "description": "include day or evening or both?"
+  },
+  "planIncludeWhatDay": {
+    "message": "Day",
+    "description": "answer to planIncludeWhat - from midnight to sunset (frag2)"
+  },
+  "planIncludeWhatEve": {
+    "message": "Eve",
+    "description": "answer to planIncludeWhat - from sunset to midnight (frag1)"
+  },
+  "planIncludeWhatBoth": {
+    "message": "Both",
+    "description": "answer to planIncludeWhat"
+  },
+  "btnPlannerExportCsv": {
+    "message": "Export CSV",
+    "description": "button - export to Comma Separated Value format for import in to Excel"
+  },
+  "btnPlannerExportICal": {
+    "message": "Export ICAL",
+    "description": "button - export to iCalendar format"
+  },
+  "plannerStartSunsetForLocation": {
+    "message": "Start Sunset at {0}",
+    "description": "title in results table - sunset at location"
   }
+
 }

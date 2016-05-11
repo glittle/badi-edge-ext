@@ -531,21 +531,21 @@
           <ol>
             <li>
               <div>
-                <span>Show what?</span>
+                <span data-msg="plannerShowWhat"></span>
                 <select id="planWhat">
-                  <option value="event1">one Holy Day or Feast</option>
-                  <option value="event2">multiple Holy Days and Feasts</option>
+                  <option value="event1" data-msg="plannerWhatOneEvent"></option>
+                  <option value="event2" data-msg="plannerWhatManyEvents"></option>
                 </select>
               </div>
               <div id="plannerWhatEventDiv">
-                <span>Which?</span>
+                <span data-msg="plannerWhatEvent"></span>
                 <div class="plannerWhatHelpers">
-                  <button type="button" class="button" id="btnPlannerHelperHD1">Holy Days (no work)</button>
-                  <button type="button" class="button" id="btnPlannerHelperHD2">All Holy Days</button>
-                  <button type="button" class="button" id="btnPlannerHelperRid">Ridvan</button>
-                  <button type="button" class="button" id="btnPlannerHelperTHB">Twin Birthdays</button>
-                  <button type="button" class="button" id="btnPlannerHelperFeasts">Feasts</button>
-                  <button type="button" class="button" id="btnPlannerHelperNone">None</button>
+                  <button type="button" class="button" id="btnPlannerHelperHD1" data-msg="_id_"></button>
+                  <button type="button" class="button" id="btnPlannerHelperHD2" data-msg="_id_"></button>
+                  <button type="button" class="button" id="btnPlannerHelperRid" data-msg="_id_"></button>
+                  <button type="button" class="button" id="btnPlannerHelperTHB" data-msg="_id_"></button>
+                  <button type="button" class="button" id="btnPlannerHelperFeasts" data-msg="_id_"></button>
+                  <button type="button" class="button" id="btnPlannerHelperNone" data-msg="_id_"></button>
                 </div>
                 <select id="plannerWhatEvents">
                   <optgroup label="Holy Days" id="planWhatHdGroup"></optgroup>
@@ -554,49 +554,28 @@
               </div>
             </li>
             <li>
-              <span>Starting from when?</span>
+              <span data-msg="planFromWhen"></span>
               <select id="planFromWhen">
-                <option value="today">Today</option>
-                <option value="by0">Start of this Badi year</option>
-                <option value="by1">Start of next Badi year</option>
+                <option value="today" data-msg="planFromWhenToday"></option>
+                <option value="by0" data-msg="planFromWhenThisYear"></option>
+                <option value="by1" data-msg="planFromWhenNextYear"></option>
               </select>
             </li>
-
-            <!--<li>
-      <div>
-        <span>Repeat every </span>
-
-        <select id="planRepeatNum">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-        </select>
-        <select id="planRepeatUnits">
-          <option value="y">years</option>
-        </select>
-      </div>
-    </li>-->
             <li>
               <div>
-                <span>For how long?</span>
+                <span data-msg="planUntilWhen"></span>
                 <select id="planUntilNum"></select>
                 <select id="planUntilUnits">
-                  <option value="y">years</option>
+                  <option value="y" data-msg="planUntilUnitsYears"></option>
                 </select>
               </div>
             </li>
             <li>
-              <span>Include Day or Eve?</span>
+              <span data-msg="planIncludeWhat"></span>
               <select id="plannerShowWhat">
-                <option value="frag2">Day</option>
-                <option value="both">Both</option>
-                <option value="frag1">Eve</option>
+                <option value="frag2" data-msg="planIncludeWhatDay"></option>
+                <option value="both" data-msg="planIncludeWhatBoth"></option>
+                <option value="frag1" data-msg="planIncludeWhatEve"></option>
               </select>
             </li>
           </ol>
@@ -605,8 +584,8 @@
         </div>
         <div>
           <div class="plannerResultButtons">
-            <button class="button" type="button" id="btnPlannerExportCsv">Export CSV</button>
-            <button class="button" type="button">Export ICAL</button>
+            <button class="button" type="button" id="btnPlannerExportCsv" data-msg="_id_"></button>
+            <button class="button" type="button" id="btnPlannerExportICal" data-msg="_id_"></button>
           </div>
           <h2 class="NoPrint" data-msg="plannerResults"></h2>
           <div id="plannerResultsDiv">

@@ -174,7 +174,7 @@ var PagePlanner = function() {
       th2.push('<th title="{1}">{0}</th>'.filledWith('Weekday', fragSingle));
       break;
     }
-    var locationHeader = 'Starting Sunset ' + localStorage.locationName;
+    var locationHeader = getMessage('plannerStartSunsetForLocation').filledWith(localStorage.locationName);
     th1.push('<th rowspan=2>{0}</th>'.filledWith(locationHeader));
     th2.push('<th style="display:none" title="{0}"></th>'.filledWith(locationHeader));
 
@@ -252,7 +252,7 @@ var PagePlanner = function() {
 
     // done... now download
     // https://tools.ietf.org/html/rfc4180
-    downloadAsFile(lines, 'test.csv', 'text/csv');
+    downloadAsFile(lines, getMessage('pick_pagePlanner') + '.csv', 'text/csv');
   }
 
   function downloadAsFile(lines, filename, mimeType) {
