@@ -1,13 +1,21 @@
 /* Code by Glen Little */
 
+/*
+ * Notes...
+ * Firefox does not support canvas or geolocation in the background. Must open the tab to work.
+ * 
+ */
+
+
 var _isBackgroundPage = true;
 var _backgroundReminderEngine = {};
+var popupUrl = chrome.extension.getURL('popup.html');
 
 var BackgroundModule = function () {
 
   var alarmHandler = function (alarm) {
     if (alarm.name.startsWith('refresh')) {
-      log('ALARM: ' + alarm.name);
+      console.log('ALARM: ' + alarm.name);
       refreshDateInfoAndShow();
       _backgroundReminderEngine.setAlarmsForRestOfToday();
     }
@@ -22,7 +30,7 @@ var BackgroundModule = function () {
         var newVersion = chrome.runtime.getManifest().version;
         var oldVersion = localStorage.updateVersion;
         if (newVersion != oldVersion) {
-          log(oldVersion + ' --> ' + newVersion);
+          console.log(oldVersion + ' --> ' + newVersion);
           localStorage.updateVersion = newVersion;
           chrome.tabs.create({
             url: getMessage(browserHostType + '_History') + '?{0}:{1}'.filledWith(
@@ -35,30 +43,36 @@ var BackgroundModule = function () {
           try {
             tracker.sendEvent('updated', getVersionInfo());
           } catch (e) {
-            log(e);
+            console.log(e);
           }
         } else {
-          log(newVersion);
+          console.log(newVersion);
         }
       }, 1000);
     } else {
-      log(info);
+      console.log(info);
     }
   }
 
   //  function messageHandler(request, sender, sendResponse) {
   //    //log(request, sender, sendResponse);
-  //    log('message received: ' + request.code);
+  //    console.log('message received: ' + request.code);
   //  }
 
   function showErrors() {
     var msg = chrome.runtime.lastError;
     if (msg) {
-      log(msg);
+      console.log(msg);
     }
   }
-  function prepare() {
 
+  function makeTab() {
+    chrome.tabs.create({ url: popupUrl }, function (newTab) {
+      setStorage('tabId', newTab.id);
+    });
+  };
+
+  function prepare() {
     startGettingLocation();
 
     if (_notificationsEnabled) {
@@ -71,6 +85,27 @@ var BackgroundModule = function () {
       chrome.runtime.onInstalled.addListener(installed);
     }
 
+    if (browserHostType === browser.Firefox) {
+      chrome.browserAction.onClicked.addListener(function () {
+        var oldTabId = +getStorage('tabId', 0);
+        if (oldTabId) {
+          chrome.tabs.update(oldTabId, {
+            active: true
+          }, function (updatedTab) {
+            if (!updatedTab) {
+              makeTab();
+            }
+            if (chrome.runtime.lastError) {
+              console.log(chrome.runtime.lastError.message);
+            }
+          });
+        } else {
+          makeTab();
+        }
+
+      });
+    }
+
     chrome.contextMenus.create({
       'id': 'openInTab',
       'title': getMessage('browserMenuOpen'),
@@ -78,38 +113,30 @@ var BackgroundModule = function () {
     }, showErrors);
     //chrome.contextMenus.create({
     //  'id': 'paste',
-    //  'title': 'Insert Bad� Date',
+    //  'title': 'Insert Badíʿ Date',
     //  'contexts': ['editable']
     //}, showErrors);
 
     chrome.contextMenus.onClicked.addListener(function (info, tab) {
       switch (info.menuItemId) {
         //case 'paste':
-        //  log(info, tab);
+        //  console.log(info, tab);
         //  chrome.tabs.executeScript(tab.id, {code: 'document.targetElement.value = "help"'}, showErrors);
         //  break;
 
         case 'openInTab':
-          var url = chrome.extension.getURL('popup.html');
-
-          var makeTab = function () {
-            chrome.tabs.create({ url: url }, function (newTab) {
-              setStorage('tabId', newTab.id);
-            });
-          };
-
           var afterUpdate = function (updatedTab) {
             if (!updatedTab) {
               makeTab();
             }
             if (chrome.runtime.lastError) {
-              log(chrome.runtime.lastError.message);
+              console.log(chrome.runtime.lastError.message);
             }
           };
 
           switch (browserHostType) {
             case browser.Chrome:
-              chrome.tabs.query({ url: url }, function (foundTabs) {
+              chrome.tabs.query({ url: popupUrl }, function (foundTabs) {
                 switch (foundTabs.length) {
                   case 1:
                     // resuse
@@ -158,11 +185,16 @@ var BackgroundModule = function () {
       }
     });
 
-    log('prepared background');
+    console.log('prepared background');
+
+    if (browserHostType === browser.Firefox) {
+      makeTab();
+    }
   }
 
   return {
-    prepare: prepare
+    prepare: prepare,
+    makeTab: makeTab
   };
 }
 

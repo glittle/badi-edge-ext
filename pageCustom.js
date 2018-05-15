@@ -4,6 +4,7 @@ var PageCustom = () => {
     var _currentEditId = 0;
     var _currentUseForSample = false;
     var _samplesAddedToFirstPage = false;
+    var _itemsForDefaultSelects = [];
     function preparePartsList() {
         var parts = [];
         var source = shallowCloneOf(_di);
@@ -39,6 +40,7 @@ var PageCustom = () => {
         });
         updateActive();
         updateFirstPageSamples();
+        updateDefaultDropdowns();
     }
     function inputChanged() {
         updateActive();
@@ -62,11 +64,14 @@ var PageCustom = () => {
         var rawInput = input[0];
         var startPos = rawInput.selectionStart;
         var endPos = rawInput.selectionEnd;
+        if (endPos === rawInput.value.length && endPos > 0) {
+            template = ' ' + template; // if at the end of the input, add a space
+        }
         var before = rawInput.value.substring(0, startPos);
         rawInput.value = before + template + rawInput.value.substring(endPos, rawInput.value.length);
         input.focus().trigger('change');
-        rawInput.selectionStart = startPos;
-        rawInput.selectionEnd = startPos + template.length;
+        rawInput.selectionStart =
+            rawInput.selectionEnd = startPos + template.length;
     }
     function saveEdits() {
         var editInput = $('#customBuilderInput');
@@ -161,6 +166,12 @@ var PageCustom = () => {
             + format
             + '">' + letter + '</button>';
         $('.customLettersFromFirstPage').append(button);
+        if (!_samplesAddedToFirstPage) {
+            _itemsForDefaultSelects.push({
+                letter: letter,
+                format: format
+            });
+        }
     }
     function clearFromFirstPage() {
         $('.customLettersFromFirstPage').html('');
@@ -209,6 +220,9 @@ var PageCustom = () => {
             + ' type=button data-letter={letter} id="key{letter}">{letter}{currentNote}</button>'
             + ' <span data-template="{template}"></span></div>').filledWithEach(selected));
         host.toggleClass('hasSamples', selected.length > 0);
+        if (!_samplesAddedToFirstPage) {
+            fillSelectForDefaults();
+        }
         _samplesAddedToFirstPage = true;
     }
     function saveFormats() {
@@ -224,22 +238,23 @@ var PageCustom = () => {
         chrome.storage.local.set({
             customFormats: formats
         }, function () {
-            log('stored formats with local');
+            console.log('stored formats with local');
             if (chrome.runtime.lastError) {
-                log(chrome.runtime.lastError);
+                console.log(chrome.runtime.lastError);
             }
         });
         if (browserHostType === browser.Chrome) {
             chrome.storage.sync.set({
                 customFormats: formats
             }, function () {
-                log('stored stored with sync');
+                console.log('stored stored with sync');
                 if (chrome.runtime.lastError) {
-                    log(chrome.runtime.lastError);
+                    console.log(chrome.runtime.lastError);
                 }
             });
         }
         updateFirstPageSamples(true);
+        fillSelectForDefaults();
     }
     function loadFormatsFromSync() {
         var localLoad = function () {
@@ -247,14 +262,14 @@ var PageCustom = () => {
                 customFormats: []
             }, function (info) {
                 if (chrome.runtime.lastError) {
-                    log(chrome.runtime.lastError);
+                    console.log(chrome.runtime.lastError);
                 }
                 if (info.customFormats.length) {
-                    log('formats loaded from local: ' + info.customFormats.length);
+                    console.log('formats loaded from local: ' + info.customFormats.length);
                     recallSettings(info.customFormats);
                 }
                 else {
-                    log('loading from local.storage');
+                    console.log('loading from local.storage');
                     recallSettings();
                 }
             });
@@ -264,10 +279,10 @@ var PageCustom = () => {
                 customFormats: []
             }, function (info) {
                 if (chrome.runtime.lastError) {
-                    log(chrome.runtime.lastError);
+                    console.log(chrome.runtime.lastError);
                 }
                 if (info.customFormats.length) {
-                    log('formats loaded from sync: ' + info.customFormats.length);
+                    console.log('formats loaded from sync: ' + info.customFormats.length);
                     recallSettings(info.customFormats);
                 }
                 else {
@@ -317,8 +332,69 @@ var PageCustom = () => {
         $('#btnCustomBuilderSave').on('click', saveEdits);
         $('#btnCustomBuilderCancel').on('click', cancelEditing);
         $('#btnCustomBuilderDelete').on('click', deleteSample);
+        $('#customLoadTopDay').on('change', saveTopDayFormat);
+        $('#customLoadToolTip1').on('change', saveTopToolTipFormat1);
+        $('#customLoadToolTip2').on('change', saveTopToolTipFormat2);
     }
     ;
+    function fillSelectForDefaults() {
+        // each item in list is:  letter:'A',format:'{format}'
+        fillSelectDefault('customLoadToolTip1', 'formatToolTip1', getMessage('formatIconToolTip'));
+        fillSelectDefault('customLoadToolTip2', 'formatToolTip2', getMessage('nearestSunset'));
+        fillSelectDefault('customLoadTopDay', 'formatTopDay', getMessage('bTopDayDisplay'));
+        updateDefaultDropdowns();
+    }
+    function fillSelectDefault(id, storageId, message) {
+        var defaultFormat = message;
+        var defaultFound;
+        var optionsHtml = ['<optgroup label="{0}">'.filledWith(getMessage('standardFormats'))];
+        $.each(_itemsForDefaultSelects, function (i, el) {
+            var format = el.format;
+            var isDefault = false;
+            if (format === defaultFormat) {
+                defaultFound = true;
+                isDefault = true;
+            }
+            optionsHtml.push('<option value="' + format.replace(/"/g, '&quot;') + '" data-prefix="' + (isDefault ? getMessage("defaultFormat") : '') + el.letter + ' - " data-format="' + format + '"></option>');
+        });
+        optionsHtml.push('</optgroup>');
+        // add local custom formats
+        var formats = getStorage('customFormats', []);
+        if (formats.length > 0) {
+            optionsHtml.push('<optgroup label="{0}">'.filledWith(getMessage('customFormats')));
+            $.each(formats, function (i, el) {
+                var format = el.f;
+                optionsHtml.push('<option value="' + format.replace(/"/g, '&quot;') + '" data-prefix="' + (i + 1) + ' - " data-format="' + format + '"></option>');
+            });
+            optionsHtml.push('</optgroup>');
+        }
+        // fill select
+        var ddl = $('#' + id)
+            .html((defaultFound ? '' : '<option value="' + defaultFormat + '" data-prefix="Default - " data-format="' + defaultFormat + '"></option>')
+            + optionsHtml.join(''));
+        ddl.val(getStorage(storageId, ''));
+        if (!ddl.val()) {
+            ddl.val(defaultFormat);
+        }
+    }
+    function saveTopToolTipFormat1(ev) {
+        setStorage('formatToolTip1', $(ev.target).find('option:selected').data('format'));
+        showIcon();
+    }
+    function saveTopToolTipFormat2(ev) {
+        setStorage('formatToolTip2', $(ev.target).find('option:selected').data('format'));
+        showIcon();
+    }
+    function saveTopDayFormat(ev) {
+        setStorage('formatTopDay', $(ev.target).find('option:selected').data('format'));
+        showInfo(_di);
+    }
+    function updateDefaultDropdowns() {
+        $('.customLoadDefaults option').each(function (i, el) {
+            var option = $(el);
+            option.html(option.data('prefix') + option.data('format').filledWith(_di));
+        });
+    }
     function startup() {
         recallSettings(); // do local storage quickly... let sync storage overwrite later
         preparePartsList();

@@ -1,6 +1,7 @@
 {
   "1day": {
-    "message": "{0} நாளில்"
+    "message": "{0} நாளில்",
+    "description": "used in top left 'Upcoming' list, when the event is 1 day in the future "
   },
   "afterSunset": {
     "message": "மாலை - அஸ்தமனத்திற்குப் பிறகு"
@@ -28,6 +29,10 @@
     "message": "உபரி நாள்கள்,பேரொளி,புகழ்,அழகு,சிறப்பு,ஒளி,இரக்கம்,சொற்கள்,நிறைவு,பெயர்,வலிமை,விருப்பம்,அறிவு, சக்தி,உரை,கேள்வி,மதிப்பு,மாட்சிமை,அரசு,உயர்வு",
     "description": "Names of days/months, with first one being Ayyam-i-ha"
   },
+  "bMonthNameAr": {
+    "message": "Ayyám-i-Há,Bahá,Jalál,Jamál,`Aẓamat,Núr,Rahmat,Kalimát,Kamál,Asmá’,`Izzat,Ma<u>sh</u>íyyat,`Ilm,Qudrat,Qawl,Masá'il,<u>Sh</u>araf,Sulṭán,Mulk,`Alá’",
+    "description": "month names, start with Ayyam-i-Ha"
+  },
   "browserActionTitle": {
     "message": "பதிவேற்றம்...",
     "description": "Shown until the dynamic tip is created"
@@ -48,7 +53,11 @@
   },
   "bWeekDayMeaning": {
     "message": ",புகழ்,அழகு,நிறைவு,கிருபை,நீதி,மாட்சிமை,சுதந்திரம்",
-    "description": "start with Saturday"
+    "description": "start with Saturday and a leading comma"
+  },
+  "bWeekdayNameAr": {
+    "message": ",Jalál,Jamál,Kamál,Fiḍál,‘Idál,Istijlál,Istiqlál",
+    "description": "weekday names, with leading , "
   },
   "bYearInVahidMeaning": {
     "message": ",அ,ப,தந்தை,ட,வாசல்,வ,நித்தியம்,வள்ளன்மை,பேரொளி,அன்பு,மகிழ்ச்சிகரமான,பதில்,தனி,அபரிமிதம்,பாசம்,ஆரம்பம்,ஒளிர்வு,அதி ஒளிர்வு,ஒற்றுமை",
@@ -357,7 +366,8 @@
     "message": ",முதல்,இரண்டாம்,மூன்றாம்,நான்காம்,ஐந்தாம்,ஆறாம்,ஏழாம்,எட்டாம்,ஒன்பதாம்,பத்தாம்,பதினொன்றாம்,பன்னிரண்டாம்,பதிமூன்றாம்,பதிநான்காம்,பதினைந்தாம்,பதினேழாம்,பதினெட்டாம்,பத்தொன்பதாம்"
   },
   "otherDays": {
-    "message": "{0} நாள்களில்"
+    "message": "{0} நாள்களில்",
+    "description": "used in top left 'Upcoming' list, when the event is more than 1 day in the future (see 1day)"
   },
   "pick_pageCal1": {
     "message": "வருடம்"
@@ -407,7 +417,7 @@
     "description": "hold Shift and press left arrow key"
   },
   "rbDefLang_Local": {
-    "message": "local (தமிழ்)",
+    "message": "தமிழ்",
     "description": "put your language here, in your script"
   },
   "shoghiExample": {
@@ -425,7 +435,7 @@
   },
   "specialTime_0100S": {
     "message": "அதிகாலை 1 மணி (நியம நேரம்)",
-    "description": "Martyrdom of the Bab"
+    "description": "Ascension of `Abdu'l-Bahá"
   },
   "specialTime_0300S": {
     "message": "காலை 3 மணி (நியம நேரம்)",
@@ -496,7 +506,12 @@
     "description": "Shown in the upcoming dates area"
   },
   "translation": {
-    "message": "ta"
+    "message": "ta",
+    "description": "This needs to be the international language code for this language, shown in English letters."
+  },
+  "translationEnglishName": {
+    "message": "Tamil",
+    "description": "The name of this language, in English"
   },
   "upcomingDateFormat": {
     "message": "{bMonthNamePri} {bDay} ({gCombined})",
@@ -507,7 +522,7 @@
   },
   "use24HourClock": {
     "message": "false",
-    "description": "use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
+    "description": "Do not translate.  Use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
   },
   "Vahid": {
     "message": "வஹீட்"

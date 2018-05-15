@@ -1,5 +1,6 @@
-# Badí' Calendar Edge Web Extension #
+# Badíʿ Calendar Edge Extension #
 
+Port of the Chrome extension to work in Edge.
 
 ### To be done ###
 

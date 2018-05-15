@@ -1,6 +1,7 @@
 {
   "1day": {
-    "message": "over {0} dag"
+    "message": "over {0} dag",
+    "description": "used in top left 'Upcoming' list, when the event is 1 day in the future "
   },
   "actionSpeakDesc": {
     "message": "De herinnering wordt hardop voorgelezen met deze Chrome stem:",
@@ -33,7 +34,7 @@
     "description": "Names of days/months, with first one being Ayyam-i-ha"
   },
   "bMonthNameAr": {
-    "message": "Ayyám-i-Há,Bahá,Jalál,Jamál,`Azamat,Núr,Rahmat,Kalimát,Kamál,Asmá’,`Izzat,Mashíyyat,`Ilm,Qudrat,Qawl,Masá'il,Sharaf,Sultán,Mulk,`Alá’",
+    "message": "Ayyám-i-Há,Bahá,Jalál,Jamál,`Aẓamat,Núr,Rahmat,Kalimát,Kamál,Asmá’,`Izzat,Ma<u>sh</u>íyyat,`Ilm,Qudrat,Qawl,Masá'il,<u>Sh</u>araf,Sulṭán,Mulk,`Alá’",
     "description": "month names, start with Ayyam-i-Ha"
   },
   "browserActionTitle": {
@@ -43,6 +44,14 @@
   "browserMenuOpen": {
     "message": "Open in een nieuw tabblad",
     "description": "shown as menu item when right-clicking on the browser icon "
+  },
+  "btnCal2M": {
+    "message": "Focus op maand",
+    "description": "on button"
+  },
+  "btnCal2Y": {
+    "message": "Focus op jaar",
+    "description": "on button"
   },
   "btnCustomBuilderCancel": {
     "message": "Cancel / New"
@@ -56,6 +65,38 @@
   "btnJumpToTitle": {
     "message": "Ga dit aantal dagen voor- of achteruit",
     "description": "tooltip"
+  },
+  "btnPlannerExportCsv": {
+    "message": "Exporteer als CSV",
+    "description": "button - export to Comma Separated Value format for import into Excel"
+  },
+  "btnPlannerExportICal": {
+    "message": "Exporteer als ICAL",
+    "description": "button - export to iCalendar format"
+  },
+  "btnPlannerHelperFeasts": {
+    "message": "feesten",
+    "description": "helper button"
+  },
+  "btnPlannerHelperHD1": {
+    "message": "Heilige dagen (vrij van werk)",
+    "description": "helper button"
+  },
+  "btnPlannerHelperHD2": {
+    "message": "Alle heilige dagen",
+    "description": "helper button"
+  },
+  "btnPlannerHelperNone": {
+    "message": "Geen",
+    "description": "helper button"
+  },
+  "btnPlannerHelperRid": {
+    "message": "Ridván",
+    "description": "helper button"
+  },
+  "btnPlannerHelperTHB": {
+    "message": "Tweeling geboortedagen",
+    "description": "helper button"
   },
   "btnReminderCancel": {
     "message": "Annuleer",
@@ -81,13 +122,16 @@
     "message": "Nu testen",
     "description": "show a sample of the reminder now"
   },
+  "btnRetry2": {
+    "message": "Nu opnieuw laden"
+  },
   "bTopDayDisplay": {
     "message": "{bDay} {bMonthNamePri} {bYear}",
     "description": "top right corner"
   },
   "bWeekDayMeaning": {
     "message": ",Heerlijkheid,Schoonheid,Volmaaktheid,Genade,Gerechtigheid,Majesteit,Onafhankelijkheid",
-    "description": "start with Saturday"
+    "description": "start with Saturday and a leading comma"
   },
   "bWeekdayNameAr": {
     "message": ",Jalál,Jamál,Kamál,Fiḍál,‘Idál,Istijlál,Istiqlál",
@@ -98,11 +142,19 @@
     "description": "Vahid names, with leading , "
   },
   "bYearInVahidNameAr": {
-    "message": ",Alif,Bá’,Ab,Dál,Báb,Váv,Abad,Jád,Bahá',Ḥubb,Bahháj,Javáb,Aḥad,Vahháb,Vidád,Badí‘,Bahí,Abhá,Váḥid",
+    "message": ",Alif,Bá’,Ab,Dál,Báb,Váv,Abad,Jád,Bahá,Ḥubb,Bahháj,Javáb,Aḥad,Vahháb,Vidád,Badíʿ,Bahí,Abhá,Váḥid",
     "description": "Arabic names of years in a Vahid, with leading , "
   },
+  "cal2DarkerColors": {
+    "message": "Donkerdere kleuren (<u>c</u>)",
+    "description": "a check box on the calendar. If checked, darker colors are used."
+  },
+  "cal2ShowTimes": {
+    "message": "Zonsopgang/ondergang<u>t</u>tijden laten zien?",
+    "description": "a check box on the calendar, asking whether sunrise and sunset times should be displayed. If they are not, the calendar is generic for any location."
+  },
   "Chrome_History": {
-    "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
+    "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history",
     "description": "about page"
   },
   "Chrome_WebStore": {
@@ -136,8 +188,24 @@
   "customDefined": {
     "message": "Custom Date Formats"
   },
+  "customFormats": {
+    "message": "Aangepaste formaten",
+    "description": "in the list of formats at the bottom of of the 'Custom' page"
+  },
   "customIntroClick": {
     "message": "Click Copy to copy formatted date to the clipboard."
+  },
+  "customLoadDefaultToolTip": {
+    "message": "Formaat gebruikt in de Chrome icoon-muishint:"
+  },
+  "customLoadDefaultToolTip1": {
+    "message": "Regel 1"
+  },
+  "customLoadDefaultToolTip2": {
+    "message": "Regel 2"
+  },
+  "customLoadDefaultTopDay": {
+    "message": "Formaat om bovenaan de meeste pagina's te laten zien:"
   },
   "customLoadLetters": {
     "message": "Click to start from a standard format: "
@@ -147,9 +215,6 @@
   },
   "customSelectForFrontPage": {
     "message": "Tick box to show on {0} page."
-  },
-  "customTitle": {
-    "message": "Date Format Builder"
   },
   "customUseAsSample": {
     "message": "Use as Sample?"
@@ -181,6 +246,10 @@
   },
   "dayStartedPast": {
     "message": "is begonnen"
+  },
+  "defaultFormat": {
+    "message": "(Standaard)",
+    "description": "in the list of formats at the bottom of of the 'Custom' page"
   },
   "elements": {
     "message": "Vuur,Lucht,Water,Aarde",
@@ -247,13 +316,13 @@
     "message": "60 minutes before"
   },
   "exportBadiYear0": {
-    "message": "Badí' year - {0} B.E."
+    "message": "Badíʿ year - {0} B.E."
   },
   "exportBadiYear1": {
-    "message": "Badí' year - {0} B.E."
+    "message": "Badíʿ year - {0} B.E."
   },
   "exportCalendarDescription": {
-    "message": "Datums in de Badí'-kalender voor {location}",
+    "message": "Datums in de Badíʿ-kalender voor {location}",
     "description": "title on page"
   },
   "exportDayFromSunset": {
@@ -274,7 +343,7 @@
     "message": "Fast until {endingSunsetDesc}"
   },
   "exporterItemDescDay": {
-    "message": "A day in the Badí' calendar.",
+    "message": "A day in the Badíʿ calendar.",
     "description": "Included as the description in every calendar entry"
   },
   "exporterItemDescFast": {
@@ -282,7 +351,7 @@
     "description": "Included as the description in every calendar entry"
   },
   "exporterItemDescGeneralTime": {
-    "message": "Gathering may start at any time on this Badí' day.",
+    "message": "Gathering may start at any time on this Badíʿ day.",
     "description": "For when a Holy Day as a particular time"
   },
   "exporterItemDescShared": {
@@ -294,7 +363,7 @@
     "description": "For when a Holy Day as a particular time"
   },
   "exporterTitle": {
-    "message": "Exporteer de Badí' kalender",
+    "message": "Exporteer de Badíʿ kalender",
     "description": "title on page"
   },
   "exportFile": {
@@ -316,7 +385,7 @@
     "message": "Location Information"
   },
   "exportIntro": {
-    "message": "Belangrijk! Kijk op <a target=\"sitesExport\" href=\"https://sites.google.com/site/badicalendartools/home/chrome-extension/exporting\">deze web pagina</a> voor informatie en waarschuwingen!",
+    "message": "Belangrijk! Kijk op <a target=\"sitesExport\" href=\"https://sites.google.com/site/badicalendartools/home/web-extension/exporting\">deze web pagina</a> voor informatie en waarschuwingen!",
     "description": "Be sure the URL remains in English, to find the webpage!"
   },
   "exportName": {
@@ -326,13 +395,13 @@
     "message": "Number of calendar entries that will be created (approximately):"
   },
   "exportOption_AllDay": {
-    "message": "All-day' event from midnight <em>(1 day long)</em>"
+    "message": "All-day event from midnight <em>(1 day long)</em>"
   },
   "exportOption_BeginningSunset": {
     "message": "At beginning sunset only"
   },
   "exportOption_Date": {
-    "message": "Badí'-dagen <em>(365/366 dagen)</em>"
+    "message": "Badíʿ-dagen <em>(365/366 dagen)</em>"
   },
   "exportOption_Fast": {
     "message": "Fast Days <em>(19 days)</em>"
@@ -371,7 +440,7 @@
     "message": "1. Full Calendar"
   },
   "exportQuickPick1Text": {
-    "message": "Display each Badí' day, along with Holy Days and Feast times. No alerts."
+    "message": "Display each Badíʿ day, along with Holy Days and Feast times. No alerts."
   },
   "exportQuickPick2": {
     "message": "2. Fast Time - Morning"
@@ -422,15 +491,15 @@
     "message": "Ridvánfeest"
   },
   "Firefox_History": {
-    "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
+    "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history",
     "description": "about page"
   },
   "Firefox_WebStore": {
-    "message": "https://addons.mozilla.org/en-US/firefox/addon/bad%C3%AD-calendar/",
+    "message": "https://addons.mozilla.org/en-US/firefox/addon/wondrous-calendar/",
     "description": "link to Webstore when running in Firefox"
   },
   "Firefox_WebStoreSupport": {
-    "message": "https://addons.mozilla.org/en-US/firefox/addon/bad%C3%AD-calendar/",
+    "message": "https://addons.mozilla.org/en-US/firefox/addon/wondrous-calendar/",
     "description": "link to Webstore support link when running in Firefox"
   },
   "formatIconClick": {
@@ -596,6 +665,10 @@
   "KullishayFormat": {
     "message": "{bKullishay}"
   },
+  "KullishayLocal": {
+    "message": "Alle dingen",
+    "description": "Transalation of Kull-i-Shay"
+  },
   "locationError": {
     "message": "Niet mogelijk uw huidige locatie te bepalen.\n\nDe extensie zal voor iedere dag 18:30 gebruiken.",
     "description": "If the system cannot determine the location, this is shown in an alert window."
@@ -636,6 +709,10 @@
   },
   "next": {
     "message": "Volg &rarr;"
+  },
+  "nextMonth": {
+    "message": "Volgende <u>m</u>aand",
+    "description": "button to move to next month (gregorian or badi)"
   },
   "nextRefreshAlarm": {
     "message": "Next refresh scheduled after {0}: {1}",
@@ -685,7 +762,8 @@
     "message": ",eerste,tweede,derde,vierde,vijfde,zesde,zevende,achtste,negende,tiende,elfde,twaalfde,dertiende,veertiende,vijftiende,zestiende,zeventiende,achttiende,negentiende"
   },
   "otherDays": {
-    "message": "over {0} dagen"
+    "message": "over {0} dagen",
+    "description": "used in top left 'Upcoming' list, when the event is more than 1 day in the future (see 1day)"
   },
   "past_Day": {
     "message": "begonnen om {time}",
@@ -708,6 +786,9 @@
   },
   "pick_pageCal1": {
     "message": "Jaar"
+  },
+  "pick_pageCal2": {
+    "message": "Kalender"
   },
   "pick_pageCalGreg": {
     "message": "Gregoriaans jaar",
@@ -738,9 +819,89 @@
   "pick_pageLists": {
     "message": "Lijsten"
   },
+  "pick_pagePlanner": {
+    "message": "Planner",
+    "description": "tab"
+  },
   "pick_pageReminders": {
     "message": "Herinneringen",
     "description": "page tab name and page title"
+  },
+  "pick_pageSetup": {
+    "message": "Inrichting",
+    "description": "page for setup information"
+  },
+  "planFromWhen": {
+    "message": "Met ingang van?",
+    "description": "another input"
+  },
+  "planFromWhenNextYear": {
+    "message": "Begin van het volgende Badíʿ-jaar",
+    "description": "answer for planFromWhen"
+  },
+  "planFromWhenThisYear": {
+    "message": "Begin van dit Badé'-jaar",
+    "description": "answer for planFromWhen"
+  },
+  "planFromWhenToday": {
+    "message": "Vandaag",
+    "description": "answer for planFromWhen"
+  },
+  "planIncludeWhat": {
+    "message": "Dag of vooravond meenemen?",
+    "description": "include day or evening or both?"
+  },
+  "planIncludeWhatBoth": {
+    "message": "Allebei",
+    "description": "answer to planIncludeWhat"
+  },
+  "planIncludeWhatDay": {
+    "message": "Dag",
+    "description": "answer to planIncludeWhat - from midnight to sunset (frag2)"
+  },
+  "planIncludeWhatEve": {
+    "message": "Avond",
+    "description": "answer to planIncludeWhat - from sunset to midnight (frag1)"
+  },
+  "plannerResults": {
+    "message": "Resultaten",
+    "description": "title over results"
+  },
+  "plannerShowWhat": {
+    "message": "Wat tonen?",
+    "description": "First question in inputs"
+  },
+  "plannerStartSunsetForLocation": {
+    "message": "Beginnend op zonsopgang om {0}",
+    "description": "title in results table - sunset at location"
+  },
+  "plannerTitle": {
+    "message": "Langetermijnsplanner",
+    "description": "page title"
+  },
+  "plannerTitle2": {
+    "message": "Planning-selectie",
+    "description": "title over inputs"
+  },
+  "plannerWhatEvent": {
+    "message": "Welke?",
+    "description": "which event or events?"
+  },
+  "plannerWhatManyEvents": {
+    "message": "Meer heilige dagen en feesten",
+    "description": "answer to first question"
+  },
+  "plannerWhatOneEvent": {
+    "message": "Een heilige dag of negentiendaagsfeest",
+    "description": "answer to first question"
+  },
+  "planUntilUnitsYears": {
+    "message": "jaren",
+    "description": "answer to planUntilWhen"
+  },
+  "planUntilWhen": {
+    "message": "Tot wanneer?",
+    "description": "another question"
   },
   "pm": {
     "message": "nm",
@@ -757,6 +918,10 @@
   "prev": {
     "message": "&larr; Vorig"
   },
+  "prevMonth": {
+    "message": "Vorige maa<u>n</u>d",
+    "description": "button to move to previous month (gregorian or badi)"
+  },
   "prevYear": {
     "message": "Jaar terug",
     "description": "hold Shift and press left arrow key"
@@ -765,8 +930,16 @@
     "message": "Toets shift + pijl naar links in om het voorgaand jaar te zien",
     "description": "hold Shift and press left arrow key"
   },
+  "rbDefLangText": {
+    "message": "Taal voor maanden, enz.",
+    "description": "on first tab... show Arabic names or in your language"
+  },
+  "rbDefLang_Ar": {
+    "message": "Arabisch",
+    "description": "Shown on the main page (see screenshot in PhraseApp)"
+  },
   "rbDefLang_Local": {
-    "message": "local (Nederlands)",
+    "message": "Nederlands",
     "description": "put your language here, in your script"
   },
   "reminderAction_ifttt": {
@@ -793,7 +966,7 @@
     "description": "used when showing list of alarms scheduled today"
   },
   "reminderBDay": {
-    "message": "Dag {num} van de Badí' maand",
+    "message": "Dag {num} van de Badíʿ maand",
     "description": "what this reminder is triggered on (left out the the apostrophe after Badí since it breaks when displayed)"
   },
   "reminderBefore": {
@@ -818,7 +991,7 @@
     "message": "{eventTime} op {eventDay} {eventMonthShort}"
   },
   "reminderDayOfMonth": {
-    "message": "Op dag {num} van de Badí' maand",
+    "message": "Op dag {num} van de Badíʿ maand",
     "description": "in list of defined reminders"
   },
   "reminderDayWhen": {
@@ -922,7 +1095,7 @@
     "description": "a group of triggers - sunset sunrise noon midnight"
   },
   "reminderTrigger_bday": {
-    "message": "Badí' dag",
+    "message": "Badíʿ dag",
     "description": "what this reminder is triggered on"
   },
   "reminderTrigger_feast": {
@@ -965,6 +1138,34 @@
     "message": "Geen",
     "description": "in dropdown list, for when no other action is chosen"
   },
+  "setupAboutPara": {
+    "message": "<p>Deze extensie is ontworpen om huidige informatie over de Badíʿ-kalender weer te geven voor waar je bent.</p><p>Voor meer informatie, klik op de  'Versie'-link, of op een icoon!</p><p></p>",
+    "description": "explanation of "
+  },
+  "setupAboutTitle": {
+    "message": "Over",
+    "description": "title for the About section"
+  },
+  "setupColor": {
+    "message": "Tekstkleur voor werkbalkicoon:",
+    "description": "on setup page"
+  },
+  "setupColorH3": {
+    "message": "Icoonkleur",
+    "description": "on setup page"
+  },
+  "setupOptOut": {
+    "message": "Uitschrijven?",
+    "description": "label for checkbox"
+  },
+  "setupOptOutPara": {
+    "message": "Om te begrijpen hoe deze extensie gebruikt word worden er statistieken geregistreerd wanneer je tussen pagina's switcht of bij andere belangrijke acties. Dit is anoniem, en de gerelateerde rapporten kunnen door Glen Little worden gezien. Als je dit uit wil zetten en hier niet aan mee wilt doen, klik dit vakje aan:",
+    "description": "explanation of opting out of Google Analytics"
+  },
+  "setupOptOutTitle": {
+    "message": "Analytics",
+    "description": "title for setup section about opting out of Google Analytics"
+  },
   "shoghiExample": {
     "message": "Deze dag heet {bWeekdayNamePri}, de dag {bDayNamePri} van de maand {bMonthNamePri}, van het jaar {bYearInVahidNamePri}, van de {bVahidOrdinalName} {VahidLabelPri}, van de {bKullishayOrdinalName} {KullishayLabelPri}.",
     "description": "Example given by Shoghi Effendi"
@@ -980,7 +1181,7 @@
   },
   "specialTime_0100S": {
     "message": "1:00 (Standaard Tijd)",
-    "description": "Martyrdom of the Bab"
+    "description": "Ascension of `Abdu'l-Bahá"
   },
   "specialTime_0300S": {
     "message": "3:00 (Standaard Tijd)",
@@ -997,6 +1198,10 @@
   "specialTime_SS2": {
     "message": "Ongeveer twee uur na zonsondergang",
     "description": "Declaration of the Bab"
+  },
+  "standardFormats": {
+    "message": "Standaardformaten",
+    "description": "in the list of formats at the bottom of of the 'Custom' page"
   },
   "startedWithSunset": {
     "message": "Begonnen met zonsondergang om {0}"
@@ -1020,7 +1225,7 @@
     "description": "heading in Fast days listing"
   },
   "sunsetHeading": {
-    "message": "Begin van de Badí' Dag",
+    "message": "Begin van de Badíʿ Dag",
     "description": "heading in Events listing"
   },
   "suspendWorkHeading": {
@@ -1035,15 +1240,21 @@
     "message": "Tips",
     "description": "hints of how to use the tool"
   },
+  "tipsAbout": {
+    "message": "Accuraatheid?"
+  },
+  "tipsAboutText": {
+    "message": "Tot 221 B.E. (2064 n.C.) staan de datums vast. Daarna zijn er mogelijk wijzigingen omdat de astronomische waarnemingen verbeteren. Het wordt aangeraden deze extensie of app niet te gebruiken om plannen vast te leggen n het jaar 221 B.E.."
+  },
   "tipsText": {
     "message": "Gebruik PgUp/PgDn toetsen om tussen pagina's te wisselen.\nGebruik pijl naar rechts/links om van dag te veranderen.\nGebruik / te wisselen tussen voor/na zonsondergang."
   },
   "title": {
-    "message": "Badí' kalender",
+    "message": "Badíʿ kalender",
     "description": "The title of the extension. Shown in a number of locations."
   },
   "titleDesc": {
-    "message": "Laat de huidige datum zien in de Badí'-kalender, de officiële kalender van het Bahá'í-geloof.",
+    "message": "Laat de huidige datum zien in de Badíʿ-kalender, de officiële kalender van het Bahá'í-geloof.",
     "description": "Used in the manifest"
   },
   "Tonight": {
@@ -1051,7 +1262,12 @@
     "description": "Shown in the upcoming dates area"
   },
   "translation": {
-    "message": "nl"
+    "message": "nl",
+    "description": "This needs to be the international language code for this language, shown in English letters."
+  },
+  "translationEnglishName": {
+    "message": "Dutch",
+    "description": "The name of this language, in English"
   },
   "upcomingDateFormat": {
     "message": "{bDay} {bMonthNamePri} ({gCombined})",
@@ -1062,13 +1278,16 @@
   },
   "use24HourClock": {
     "message": "true",
-    "description": "use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
+    "description": "Do not translate.  Use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
   },
   "Vahid": {
     "message": "Váḥid"
   },
   "VahidFormat": {
     "message": "{bVahid}"
+  },
+  "VahidLocal": {
+    "message": "Eenheid"
   },
   "version": {
     "message": "Versie {0}"

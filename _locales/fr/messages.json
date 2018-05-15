@@ -1,6 +1,7 @@
 {
   "1day": {
-    "message": "dans {0} jour"
+    "message": "dans {0} jour",
+    "description": "used in top left 'Upcoming' list, when the event is 1 day in the future "
   },
   "afterSunset": {
     "message": "soir - après le coucher du soleil"
@@ -48,7 +49,7 @@
   },
   "bWeekDayMeaning": {
     "message": ",Gloire,Beauté,Perfection,Grâce,Justice,Majesté,Indépendance",
-    "description": "start with Saturday"
+    "description": "start with Saturday and a leading comma"
   },
   "bWeekdayNameAr": {
     "message": ",Jalál,Jamál,Kamál,Fiḍál,‘Idál,Istijlál,Istiqlál",
@@ -59,7 +60,7 @@
     "description": "Vahid names, with leading , "
   },
   "bYearInVahidNameAr": {
-    "message": ",Alif,Bá’,Ab,Dál,Báb,Váv,Abad,Jád,Bahá',Ḥubb,Bahháj,Javáb,Aḥad,Vahháb,Vidád,Badí‘,Bahí,Abhá,Váḥid",
+    "message": ",Alif,Bá’,Ab,Dál,Báb,Váv,Abad,Jád,Bahá,Ḥubb,Bahháj,Javáb,Aḥad,Vahháb,Vidád,Badíʿ,Bahí,Abhá,Váḥid",
     "description": "Arabic names of years in a Vahid, with leading , "
   },
   "Chrome_WebStore": {
@@ -168,15 +169,15 @@
     "message": "Festival de Ridván"
   },
   "Firefox_History": {
-    "message": "https://sites.google.com/site/badicalendartools/home/chrome-extension/history",
+    "message": "https://sites.google.com/site/badicalendartools/home/web-extension/history",
     "description": "about page"
   },
   "Firefox_WebStore": {
-    "message": "https://addons.mozilla.org/en-US/firefox/addon/bad%C3%AD-calendar/",
+    "message": "https://addons.mozilla.org/en-US/firefox/addon/wondrous-calendar/",
     "description": "link to Webstore when running in Firefox"
   },
   "Firefox_WebStoreSupport": {
-    "message": "https://addons.mozilla.org/en-US/firefox/addon/bad%C3%AD-calendar/",
+    "message": "https://addons.mozilla.org/en-US/firefox/addon/wondrous-calendar/",
     "description": "link to Webstore support link when running in Firefox"
   },
   "formatIconClick": {
@@ -385,7 +386,8 @@
     "message": ",premier,deuxième,troisième,quatrième,cinquième,sixième,septième,huitième,neuvième,dixième,onzième,douzième,treizième,quatorzième,quinzième,seizième,dix-septième,dix-huitième,dix-neuvième"
   },
   "otherDays": {
-    "message": "dans {0} jours"
+    "message": "dans {0} jours",
+    "description": "used in top left 'Upcoming' list, when the event is more than 1 day in the future (see 1day)"
   },
   "pick_pageCal1": {
     "message": "Année"
@@ -431,7 +433,7 @@
     "description": "hold Shift and press left arrow key"
   },
   "rbDefLang_Local": {
-    "message": "local (français)",
+    "message": "français",
     "description": "put your language here, in your script"
   },
   "reminderList_timeRelative": {
@@ -453,7 +455,7 @@
   },
   "specialTime_0100S": {
     "message": "1 am (Standard Time)",
-    "description": "Martyrdom of the Bab"
+    "description": "Ascension of `Abdu'l-Bahá"
   },
   "specialTime_0300S": {
     "message": "3 am (Standard Time)",
@@ -493,7 +495,7 @@
     "description": "heading in Fast days listing"
   },
   "sunsetHeading": {
-    "message": "Start of Badí' Day",
+    "message": "Start of Badíʿ Day",
     "description": "heading in Events listing"
   },
   "suspendWorkHeading": {
@@ -508,11 +510,11 @@
     "message": "Use PgUp/PgDn keys to select panels.\nUse Right/Left arrow keys to change days.\nUse / to switch before/after sunset."
   },
   "title": {
-    "message": "Calendrier Badí",
+    "message": "Calendrier Badíʿ",
     "description": "The title of the extension. Shown in a number of locations."
   },
   "titleDesc": {
-    "message": "Fournit la date du jour selon le Calendrier Badí', le calendrier officiel de la Foi Bahá'íe.",
+    "message": "Fournit la date du jour selon le Calendrier Badíʿ, le calendrier officiel de la Foi Bahá'íe.",
     "description": "Used in the manifest"
   },
   "Tonight": {
@@ -520,7 +522,12 @@
     "description": "Shown in the upcoming dates area"
   },
   "translation": {
-    "message": "fr-FR"
+    "message": "fr",
+    "description": "This needs to be the international language code for this language, shown in English letters."
+  },
+  "translationEnglishName": {
+    "message": "French",
+    "description": "The name of this language, in English"
   },
   "upcomingDateFormat": {
     "message": "{bDay} {bMonthNamePri} ({gCombined})",
@@ -531,7 +538,7 @@
   },
   "use24HourClock": {
     "message": "true",
-    "description": "use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
+    "description": "Do not translate.  Use 'true' or 'false' to use 24 hour or 12 hour (am/pm) clock"
   },
   "Vahid": {
     "message": "Váḥid"

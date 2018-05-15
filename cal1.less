@@ -1,3 +1,5 @@
+@import "colors.less";
+
 #pageCal1 {
 
   .months {
@@ -18,6 +20,7 @@
     line-height: 9.75pt;
     font-size: 8.25pt;
     text-align: center;
+    margin: 1px 0 0 0;
   }
 
   .bm {
@@ -29,20 +32,24 @@
     font-size: 6pt;
   }
 
+  .mGroup0 {
+    background-color: #fff;
+  }
+
   .mGroup1 {
-    background-color: rgb(255, 230, 230); /* fire of God */
+    background-color: @lightFire; /* fire of God */
   }
 
   .mGroup2 {
-    background-color: rgb(250, 250, 250); /* air of eternity */
+    background-color: @lightAir; /* air of eternity */
   }
 
   .mGroup3 {
-    background-color: rgb(230, 230, 255); /* water of Divine Unity */
+    background-color: @lightWater; /* water of Divine Unity */
   }
 
   .mGroup4 {
-    background-color: rgb(230, 255, 230); /* earth */
+    background-color: @lightEarth; /* earth */
   }
 
   .element.mGroup1 {
@@ -112,9 +119,12 @@
     margin-right: 3px;
     font-size: 9.75pt;
     line-height: 9.75pt;
-    padding: 1px 0 1px 1px;
+    padding: 1px 0 1px 4px;
+    margin-left: -3px;
     white-space: nowrap;
     vertical-align: top;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
 
   .gmInitial {
@@ -222,6 +232,7 @@
 
 @media print {
   body[data-pageid="pageCal1"] {
+
     #otherPageTitle {
       display: block !important;
     }

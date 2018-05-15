@@ -1,22 +1,27 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8" />
   <!--<link href="jquery-ui.min.css" rel=stylesheet>-->
   <title id="windowTitle"></title>
   <link href="popup.css" rel=stylesheet>
   <link href="cal1.css" rel=stylesheet>
+  <link href="cal2.css" rel=stylesheet>
   <link href="calWheel.css" rel=stylesheet>
   <link href="calGreg.css" rel=stylesheet>
   <script src="jquery-2.1.3.min.js"></script>
   <script src="suncalc.js"></script>
   <script src="moment.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Philosopher:400,400i,700,700i" rel="stylesheet">
 </head>
+
 <body>
   <div id="mainBody">
     <div id="initialCover">
       <div class="initialMsgArea">
-        <span id="loadingMsg"></span><span id="loadingCount"></span>
+        <span id="loadingMsg"></span>
+        <span id="loadingCount"></span>
       </div>
     </div>
     <div class="mainTop">
@@ -35,7 +40,7 @@
             <input class=bVahidPicker type=number max=20 min=0>
           </div>
           <div>
-            <span data-msg="YearOfVahid"></span>
+            <span data-msg="YearOfVahid" data-msg-di="true"></span>
             <input class=bYearInVahidPicker type=number max=20 min=0>
           </div>
         </div>
@@ -46,10 +51,21 @@
           <button type=button class="btnJumpTo button" data-msg="btnJumpTo,title:btnJumpToTitle"></button>
         </div>
 
-        <div class="yearPicker">
-          <button type=button class="btnChangeYear button" data-delta="-1" data-msg="prevYear,title:prevYearTitle"></button>
-          <input class=bYearPicker type=number max=1000 min=1>
-          <button type=button class="btnChangeYear button" data-delta="1" data-msg="nextYear,title:nextYearTitle"></button>
+        <div>
+          <div class="yearPicker">
+            <button type=button class="btnChangeYear button" data-delta="-1" data-msg="prevYear,title:prevYearTitle"></button>
+            <input class=bYearPicker type=number max=1000 min=1>
+            <button type=button class="btnChangeYear button" data-delta="1" data-msg="nextYear,title:nextYearTitle"></button>
+          </div>
+
+          <div class="monthNav">
+            <button type=button class="btnChangeMonth button" data-delta="-1" id="changeMonthPrev" data-msg="prevMonth,extractAccessKeyFor:changeMonthPrev"></button>
+            <button type=button class="btnChangeMonth button" data-delta="1" id="changeMonthNext" data-msg="nextMonth,extractAccessKeyFor:changeMonthNext"></button>
+          </div>
+        </div>
+
+        <div class="JumpDays">
+          <button type=button class="btnJumpToday button" data-msg="planFromWhenToday"></button>
         </div>
       </div>
       <div id="specialDaysTitle"></div>
@@ -65,7 +81,9 @@
         <div class="normal place"></div>
         <!--<div id=gDayWithSunset></div>-->
         <div id=locationErrorHolder>
-          <button class=btnRetry><span class="btnRetryImg"></span></button>
+          <button type="button" class=btnRetry>
+            <span class="btnRetryImg"></span>
+          </button>
           <span id=locationError data-msg="_id_"></span>
         </div>
       </div>
@@ -94,10 +112,12 @@
 
           <div class=DatePickerTitle data-msg="rbDefLangText"></div>
           <div class="setupLangOption">
-            <input type="radio" name="language" value="Local" id="rbDefLang_Local" /> <label for="rbDefLang_Local" data-msg="rbDefLang_Local"></label>
+            <input type="radio" name="language" value="Local" id="rbDefLang_Local" />
+            <label for="rbDefLang_Local" data-msg="rbDefLang_Local"></label>
           </div>
           <div class="setupLangOption">
-            <input type="radio" name="language" value="Ar" id="rbDefLang_Ar" /> <label for="rbDefLang_Ar" data-msg="rbDefLang_Ar"></label>
+            <input type="radio" name="language" value="Ar" id="rbDefLang_Ar" />
+            <label for="rbDefLang_Ar" data-msg="rbDefLang_Ar"></label>
           </div>
         </div>
         <div id=dayDetails></div>
@@ -113,8 +133,14 @@
             <span id=includeWhat>
               <span data-msg=includeThese></span>
 
-              <label><input type=checkbox class=includeThis id=includeFeasts><span data-msg="includeFeasts,extractAccessKeyFor:includeFeasts"></span></label>
-              <label><input type=checkbox class=includeThis id=includeHolyDays><span data-msg="includeHolyDays,extractAccessKeyFor:includeHolyDays"></span></label>
+              <label>
+                <input type=checkbox class=includeThis id=includeFeasts>
+                <span data-msg="includeFeasts,extractAccessKeyFor:includeFeasts"></span>
+              </label>
+              <label>
+                <input type=checkbox class=includeThis id=includeHolyDays>
+                <span data-msg="includeHolyDays,extractAccessKeyFor:includeHolyDays"></span>
+              </label>
             </span>
 
             <span data-msg="startTimeOption"></span>
@@ -180,7 +206,7 @@
           <tbody id=monthListBody></tbody>
         </table>
         <table>
-          <caption data-msg="YearOfVahid"></caption>
+          <caption data-msg="YearOfVahid" data-msg-di="true"></caption>
           <thead>
             <tr>
               <th data-msg=num></th>
@@ -195,26 +221,48 @@
         <div class="months">
         </div>
       </div>
+      <div id="pageCal2" class="fullPage page">
+        <div id="cal2options">
+          <label>
+            <input type="checkbox" id="cbShowTimes">
+            <span data-msg="cal2ShowTimes,extractAccessKeyFor:cbShowTimes"></span>
+          </label>
+          <label>
+            <input type="checkbox" id="cbCal2Darker">
+            <span data-msg="cal2DarkerColors,extractAccessKeyFor:cbCal2Darker"></span>
+          </label>
+          <label>
+            <input type="checkbox" id="cbCal2Print">
+            <span data-msg="cal2ForPrint,extractAccessKeyFor:cbCal2Print"></span>
+          </label>
+        </div>
+        <div class="cal2NavButtons">
+          <button type="button" class="button" id="btnCal2Y" data-msg="_id_"></button>
+          <button type="button" class="button" id="btnCal2M" data-msg="_id_"></button>
+        </div>
+        <div class="calendar zoomM">
+        </div>
+      </div>
       <div id="pageCalGreg" class="fullPage page">
-        <!--<div class="calendar2"></div>-->
         <div class="calendar">
         </div>
       </div>
       <div id="pageCalWheel" class="fullPage page">
         <div id="askShowPointer">
-          <label><input type="checkbox" id="cbShowPointer" /> <span data-msg="showPointer"></span></label>
+          <label>
+            <input type="checkbox" id="cbShowPointer" />
+            <span data-msg="showPointer"></span>
+          </label>
         </div>
         <div id="wheelHolder">
           <div id="wheel"></div>
-          <svg id="wheelYearHolder" version="1.0" xmlns="http://www.w3.org/2000/svg"
-               width="65pt" height="300pt" overflow="visible" viewBox="0 0 130 550"
-               preserveAspectRatio="xMidYMid meet">
+          <svg id="wheelYearHolder" version="1.0" xmlns="http://www.w3.org/2000/svg" width="65pt" height="300pt" overflow="visible"
+            viewBox="0 0 130 550" preserveAspectRatio="xMidYMid meet">
             <text x="520" y="480" text-anchor="middle" id="wheelYear"></text>
           </svg>
 
-          <svg id="pointerToday" version="1.0" xmlns="http://www.w3.org/2000/svg"
-               width="65pt" height="300pt" overflow="visible" viewBox="0 0 130 550"
-               preserveAspectRatio="xMidYMid meet">
+          <svg id="pointerToday" version="1.0" xmlns="http://www.w3.org/2000/svg" width="65pt" height="300pt" overflow="visible" viewBox="0 0 130 550"
+            preserveAspectRatio="xMidYMid meet">
             <!--<text x="155" y="480" text-anchor="end" data-msg="currentFocus"></text>
             <line x1="160" y1="472" y2="472" x2="185" stroke-width="1" />
             <line x1="179" y1="469" y2="472" x2="185" stroke-width="1" />
@@ -225,13 +273,12 @@
           </svg>
 
         </div>
-        <svg id="templateSlice" class="slice" version="1.0" xmlns="http://www.w3.org/2000/svg"
-             width="65pt" height="300pt" overflow="visible" viewBox="0 0 130 550"
-             preserveAspectRatio="xMidYMid meet">
-          <g class="innerSlice" transform="translate(0.000000,350.000000) scale(0.100000,-0.100000)"
-             fill="#000000"
-             stroke="#FFC107" stroke-width="65px">
-            <path d="M634 3479 c-7 -12 -153 -121 -294 -219 -243 -169 -333 -329 -332 -590 0 -102 21 -242 181 -1200 100 -597 189 -1112 198 -1145 25 -96 87 -217 132 -258 63 -57 136 -70 206 -38 74 33 141 133 184 276 12 39 103 556 202 1150 170 1011 182 1088 182 1210 1 276 -84 423 -346 605 -60 41 -151 108 -203 148 -52 39 -96 72 -99 72 -2 0 -7 -5 -11 -11z" />
+        <svg id="templateSlice" class="slice" version="1.0" xmlns="http://www.w3.org/2000/svg" width="65pt" height="300pt" overflow="visible"
+          viewBox="0 0 130 550" preserveAspectRatio="xMidYMid meet">
+          <g class="innerSlice" transform="translate(0.000000,350.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="#FFC107"
+            stroke-width="65px">
+            <path d="M634 3479 c-7 -12 -153 -121 -294 -219 -243 -169 -333 -329 -332 -590 0 -102 21 -242 181 -1200 100 -597 189 -1112 198 -1145 25 -96 87 -217 132 -258 63 -57 136 -70 206 -38 74 33 141 133 184 276 12 39 103 556 202 1150 170 1011 182 1088 182 1210 1 276 -84 423 -346 605 -60 41 -151 108 -203 148 -52 39 -96 72 -99 72 -2 0 -7 -5 -11 -11z"
+            />
           </g>
           <text x="65" y="320" class="monthNum"></text>
           <text x="75" y="260" class="monthNameAr" transform="rotate(-95 75 260) translate(0 -10)"></text>
@@ -283,7 +330,8 @@
                   <input id="reminder_triggerTimeRaw" name="x7" value="10:00" data-default="10:00" type="time" required />
                 </div>
                 <div id="reminderCalcTypeRelative" data-msg="reminderTimeInputStructure" class="reminderCalcType">
-                  <input data-child="num" type="number" name="x2" class="reminder_num" min="0" max="500" step="1" value="1" data-type="num" data-default="10" required />
+                  <input data-child="num" type="number" name="x2" class="reminder_num" min="0" max="500" step="1" value="1" data-type="num"
+                    data-default="10" required />
                   <select data-child="units" class="reminder_units" name="x3" data-default="minutes">
                     <option value="minutes" data-msg="reminderNum_minutes"></option>
                     <option value="hours" data-msg="reminderNum_hours"></option>
@@ -298,7 +346,8 @@
               <div id="model_time" class="reminderModel">
                 <input type="hidden" class="reminder_calcType" name="x3b" data-default="Relative">
                 <div id="reminderCalcTypeRelative" data-msg="reminderTimeInputStructure">
-                  <input data-child="num" type="number" name="x2" class="reminder_num" min="0" max="500" step="1" value="1" data-type="num" data-default="10" required />
+                  <input data-child="num" type="number" name="x2" class="reminder_num" min="0" max="500" step="1" value="1" data-type="num"
+                    data-default="10" required />
                   <select data-child="units" class="reminder_units" name="x3" data-default="minutes">
                     <option value="minutes" data-msg="reminderNum_minutes"></option>
                     <option value="hours" data-msg="reminderNum_hours"></option>
@@ -314,7 +363,8 @@
                 <input type="hidden" class="reminder_units" name="x3" data-default="days">
 
                 <div data-msg="reminderDayWhen">
-                  <input data-child="num" type="number" name="x5" class="reminder_num" min="0" max="365" step="1" value="1" data-type="num" data-default="3" required />
+                  <input data-child="num" type="number" name="x5" class="reminder_num" min="0" max="365" step="1" value="1" data-type="num"
+                    data-default="3" required />
                   <select data-child="beforeAfter" class="reminder_delta" name="x6" data-type="num" data-default="-1">
                     <option value="-1" data-msg="reminderBefore"></option>
                     <option value="1" data-msg="reminderAfter"></option>
@@ -329,7 +379,8 @@
               <div id="model_bday" class="reminderModel">
                 <div>
                   <span data-msg="reminderDayOfMonth">
-                    <input data-child="num" type="number" class="reminder_num" name="x8" min="1" max="19" step="1" value="1" data-type="num" data-default="1" required />
+                    <input data-child="num" type="number" class="reminder_num" name="x8" min="1" max="19" step="1" value="1" data-type="num"
+                      data-default="1" required />
                   </span>
                 </div>
                 <div>
@@ -339,13 +390,13 @@
               </div>
               <div id="model_load" class="reminderModel">
                 <div>
-                  <input type="number" class="reminder_num" name="x10" min="1" max="59" step="1" value="1" data-type="num" data-default="3" required />
+                  <input type="number" class="reminder_num" name="x10" min="1" max="59" step="1" value="1" data-type="num" data-default="3"
+                    required />
                   <select class="reminder_units" data-default="seconds" name="x11">
                     <option value="seconds" data-msg="reminderNum_seconds"></option>
                     <option value="minutes" data-msg="reminderNum_minutes"></option>
                     <option value="hours" data-msg="reminderNum_hours"></option>
-                  </select>
-                  after
+                  </select> after
                   <span class="modelTriggerEcho"></span>
                 </div>
               </div>
@@ -462,7 +513,10 @@
             <div class="exporterButtons">
               <button type="button" class="button" id="btnExportFile" data-msg="exportFile"></button>
               <button type="button" class="button" id="btnHideSample" data-msg="exportHideTest"></button>
-              <button accesskey="S" type="button" class="button" id="btnExportTest" data-msg="exportTest"></button>
+              <div class="exportTest">
+                <button type="button" class="button" id="btnExportTest" data-msg="exportTest,extractAccessKeyFor:btnExportTest"></button>
+                <!--<label><input type="checkbox" id="cbExportTestCsv"><span data-msg="exportTestCsv"></span></label>-->
+              </div>
               <textarea id="exporterTest"></textarea>
             </div>
           </div>
@@ -473,7 +527,7 @@
           <h2 data-msg="customPartsList"></h2>
           <div id=partsList></div>
         </div>
-        <div>
+        <div class="customBuilderDiv">
           <h2 data-msg="customBuilder"></h2>
           <div id=customBuilder>
             <p data-msg="customBuilderIntro"></p>
@@ -503,6 +557,21 @@
           <div class="customLoadLettersDiv">
             <span data-msg="customLoadLetters"></span>
             <span class="customLettersFromFirstPage"></span>
+          </div>
+          <div class="customLoadDefaults">
+            <span data-msg="customLoadDefaultTopDay"></span>
+            <div>
+              <select id="customLoadTopDay"></select>
+            </div>
+            <span data-msg="customLoadDefaultToolTip"></span>
+            <div>
+              <span data-msg="customLoadDefaultToolTip1"></span>
+              <select id="customLoadToolTip1"></select>
+            </div>
+            <div>
+              <span data-msg="customLoadDefaultToolTip2"></span>
+              <select id="customLoadToolTip2"></select>
+            </div>
           </div>
         </div>
         <div id="customSampleTemplate">
@@ -585,7 +654,7 @@
         <div>
           <div class="plannerResultButtons">
             <button class="button" type="button" id="btnPlannerExportCsv" data-msg="_id_"></button>
-            <button class="button" type="button" id="btnPlannerExportICal" data-msg="_id_"></button>
+            <!--<button class="button" type="button" id="btnPlannerExportICal" data-msg="_id_"></button>-->
           </div>
           <h2 class="NoPrint" data-msg="plannerResults"></h2>
           <div id="plannerResultsDiv">
@@ -597,19 +666,77 @@
         </div>
       </div>
 
+      <div id="pageSetup" class="fullPage page">
+        <div>
+          <h3 data-msg="setupAboutTitle"></h3>
+          <p data-msg="setupAboutPara"></p>
+          <p data-msg="tipsAboutText"></p>
+        </div>
+        <div>
+          <h3 data-msg="setupColorH3"></h3>
+          <div>
+            <p class="pageSetupInput2">
+              <label>
+                <span data-msg="setupColor"></span>
+                <input type="color" id="setupColor" value="#000000">
+              </label>
+            </p>
+          </div>
+          <h3 data-msg="setupLangH3"></h3>
+          <div>
+            <div class="pageSetupInput2">
+              <label>
+                <select id="setupLang"></select>
+                <div id="setupLangPct"></div>
+              </label>
+            </div>
+          </div>
+          <h3 class="setupPlace">
+            <span data-msg="exportIncludeLocation"></span>
+            <button type="button" class="btnRetry">
+              <span class="btnRetryImg"></span>
+            </button>
+          </h3>
+          <div class="setupPlace">
+            <div>
+              <label>
+                <span data-msg="inputLat"></span>
+                <input type="number" id="inputLat">
+              </label>
+              <label>
+                <span data-msg="inputLng"></span>
+                <input type="number" id="inputLng">
+              </label>
+            </div>
+            <span>⇨</span>
+            <span class="place"></span>
+          </div>
+          <h3 data-msg="setupOptOutTitle"></h3>
+          <p data-msg="setupOptOutPara"></p>
+          <div class="pageSetupInput">
+            <label>
+              <span data-msg="setupOptOut"></span>
+              <input type="checkbox" id="setupOptOut" />
+            </label>
+          </div>
+        </div>
+      </div>
+
       <div class=selectPages>
         <div class=buttons>
           <button data-page="pageDay" data-msg=pick_pageDay></button>
           <button data-page="pageEvents" data-msg=pick_pageEvents></button>
-          <button data-page="pageCalGreg" data-msg=pick_pageCalGreg></button>
+          <button data-page="pageCal2" data-msg=pick_pageCal2></button>
           <button data-page="pageCal1" data-msg=pick_pageCal1></button>
           <button data-page="pageCalWheel" data-msg=pick_pageCalWheel></button>
+          <button data-page="pageCalGreg" data-msg=pick_pageCalGreg></button>
           <button data-page="pageFast" data-msg=pick_pageFast></button>
+          <button data-page="pagePlanner" data-msg=pick_pagePlanner></button>
           <button data-page="pageLists" data-msg=pick_pageLists></button>
           <button data-page="pageReminders" data-msg=pick_pageReminders id="btnPageReminders"></button>
-          <button data-page="pagePlanner" data-msg=pick_pagePlanner></button>
           <button data-page="pageExporter" data-msg=pick_pageExporter></button>
           <button data-page="pageCustom" data-msg=pick_pageCustom></button>
+          <button data-page="pageSetup" data-msg=pick_pageSetup></button>
         </div>
       </div>
     </div>
@@ -625,15 +752,13 @@
 
         <a id=version class=textLink href="" target="version"></a>
 
-        <a id=facebook target="fb" href="https://www.facebook.com/BadiCalendarTools"
-           rel="publisher" style="text-decoration: none;">
-          <img src="fb-16.png" data-msg="alt:facebook" style="border: 0; width: 16px; height: 16px;" />
+        <a id=facebook target="fb" href="https://www.facebook.com/BadiCalendarTools" rel="publisher" style="text-decoration: none;">
+          <img src="FB-16.png" data-msg="alt:facebook" style="border: 0; width: 16px; height: 16px;" />
         </a>
 
         <a id="linkWebStore" href="" target="webstore"><img id=logo data-msg="alt:webstore,title:webstore" src="badi19a-22.png"></a>
 
-        <a id=googlePlus target="gp" href="http://plus.google.com/u/0/111984989420723537597?prsrc=3"
-           rel="publisher" style="text-decoration: none;">
+        <a id=googlePlus target="gp" href="http://plus.google.com/u/0/111984989420723537597?prsrc=3" rel="publisher" style="text-decoration: none;">
           <img src="gplus-16.png" data-msg="alt:googlePlus" style="border: 0; width: 16px; height: 16px;" />
         </a>
 
@@ -652,12 +777,12 @@
     </div>
   </div>
   <script src="jquery-ui.min.js"></script>
-  <script src="google-analytics-bundle.js"></script>
   <script src="holydays.js"></script>
   <script src="sharedBrowser.js"></script>
   <script src="shared.js"></script>
   <script src="popup.js"></script>
   <script src="cal1.js"></script>
+  <script src="cal2.js"></script>
   <script src="calWheel.js"></script>
   <script src="calGreg.js"></script>
   <script src="pageReminders.js"></script>
@@ -665,5 +790,27 @@
   <script src="pageExporter.js"></script>
   <script src="pageCustom.js"></script>
   <script src="misc/moment-timezone-with-data.min.js"></script>
+  <!--<script src="presenteer.js"></script>-->
+
+  <script type="text/x-template" id="cal2dayCell">
+    <div class="dayCell bDay{bDay} {classesOuter} wd{frag2Weekday}" id=cal2_i{cellId} data-gdate="{frag2Year}/{frag2Month00}/{frag2Day00}">
+      <div class=top>
+        <span class=dayNum>{bDay}{^holyDayAftStar}</span>
+        <span class=sunsetStart>{frag1WeekdayShort}
+          <span>{startingSunsetDesc}</span>
+        </span>
+      </div>
+      <div class=dayName>{bDayNamePri} / {bDayNameSec}</div>
+      <div class=mid>
+        <div class=bWeekDay title="{DayOfWeek}">{bWeekdayNamePri}</div>
+        <div class=gStart>{frag2MonthShort} {frag2Day}
+          <span class=wd>{frag2WeekdayShort}</span>
+        </div>
+      </div>
+      <div class=day>{^holyDayAftName}</div>
+      {^sunsetDesc}
+    </div>
+  </script>
 </body>
+
 </html>

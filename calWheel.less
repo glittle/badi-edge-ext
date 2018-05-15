@@ -1,15 +1,20 @@
 
 #pageCalWheel {
+  position: relative;
+  overflow: hidden;
 
   #templateSlice {
     display: none;
   }
 
   #wheelHolder {
-    position: relative;
-    transform: scale(0.75);
     width: 685px;
-    margin: -48px auto 0 auto;
+    position: absolute;
+    transform: scale(0.75);
+    transform-origin: top;
+    width: 685px;
+    left: 0;
+    top: 0;
   }
 
 
@@ -51,6 +56,10 @@
 
   #pointerToday line {
     stroke: #333;
+  }
+
+  .u {
+    text-decoration: underline;
   }
 
   .slice {
@@ -184,8 +193,26 @@
   }
 
   #askShowPointer {
-    float: right;
-    margin: 2px 5px 0 0;
+    position: absolute;
+    right: 5px;
+    bottom: 5px;
+    z-index: 1;
+  }
+}
+
+body.rtl {
+  #pageCalWheel {
+    svg {
+      .monthNameAr, .monthName {
+        text-anchor: end;
+      }
+    }
+
+    #pointerToday {
+      text {
+        text-anchor: end;
+      }
+    }
   }
 }
 
