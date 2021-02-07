@@ -298,21 +298,21 @@ var PageCustom = () => {
     });
     setStorage('customFormats', formats);
 
-    chrome.storage.local.set({
+    browser.storage.local.set({
       customFormats: formats
     }, function () {
       console.log('stored formats with local');
-      if (chrome.runtime.lastError) {
-        console.log(chrome.runtime.lastError);
+      if (browser.runtime.lastError) {
+        console.log(browser.runtime.lastError);
       }
     });
     if (browserHostType === browser.Chrome) {
-      chrome.storage.sync.set({
+      browser.storage.sync.set({
         customFormats: formats
       }, function () {
         console.log('stored stored with sync');
-        if (chrome.runtime.lastError) {
-          console.log(chrome.runtime.lastError);
+        if (browser.runtime.lastError) {
+          console.log(browser.runtime.lastError);
         }
       });
     }
@@ -323,11 +323,11 @@ var PageCustom = () => {
 
   function loadFormatsFromSync() {
     var localLoad = function () {
-      chrome.storage.local.get({
+      browser.storage.local.get({
         customFormats: []
       }, function (info: any) {
-        if (chrome.runtime.lastError) {
-          console.log(chrome.runtime.lastError);
+        if (browser.runtime.lastError) {
+          console.log(browser.runtime.lastError);
         }
 
         if (info.customFormats.length) {
@@ -342,11 +342,11 @@ var PageCustom = () => {
 
     if (browserHostType === browser.Chrome) {
 
-      chrome.storage.sync.get({
-        customFormats: []
-      }, function (info: any) {
-        if (chrome.runtime.lastError) {
-          console.log(chrome.runtime.lastError);
+      browser.storage.sync.get({
+        customFormats: [] 
+      }, function (info: any) { 
+        if (browser.runtime.lastError) {
+          console.log(browser.runtime.lastError);
         }
 
         if (info.customFormats.length) {

@@ -1,26 +1,23 @@
 try {
     if (!Range.prototype.hasOwnProperty("intersectsNode")) {
-        Range.prototype["intersectsNode"] = function (node) {
+        Range.prototype["intersectsNode"] = function(node) {
             let range = document.createRange();
             range.selectNode(node);
-            return 0 > this.compareBoundaryPoints(Range.END_TO_START, range)
-                && 0 < this.compareBoundaryPoints(Range.START_TO_END, range);
+            return 0 > this.compareBoundaryPoints(Range.END_TO_START, range) &&
+                0 < this.compareBoundaryPoints(Range.START_TO_END, range);
         };
     }
-}
-catch (e) { }
+} catch (e) {}
 try {
     if (!Navigator.prototype.hasOwnProperty("languages")) {
         Navigator.prototype["languages"] = [navigator.language];
     }
-}
-catch (e) { }
-var getExtensionProtocol = function () {
+} catch (e) {}
+var getExtensionProtocol = function() {
     if (typeof browser == "undefined") {
         if (typeof chrome !== "undefined")
             return "chrome-extension://";
-    }
-    else {
+    } else {
         return "ms-browser-extension://";
     }
 };
@@ -31,12 +28,12 @@ class BridgeAlarmEvent {
     addListener(callback) {
         this.listeners.push(callback);
     }
-    addRules(rules, callback) { }
-    getRules(ruleIdentifiers, callback) { }
+    addRules(rules, callback) {}
+    getRules(ruleIdentifiers, callback) {}
     hasListener(callback) { return false; }
     hasListeners() { return this.listeners.length > 0; }
-    removeRules(ruleIdentifiers, callback) { }
-    removeListener(callback) { }
+    removeRules(ruleIdentifiers, callback) {}
+    removeListener(callback) {}
 }
 class EdgeBridgeAlarms {
     constructor() {
@@ -52,34 +49,27 @@ class EdgeBridgeAlarms {
         var startSet = false;
         if (typeof name === "string") {
             alarmName = name;
-        }
-        else if (typeof name === "object") {
+        } else if (typeof name === "object") {
             alarmInfo = name;
-        }
-        else
+        } else
             throw "Unexpected set of arguments. Expecting (alarmInfo) or (name, alarmInfo)";
         if (!alarmInfo) {
             throw "You must specify an alarmInfo argument!!";
         }
         if (!alarmInfo.when && !alarmInfo.delayInMinutes && !alarmInfo.periodInMinutes) {
             throw "Invalid alarmInfo argument!!";
-        }
-        else if (alarmInfo.when && alarmInfo.delayInMinutes) {
+        } else if (alarmInfo.when && alarmInfo.delayInMinutes) {
             throw "Invalid alarmInfo argument!! Either 'when' or 'delayInMinutes' but not both!!";
-        }
-        else if (alarmInfo.when) {
+        } else if (alarmInfo.when) {
             startMilliseconds = alarmInfo.when;
             startSet = true;
-        }
-        else if (alarmInfo.delayInMinutes) {
+        } else if (alarmInfo.delayInMinutes) {
             startMilliseconds = alarmInfo.delayInMinutes * 60 * 1000;
             startSet = true;
-        }
-        else if (alarmInfo.periodInMinutes) {
+        } else if (alarmInfo.periodInMinutes) {
             startMilliseconds = alarmInfo.periodInMinutes * 60 * 1000;
             startSet = true;
-        }
-        else
+        } else
             throw "Invalid alarmInfo argument!!";
         var timerHandle;
         if (startSet) {
@@ -91,13 +81,12 @@ class EdgeBridgeAlarms {
             this.alarms[alarmName] = alarmAndHandle;
             if (alarmInfo.periodInMinutes) {
                 this.alarms[alarmName].alarm.periodInMinutes = alarmInfo.periodInMinutes;
-                this.alarms[alarmName].timerHandle = window.setTimeout(function (alarmName, that) {
+                this.alarms[alarmName].timerHandle = window.setTimeout(function(alarmName, that) {
                     that.soundAlarm(alarmName, that);
                     that.alarms[alarmName].timerHandle = window.setInterval(that.soundAlarm, alarmInfo.periodInMinutes * 60 * 1000, alarmName, that);
                     that.alarms[alarmName].startedInterval = true;
                 }, startMilliseconds, alarmName, this);
-            }
-            else {
+            } else {
                 this.alarms[alarmName].timerHandle = window.setTimeout(this.soundAlarm, startMilliseconds, alarmName, this);
             }
         }
@@ -128,8 +117,7 @@ class EdgeBridgeAlarms {
         var alarmName = "";
         if (typeof name === "string") {
             alarmName = name;
-        }
-        else if (typeof name === "function") {
+        } else if (typeof name === "function") {
             callback = name;
         }
         var wasCleared = this.clearAlarm(alarmName);
@@ -148,8 +136,7 @@ class EdgeBridgeAlarms {
         if (this.alarms[name]) {
             if (this.alarms[name].alarm.startedInterval) {
                 window.clearInterval(this.alarms[name].timerHandle);
-            }
-            else {
+            } else {
                 window.clearTimeout(this.alarms[name].timerHandle);
             }
             delete this.alarms[name];
@@ -165,13 +152,13 @@ class EdgeBridgeAlarms {
     }
 }
 class FakeEvent {
-    addListener(callback) { }
-    addRules(rules, callback) { }
-    getRules(ruleIdentifiers, callback) { }
+    addListener(callback) {}
+    addRules(rules, callback) {}
+    getRules(ruleIdentifiers, callback) {}
     hasListener(callback) { return false; }
     hasListeners() { return false; }
-    removeRules(ruleIdentifiers, callback) { }
-    removeListener(callback) { }
+    removeRules(ruleIdentifiers, callback) {}
+    removeListener(callback) {}
 }
 class EdgeBridgeHelper {
     constructor() {
@@ -181,8 +168,7 @@ class EdgeBridgeHelper {
     toAbsolutePath(relativePath) {
         if (relativePath.indexOf("ms-browser-extension://") == 0) {
             return relativePath.replace(myBrowser.runtime.getURL(""), "");
-        }
-        else if (relativePath.indexOf("/") != 0) {
+        } else if (relativePath.indexOf("/") != 0) {
             var absolutePath = "";
             var documentPath = document.location.pathname;
             absolutePath = documentPath.substring(0, documentPath.lastIndexOf("/") + 1);
@@ -209,36 +195,28 @@ class EdgeBridgeDebugLog {
             if (this.VerboseLogging) {
                 console.log(message);
             }
-        }
-        catch (e) {
-        }
+        } catch (e) {}
     }
     info(message) {
         try {
             if (this.VerboseLogging) {
                 console.info(message);
             }
-        }
-        catch (e) {
-        }
+        } catch (e) {}
     }
     warn(message) {
         try {
             if (this.VerboseLogging) {
                 console.warn(message);
             }
-        }
-        catch (e) {
-        }
+        } catch (e) {}
     }
     error(message) {
         try {
             if (this.VerboseLogging) {
                 console.error(message);
             }
-        }
-        catch (e) {
-        }
+        } catch (e) {}
     }
     DoActionAndLog(action, name, deprecatedTo, bridgedTo) {
         var result;
@@ -255,8 +233,7 @@ class EdgeBridgeDebugLog {
             }
             this.info("API Call: '" + name + "'");
             return result;
-        }
-        catch (ex) {
+        } catch (ex) {
             this.AddToCalledDictionary(this.FailedCalls, name);
             if (this.CatchOnException)
                 this.error("API Call Failed: " + name + " - " + ex);
@@ -279,8 +256,7 @@ class EdgeBridgeDebugLog {
     AddToCalledDictionary(dictionary, name) {
         if (typeof dictionary[name] !== "undefined") {
             dictionary[name]++;
-        }
-        else {
+        } else {
             dictionary[name] = 1;
         }
     }
@@ -404,8 +380,7 @@ class EdgeBrowserActionBridge {
     }
     getBadgeText(details, callback) {
         bridgeLog.DoActionAndLog(() => {
-            myBrowser.browserAction.getBadgeText.apply(null, arguments);
-            ;
+            myBrowser.browserAction.getBadgeText.apply(null, arguments);;
         }, "browserAction.getBadgeText");
     }
     getPopup(details, callback) {
@@ -448,24 +423,21 @@ class EdgeChromeBrowserActionBridge extends EdgeBrowserActionBridge {
     getPopup(details, callback) {
         if (myBrowser.browserAction.getPopup) {
             EdgeBrowserActionBridge.prototype.getPopup.apply(null, arguments);
-        }
-        else {
+        } else {
             bridgeLog.LogUnavailbleApi("browserAction.getPopup");
         }
     }
     getTitle(details, callback) {
         if (myBrowser.browserAction.getTitle) {
             EdgeBrowserActionBridge.prototype.getTitle.apply(null, arguments);
-        }
-        else {
+        } else {
             bridgeLog.LogUnavailbleApi("browserAction.getTitle");
         }
     }
     setTitle(details) {
         if (myBrowser.browserAction.setTitle) {
             EdgeBrowserActionBridge.prototype.setTitle.apply(null, arguments);
-        }
-        else {
+        } else {
             bridgeLog.LogUnavailbleApi("browserAction.setTitle");
         }
     }
@@ -783,8 +755,7 @@ class EdgeChromeRuntimeBridge extends EdgeRuntimeBridge {
             var optionsPageUrl = myBrowser.runtime.getURL(optionsPage);
             if (typeof callback !== "undefined") {
                 myBrowser.tabs.create({ url: optionsPageUrl }, callback);
-            }
-            else {
+            } else {
                 myBrowser.tabs.create({ url: optionsPageUrl });
             }
         }, "runtime.openOptionsPage", undefined, "tabs.create({ url: optionsPageUrl })");
@@ -792,8 +763,7 @@ class EdgeChromeRuntimeBridge extends EdgeRuntimeBridge {
     setUninstallURL(url, callback) {
         if (myBrowser.runtime.setUninstallURL) {
             EdgeRuntimeBridge.prototype.setUninstallURL.apply(null, arguments);
-        }
-        else {
+        } else {
             bridgeLog.LogUnavailbleApi("runtime.setUninstallURL");
         }
     }
@@ -819,8 +789,7 @@ class EdgeChromeStorageBridge extends EdgeStorageBridge {
     get sync() {
         if (myBrowser.storage.sync) {
             return EdgeStorageBridge.prototype.sync;
-        }
-        else {
+        } else {
             return bridgeLog.DoActionAndLog(() => {
                 return myBrowser.storage.local;
             }, "storage.sync", undefined, "storage.local");
@@ -923,11 +892,10 @@ class EdgeChromeTabsBridge extends EdgeTabsBridge {
     }
     duplicate(tabId, callback) {
         bridgeLog.DoActionAndLog(() => {
-            var tabGetCallback = function (tab) {
+            var tabGetCallback = function(tab) {
                 if (typeof callback !== "undefined") {
                     myBrowser.tabs.create({ url: tab.url }, callback);
-                }
-                else {
+                } else {
                     myBrowser.tabs.create({ url: tab.url });
                 }
             };
@@ -1066,3 +1034,4 @@ class EdgeBackgroundBridge {
 }
 var myBrowser = browser;
 var chrome = new EdgeBackgroundBridge();
+console.log('chrome setup')

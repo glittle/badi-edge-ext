@@ -5,10 +5,12 @@
 
 // delta -->  + is future (event is after trigger),  - is past (event is before trigger)   (delta * offset --> new time in future or past)
 var _notificationsEnabled = true; // set to false to disable
+console.log(JSON.stringify(chrome));
+console.log(JSON.stringify(browser.notifications));
 
 if (_notificationsEnabled && browserHostType === browser.Chrome) {
     // check to see...
-    chrome.notifications.getPermissionLevel(function (level) {
+    browser.notifications.getPermissionLevel(function(level) {
         // ensure flag is off if user has disabled them
         if (level !== 'granted') {
             _notificationsEnabled = false;
@@ -17,7 +19,7 @@ if (_notificationsEnabled && browserHostType === browser.Chrome) {
 }
 
 
-var BackgroundReminderEngine = function () {
+var BackgroundReminderEngine = function() {
 
     var _ports = [];
     var _reminderPrefix = 'alarm_';
@@ -36,7 +38,7 @@ var BackgroundReminderEngine = function () {
 
     function setAlarmsForRestOfToday(initialLoad) {
         // clear, then set again
-        clearReminderAlarms(function () {
+        clearReminderAlarms(function() {
             setAlarmsInternal(initialLoad);
         });
     }
@@ -71,34 +73,34 @@ var BackgroundReminderEngine = function () {
     }
 
     var tryAddAlarmFor = {
-        'load': function (reminder, isTest) {
+        'load': function(reminder, isTest) {
             var eventDate = new Date();
             tryAddTimeAlarm(eventDate, reminder, isTest);
         },
-        'sunset': function (reminder, isTest) {
+        'sunset': function(reminder, isTest) {
             var eventDate = _nowSunTimes.sunset;
             tryAddTimeAlarm(eventDate, reminder, isTest);
         },
-        'sunrise': function (reminder, isTest) {
+        'sunrise': function(reminder, isTest) {
             var eventDate = _nowSunTimes.sunrise;
             tryAddTimeAlarm(eventDate, reminder, isTest);
         },
-        'noon': function (reminder, isTest) {
+        'noon': function(reminder, isTest) {
             var eventDate = _nowNoon;
             tryAddTimeAlarm(eventDate, reminder, isTest);
         },
-        'midnight': function (reminder, isTest) {
+        'midnight': function(reminder, isTest) {
             var eventDate = new Date();
             eventDate.setHours(24, 0, 0, 0); // midnight coming tonight
             tryAddTimeAlarm(eventDate, reminder, isTest);
         },
-        'feast': function (reminder, isTest) {
+        'feast': function(reminder, isTest) {
             tryAddEventAlarm(reminder, isTest);
         },
-        'holyday': function (reminder, isTest) {
+        'holyday': function(reminder, isTest) {
             tryAddEventAlarm(reminder, isTest);
         },
-        'bday': function (reminder, isTest) {
+        'bday': function(reminder, isTest) {
             tryAddBDayAlarm(reminder, isTest);
         }
     };
@@ -317,11 +319,11 @@ var BackgroundReminderEngine = function () {
         alarmInfo.messageBody = getMessage('messageBody', info);
     }
 
-    var createAlarm = function (alarmInfo, isTest) {
-        chrome.alarms.create(storeAlarmReminder(alarmInfo, isTest), { when: alarmInfo.triggerTime });
+    var createAlarm = function(alarmInfo, isTest) {
+        browser.alarms.create(storeAlarmReminder(alarmInfo, isTest), { when: alarmInfo.triggerTime });
     }
 
-    var getFullTime = function (eventDateTime, triggerDate, onlyDateIfOther) {
+    var getFullTime = function(eventDateTime, triggerDate, onlyDateIfOther) {
         // determine time to show
         var eventDate = new Date(eventDateTime);
         var eventTime = showTime(eventDate);
@@ -336,7 +338,7 @@ var BackgroundReminderEngine = function () {
         }
     }
 
-    var getMatchingEventDateFor = function (testDayDi, typeWanted) {
+    var getMatchingEventDateFor = function(testDayDi, typeWanted) {
         if (!_specialDays[testDayDi.bYear]) {
             _specialDays[testDayDi.bYear] = holyDays.prepareDateInfos(testDayDi.bYear);
         }
@@ -355,7 +357,7 @@ var BackgroundReminderEngine = function () {
         }
 
         // GDate is the 00:00 in the middle of the date, so start is the day before
-        var holyDayInfo = $.grep(specialDays, function (el, i) {
+        var holyDayInfo = $.grep(specialDays, function(el, i) {
             return el.Type.substring(0, 1) == typeWanted && el.BDateCode == testDayDi.bDateCode;
         });
 
@@ -367,7 +369,7 @@ var BackgroundReminderEngine = function () {
     }
 
 
-    var adjustTime = function (d, alarmInfo) {
+    var adjustTime = function(d, alarmInfo) {
         var ms = 0;
         alarmInfo.delta = alarmInfo.delta || BEFORE;
         switch (alarmInfo.units) {
@@ -399,7 +401,7 @@ var BackgroundReminderEngine = function () {
 
     function storeAlarmReminder(reminder, isTest) {
         // store, and give back key to get it later
-        for (var nextKey = 0; ; nextKey++) {
+        for (var nextKey = 0;; nextKey++) {
             var publicKey = nextKey + (isTest ? 'TEST' : '');
             var fullKey = _reminderPrefix + publicKey;
             if (getStorage(fullKey, '') === '') {
@@ -410,7 +412,7 @@ var BackgroundReminderEngine = function () {
         }
     }
 
-    var saveAllReminders = function (newSetOfReminders) {
+    var saveAllReminders = function(newSetOfReminders) {
         _remindersDefined = newSetOfReminders || [];
         storeReminders();
     }
@@ -479,7 +481,7 @@ var BackgroundReminderEngine = function () {
         switch (api) {
             case 'chrome':
                 // closes automatically after a few seconds
-                chrome.notifications.create(null, {
+                browser.notifications.create(null, {
                     type: 'basic',
                     iconUrl: iconUrl,
 
@@ -487,7 +489,7 @@ var BackgroundReminderEngine = function () {
                     message: alarmInfo.messageBody,
                     priority: 2,
                     contextMessage: tagLine
-                }, function (id) {
+                }, function(id) {
                     //log('chrome notification ' + id);
                 });
                 break;
@@ -526,14 +528,14 @@ var BackgroundReminderEngine = function () {
                     'enqueue': true
                 };
                 console.log(options);
-                chrome.tts.speak(
-                  '{title}.\n\n {messageBody}'.filledWith(alarmInfo),
-                  options,
-                  function () {
-                      if (chrome.runtime.lastError) {
-                          console.log('Error: ' + chrome.runtime.lastError);
-                      }
-                  });
+                browser.tts.speak(
+                    '{title}.\n\n {messageBody}'.filledWith(alarmInfo),
+                    options,
+                    function() {
+                        if (browser.runtime.lastError) {
+                            console.log('Error: ' + browser.runtime.lastError);
+                        }
+                    });
 
                 break;
             case 'ifttt':
@@ -547,15 +549,15 @@ var BackgroundReminderEngine = function () {
                     $.ajax({
                         url: url,
                         data: content,
-                        success: function (data) {
-                            chrome.notifications.create(null, {
+                        success: function(data) {
+                            browser.notifications.create(null, {
                                 type: 'basic',
                                 iconUrl: 'badi19a-128.png',
                                 title: alarmInfo.actionDisplay,
                                 message: data
                             });
                         },
-                        error: function (request, error) {
+                        error: function(request, error) {
                             console.log(JSON.stringify(request));
                             console.log(JSON.stringify(error));
 
@@ -580,8 +582,8 @@ var BackgroundReminderEngine = function () {
                     $.ajax({
                         url: alarmInfo.zapierWebhook,
                         data: zap,
-                        success: function (data) {
-                            chrome.notifications.create(null, {
+                        success: function(data) {
+                            browser.notifications.create(null, {
                                 type: 'basic',
                                 iconUrl: 'badi19a-128.png',
                                 title: alarmInfo.actionDisplay,
@@ -589,7 +591,7 @@ var BackgroundReminderEngine = function () {
                             });
                             console.log(data);
                         },
-                        error: function (request, error) {
+                        error: function(request, error) {
                             var msg = "Request: " + JSON.stringify(request);
                             console.log(msg);
                             alert(msg);
@@ -644,13 +646,13 @@ var BackgroundReminderEngine = function () {
 
 
     function clearReminderAlarms(fnAfter) {
-        chrome.alarms.getAll(function (alarms) {
+        browser.alarms.getAll(function(alarms) {
             for (var i = 0; i < alarms.length; i++) {
                 var alarm = alarms[i];
                 var name = alarm.name;
                 if (name.startsWith(_reminderPrefix)) {
                     //log('removed {0} {1}'.filledWith(alarm.name, new Date(alarm.scheduledTime)));
-                    chrome.alarms.clear(name);
+                    browser.alarms.clear(name);
                     localStorage.removeItem(name);
                 }
             }
@@ -668,7 +670,7 @@ var BackgroundReminderEngine = function () {
     }
 
     function dumpAlarms() {
-        chrome.alarms.getAll(function (alarms) {
+        browser.alarms.getAll(function(alarms) {
 
             for (var i = 0; i < alarms.length; i++) {
                 var alarm = alarms[i];
@@ -679,33 +681,33 @@ var BackgroundReminderEngine = function () {
     }
 
     function storeReminders() {
-        chrome.storage.local.set({
+        browser.storage.local.set({
             reminders: _remindersDefined
-        }, function () {
+        }, function() {
             console.log('stored reminders with local');
-            if (chrome.runtime.lastError) {
-                console.log(chrome.runtime.lastError);
+            if (browser.runtime.lastError) {
+                console.log(browser.runtime.lastError);
             }
         });
         if (browserHostType === browser.Chrome) {
-            chrome.storage.sync.set({
+            browser.storage.sync.set({
                 reminders: _remindersDefined
-            }, function () {
+            }, function() {
                 console.log('stored reminders with sync');
-                if (chrome.runtime.lastError) {
-                    console.log(chrome.runtime.lastError);
+                if (browser.runtime.lastError) {
+                    console.log(browser.runtime.lastError);
                 }
             });
         }
     }
 
     function loadReminders() {
-        var loadLocal = function () {
-            chrome.storage.local.get({
+        var loadLocal = function() {
+            browser.storage.local.get({
                 reminders: []
-            }, function (items) {
-                if (chrome.runtime.lastError) {
-                    console.log(chrome.runtime.lastError);
+            }, function(items) {
+                if (browser.runtime.lastError) {
+                    console.log(browser.runtime.lastError);
                 }
 
                 if (items.reminders) {
@@ -718,11 +720,11 @@ var BackgroundReminderEngine = function () {
         }
 
         if (browserHostType === browser.Chrome) {
-            chrome.storage.sync.get({
+            browser.storage.sync.get({
                 reminders: []
-            }, function (items) {
-                if (chrome.runtime.lastError) {
-                    console.log(chrome.runtime.lastError);
+            }, function(items) {
+                if (browser.runtime.lastError) {
+                    console.log(browser.runtime.lastError);
                 }
 
                 if (items.reminders) {
@@ -743,42 +745,42 @@ var BackgroundReminderEngine = function () {
     }
 
     function makeSamples() {
-        _remindersDefined = [
-          {
-              "calcType": "Relative",
-              "delta": -1,
-              "num": 5,
-              "trigger": "sunrise",
-              "units": "minutes"
-          },
-          {
-              "calcType": "Absolute",
-              "delta": -1,
-              "trigger": "sunset",
-              "triggerTimeRaw": "15:00"
-          },
-          {
-              "action": "speak",
-              "calcType": "Relative",
-              "delta": -1,
-              "num": 15,
-              "trigger": "sunset",
-              "units": "minutes"
-          },
-          {
-              "delta": -1,
-              "model": "day",
-              "num": 3,
-              "trigger": "feast",
-              "triggerTimeRaw": "10:00",
-              "units": "days"
-          }];
+        _remindersDefined = [{
+                "calcType": "Relative",
+                "delta": -1,
+                "num": 5,
+                "trigger": "sunrise",
+                "units": "minutes"
+            },
+            {
+                "calcType": "Absolute",
+                "delta": -1,
+                "trigger": "sunset",
+                "triggerTimeRaw": "15:00"
+            },
+            {
+                "action": "speak",
+                "calcType": "Relative",
+                "delta": -1,
+                "num": 15,
+                "trigger": "sunset",
+                "units": "minutes"
+            },
+            {
+                "delta": -1,
+                "model": "day",
+                "num": 3,
+                "trigger": "feast",
+                "triggerTimeRaw": "10:00",
+                "units": "days"
+            }
+        ];
         storeReminders();
     }
 
     function connectToPort() {
         console.log('listening for new ports');
-        chrome.runtime.onConnect.addListener(function (port) {
+        browser.runtime.onConnect.addListener(function(port) {
             if (port.name != "reminderModule") {
                 return; // not for us
             }
@@ -789,7 +791,7 @@ var BackgroundReminderEngine = function () {
             // each popup will have its own port for us to respond to
             console.log('listening to port', port.name, 'from', port.sender.id);
 
-            port.onDisconnect.addListener(function (port) {
+            port.onDisconnect.addListener(function(port) {
                 for (var i = 0; i < _ports.length; i++) {
                     var knownPort = _ports[i];
                     if (knownPort === port) {
@@ -799,7 +801,7 @@ var BackgroundReminderEngine = function () {
                 }
             });
 
-            port.onMessage.addListener(function (msg) {
+            port.onMessage.addListener(function(msg) {
                 console.log('received: ', msg);
 
                 switch (msg.code) {
@@ -861,10 +863,10 @@ var BackgroundReminderEngine = function () {
         saveAllReminders: saveAllReminders,
         _specialDays: _specialDays, // testing
         makeBadiNum: makeBadiNum,
-        eraseReminders: function () {
+        eraseReminders: function() {
             saveAllReminders();
         },
-        getReminders: function () {
+        getReminders: function() {
             return _remindersDefined;
         }
     }

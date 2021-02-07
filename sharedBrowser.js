@@ -1,6 +1,6 @@
 var browser = {
-  Chrome: 'Chrome',
-  Firefox: 'Firefox',
-  Edge: 'Edge'
+    Chrome: 'Chrome',
+    Firefox: 'Firefox',
+    Edge: 'Edge'
 };
-var browserHostType = browser.Chrome;
+var browserHostType = browser.Edge;
